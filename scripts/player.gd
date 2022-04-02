@@ -6,7 +6,7 @@ var tick = 0
 
 # var ticks_to_move = 0.25
 var ticks_to_move = 0.1
-
+onready var dialog = $Dialog
 
 func go_to_start_location():
   position = Globals.StartLocation.global_position
@@ -17,6 +17,8 @@ func round_position():
   position.y = round(position.y / size) * size
 
 func _ready():
+  dialog.visible = false
+  
   go_to_start_location()
   round_position()
 

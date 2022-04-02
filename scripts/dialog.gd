@@ -6,10 +6,6 @@ onready var rect = $DialogUpscaler/Rect
 var max_width = 400
 var text_speed = 2 # smaller = faster
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-  show_dialog_co()
-
 func resize_img():
   var visible_text = label.text.substr(0, label.visible_characters)
   
@@ -19,9 +15,7 @@ func resize_img():
   new_rect_size.x = min(rect_size_oneline.x, new_rect_size.x)
   rect.rect_size = new_rect_size + Vector2(16, 16)
 
-func show_dialog_co():
-  var text_to_show = "blah blah blahhhblah asdklfjhas dlkfh adlskfj adslkjad lkjads lkf adslkfh alskfjh asdf"
-
+func show_dialog_co(text_to_show: String):
   var skip = false
   
   for text_len in range(text_to_show.length()):
