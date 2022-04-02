@@ -132,7 +132,7 @@ position = Vector2( 431, -473 )
 [node name="Dialog" parent="Player" instance=ExtResource( 10 )]
 visible = false
 
-[node name="Light2D" type="Light2D" parent="Player"]
+[node name="LightSource" type="Light2D" parent="Player"]
 position = Vector2( 64, 64 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 11 )
