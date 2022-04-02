@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Switch.tscn" type="PackedScene" id=2]
@@ -10,8 +10,15 @@
 [ext_resource path="res://SwitchAndDoor.tscn" type="PackedScene" id=8]
 [ext_resource path="res://DialogTrigger.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Dialog.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/PlayerLightCircle.png" type="Texture" id=11]
+[ext_resource path="res://assets/Background.png" type="Texture" id=12]
 
 [node name="Root" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 768, -256 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 12 )
 
 [node name="ShadowSpawner" type="Node2D" parent="."]
 script = ExtResource( 4 )
@@ -124,6 +131,13 @@ position = Vector2( 431, -473 )
 
 [node name="Dialog" parent="Player" instance=ExtResource( 10 )]
 visible = false
+
+[node name="Light2D" type="Light2D" parent="Player"]
+position = Vector2( 64, 64 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 11 )
+color = Color( 0.921569, 0.92549, 0.607843, 1 )
+shadow_enabled = true
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true
