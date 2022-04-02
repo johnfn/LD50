@@ -42,9 +42,12 @@ func _process(delta):
   if can_move and dist != Vector2.ZERO:
     move_and_collide(dist)
     round_position()
+    
     tick = 0.0
   
   for i in get_slide_count():
       var collision = get_slide_collision(i)
-      print(collision)
+      # print(collision)
 
+func start_dialog(dialog_name: String):
+  print(dialog_name)

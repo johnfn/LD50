@@ -1,0 +1,53 @@
+extends NinePatchRect
+
+
+var max_width = 400
+var text_speed = 2 # smaller = faster
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+  show_dialog_co()
+
+func resize_img():
+  var visible_text = $Label.text.substr(0, $Label.visible_characters)
+  
+  var rect_size_oneline = $Label.get_font("normal_font").get_string_size(visible_text)
+  var new_rect_size = $Label.get_font("normal_font").get_wordwrap_string_size(visible_text, max_width)
+  
+  new_rect_size.x = min(rect_size_oneline.x, new_rect_size.x)
+  rect_size = new_rect_size + Vector2(16, 16)
+
+func show_dialog_co():
+  var text_to_show = "blah blah blahhhblah asdklfjhas dlkfh adlskfj adslkjad lkjads lkf adslkfh alskfjh asdf"
+
+  var skip = false
+  
+  for text_len in range(text_to_show.length()):
+    $Label.text = text_to_show
+    $Label.visible_characters = text_len
+    
+    resize_img()
+    
+    for x in range(text_speed):
+      yield(get_tree(), "idle_frame")
+    
+      if Input.is_action_just_pressed("advance_dialog"):
+        skip = true
+        break
+    
+    if skip:
+      break
+  
+  
+  yield(get_tree(), "idle_frame")
+  
+  $Label.visible_characters = text_to_show.length()
+  resize_img()
+  
+  while true:
+    yield(get_tree(), "idle_frame")
+    
+    if Input.is_action_just_pressed("advance_dialog"):
+      break
+    
+  self.visible = false
