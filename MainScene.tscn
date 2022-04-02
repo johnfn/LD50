@@ -1,17 +1,117 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/TestTilemap.tmx" type="PackedScene" id=2]
-[ext_resource path="res://assets/map.gd" type="Script" id=3]
+[ext_resource path="res://assets/Tiles.png" type="Texture" id=2]
+[ext_resource path="res://scripts/camera.gd" type="Script" id=3]
 [ext_resource path="res://scripts/shadow_spawner.gd" type="Script" id=4]
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=5]
 
 [node name="Root" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 256, 256 )
-
-[node name="TestTilemap" parent="." instance=ExtResource( 2 )]
-script = ExtResource( 3 )
+position = Vector2( 431, -473 )
 
 [node name="ShadowSpawner" type="Node2D" parent="."]
 script = ExtResource( 4 )
+
+[node name="Camera" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 2, 2 )
+smoothing_enabled = true
+smoothing_speed = 4.0
+script = ExtResource( 3 )
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="Walls" type="Node2D" parent="Map"]
+
+[node name="Wall" parent="Map/Walls" instance=ExtResource( 5 )]
+
+[node name="Wall2" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 128, 0 )
+
+[node name="Wall3" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 256, 0 )
+
+[node name="Wall4" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 384, 0 )
+
+[node name="Wall5" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 512, 0 )
+
+[node name="Wall6" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 640, 0 )
+
+[node name="Wall7" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 768, 0 )
+
+[node name="Wall8" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 896, 0 )
+
+[node name="Wall9" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 1024, 0 )
+
+[node name="Wall10" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 1152, 0 )
+
+[node name="Wall11" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 1152, -128 )
+
+[node name="Wall12" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 1152, -256 )
+
+[node name="Wall13" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 1152, -384 )
+
+[node name="Wall14" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 1152, -512 )
+
+[node name="Wall15" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 1152, -640 )
+
+[node name="Wall16" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 1152, -768 )
+
+[node name="Wall17" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 1152, -896 )
+
+[node name="Wall18" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 1152, -1024 )
+
+[node name="Wall19" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 1152, -1024 )
+
+[node name="Wall20" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 0, -128 )
+
+[node name="Wall21" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 0, -256 )
+
+[node name="Wall22" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 0, -384 )
+
+[node name="Wall23" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 0, -512 )
+
+[node name="Wall24" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 0, -640 )
+
+[node name="Wall25" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 0, -768 )
+
+[node name="Wall26" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 0, -896 )
+
+[node name="Wall27" parent="Map/Walls" instance=ExtResource( 5 )]
+position = Vector2( 0, -896 )
+
+[node name="Objects" type="Node2D" parent="Map"]
+
+[node name="StartLocation" type="Node2D" parent="Map"]
+position = Vector2( 896, -256 )
+
+[node name="Sprite" type="Sprite" parent="Map/StartLocation"]
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 384, 384, 128, 128 )

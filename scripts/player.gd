@@ -1,15 +1,21 @@
+class_name Player
 extends KinematicBody2D
 
-var size = 64
+var size = 128
 var tick = 0
 
 var ticks_to_move = 0.25
+
+func go_to_start_location():
+  position = Globals.StartLocation.global_position
+  Globals.StartLocation.queue_free()
 
 func round_position():
   position.x = round(position.x / size) * size
   position.y = round(position.y / size) * size
 
 func _ready():
+  go_to_start_location()
   round_position()
 
 func _process(delta):
