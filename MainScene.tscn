@@ -6,6 +6,6 @@
 [node name="Root" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 256, 256 )
 
 [node name="TestTilemap" parent="." instance=ExtResource( 2 )]
-position = Vector2( 247, 200 )
