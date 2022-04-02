@@ -5,6 +5,7 @@ onready var rect = $DialogUpscaler/Rect
 
 var max_width = 400
 var text_speed = 2 # smaller = faster
+var is_showing_dialog = false
 
 func resize_img():
   var visible_text = label.text.substr(0, label.visible_characters)
@@ -16,6 +17,13 @@ func resize_img():
   rect.rect_size = new_rect_size + Vector2(16, 16)
 
 func show_dialog_co(text_to_show: String):
+  if Globals.is_showing_dialog:
+    return
+    
+  visible = true
+  
+  Globals.is_showing_dialog = true
+  
   var skip = false
   
   for text_len in range(text_to_show.length()):
@@ -47,3 +55,5 @@ func show_dialog_co(text_to_show: String):
       break
     
   self.visible = false
+  
+  Globals.is_showing_dialog = false

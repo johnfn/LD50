@@ -23,6 +23,9 @@ func _ready():
   round_position()
 
 func _process(delta):
+  if Globals.game_mode() != "normal":
+    return
+  
   var dist = Vector2.ZERO
   
   tick += delta
@@ -53,3 +56,8 @@ func _process(delta):
 
 func start_dialog(dialog_name: String):
   print(dialog_name)
+  print(dialog)
+  print(dialog.get_node("DialogUpscaler"))
+  
+  # WhereAmI
+  dialog.show_dialog_co("Hey you triggered the dialog!")
