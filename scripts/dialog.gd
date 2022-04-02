@@ -1,5 +1,7 @@
-extends NinePatchRect
+extends Node2D
 
+onready var label = $DialogUpscaler/Rect/Label
+onready var rect = $DialogUpscaler/Rect
 
 var max_width = 400
 var text_speed = 2 # smaller = faster
@@ -9,13 +11,13 @@ func _ready():
   show_dialog_co()
 
 func resize_img():
-  var visible_text = $Label.text.substr(0, $Label.visible_characters)
+  var visible_text = label.text.substr(0, label.visible_characters)
   
-  var rect_size_oneline = $Label.get_font("normal_font").get_string_size(visible_text)
-  var new_rect_size = $Label.get_font("normal_font").get_wordwrap_string_size(visible_text, max_width)
+  var rect_size_oneline = label.get_font("normal_font").get_string_size(visible_text)
+  var new_rect_size = label.get_font("normal_font").get_wordwrap_string_size(visible_text, max_width)
   
   new_rect_size.x = min(rect_size_oneline.x, new_rect_size.x)
-  rect_size = new_rect_size + Vector2(16, 16)
+  rect.rect_size = new_rect_size + Vector2(16, 16)
 
 func show_dialog_co():
   var text_to_show = "blah blah blahhhblah asdklfjhas dlkfh adlskfj adslkjad lkjads lkf adslkfh alskfjh asdf"
@@ -23,8 +25,8 @@ func show_dialog_co():
   var skip = false
   
   for text_len in range(text_to_show.length()):
-    $Label.text = text_to_show
-    $Label.visible_characters = text_len
+    label.text = text_to_show
+    label.visible_characters = text_len
     
     resize_img()
     
@@ -41,7 +43,7 @@ func show_dialog_co():
   
   yield(get_tree(), "idle_frame")
   
-  $Label.visible_characters = text_to_show.length()
+  label.visible_characters = text_to_show.length()
   resize_img()
   
   while true:
