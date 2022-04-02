@@ -36,8 +36,6 @@ func _process(delta):
     round_position()
     tick = 0.0
   
-  print(position)
-  
   for i in get_slide_count():
       var collision = get_slide_collision(i)
       print(collision)
