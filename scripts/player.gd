@@ -4,7 +4,9 @@ extends KinematicBody2D
 var size = 128
 var tick = 0
 
-var ticks_to_move = 0.25
+# var ticks_to_move = 0.25
+var ticks_to_move = 0.1
+
 
 func go_to_start_location():
   position = Globals.StartLocation.global_position

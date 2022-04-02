@@ -1,15 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/Tiles.png" type="Texture" id=2]
+[ext_resource path="res://Switch.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/camera.gd" type="Script" id=3]
 [ext_resource path="res://scripts/shadow_spawner.gd" type="Script" id=4]
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://StartLocation.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Door.tscn" type="PackedScene" id=7]
+[ext_resource path="res://SwitchAndDoor.tscn" type="PackedScene" id=8]
 
 [node name="Root" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 431, -473 )
 
 [node name="ShadowSpawner" type="Node2D" parent="."]
 script = ExtResource( 4 )
@@ -107,11 +107,14 @@ position = Vector2( 0, -896 )
 
 [node name="Objects" type="Node2D" parent="Map"]
 
-[node name="StartLocation" type="Node2D" parent="Map"]
-position = Vector2( 896, -256 )
+[node name="SwitchAndDoor" parent="Map/Objects" instance=ExtResource( 8 )]
 
-[node name="Sprite" type="Sprite" parent="Map/StartLocation"]
-texture = ExtResource( 2 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 384, 384, 128, 128 )
+[node name="Switch" parent="Map/Objects/SwitchAndDoor" instance=ExtResource( 2 )]
+
+[node name="Door" parent="Map/Objects/SwitchAndDoor" instance=ExtResource( 7 )]
+position = Vector2( 768, -640 )
+
+[node name="StartLocation" parent="Map" instance=ExtResource( 6 )]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 431, -473 )
