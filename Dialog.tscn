@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/RoundedRect.png" type="Texture" id=1]
+[ext_resource path="res://assets/FreePixel.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scripts/dialog.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+use_mipmaps = true
+font_data = ExtResource( 2 )
+
+[node name="Dialog" type="Node2D"]
+
+[node name="DialogUpscaler" type="Node2D" parent="."]
+scale = Vector2( 2, 2 )
+
+[node name="Rect" type="NinePatchRect" parent="DialogUpscaler"]
+margin_left = -23.5
+margin_top = -83.5
+margin_right = 360.5
+margin_bottom = 44.5
+rect_pivot_offset = Vector2( 512, 384 )
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 128, 128 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+script = ExtResource( 3 )
+
+[node name="Label" type="RichTextLabel" parent="DialogUpscaler/Rect"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 384.0
+margin_bottom = 128.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "adfasdf asdf asdf sa asdf asdf asdf asdf asdf asdf asdf asdf asdf dsa fsda fsad fdf "
+scroll_active = false

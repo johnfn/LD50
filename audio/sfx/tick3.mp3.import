@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/tick3.mp3-df2ce81cc9fdb7a2904ae311eac28d0a.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/tick3.mp3"
+dest_files=[ "res://.import/tick3.mp3-df2ce81cc9fdb7a2904ae311eac28d0a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
