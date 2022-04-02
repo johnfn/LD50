@@ -123,6 +123,7 @@ dialog_name = "WhereAmI"
 position = Vector2( 431, -473 )
 
 [node name="Dialog" parent="Player" instance=ExtResource( 10 )]
+visible = false
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true
