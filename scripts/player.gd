@@ -6,7 +6,7 @@ var tick = 0
 
 # var ticks_to_move = 0.25
 var ticks_to_move = 0.1
-
+onready var dialog = $Dialog
 
 func go_to_start_location():
   position = Globals.StartLocation.global_position
@@ -17,10 +17,15 @@ func round_position():
   position.y = round(position.y / size) * size
 
 func _ready():
+  dialog.visible = false
+  
   go_to_start_location()
   round_position()
 
 func _process(delta):
+  if Globals.game_mode() != "normal":
+    return
+  
   var dist = Vector2.ZERO
   
   tick += delta
@@ -42,9 +47,17 @@ func _process(delta):
   if can_move and dist != Vector2.ZERO:
     move_and_collide(dist)
     round_position()
+    
     tick = 0.0
   
   for i in get_slide_count():
       var collision = get_slide_collision(i)
-      print(collision)
+      # print(collision)
 
+func start_dialog(dialog_name: String):
+  print(dialog_name)
+  print(dialog)
+  print(dialog.get_node("DialogUpscaler"))
+  
+  # WhereAmI
+  dialog.show_dialog_co("Hey you triggered the dialog!")

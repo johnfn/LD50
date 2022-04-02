@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Switch.tscn" type="PackedScene" id=2]
@@ -8,18 +8,12 @@
 [ext_resource path="res://StartLocation.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://SwitchAndDoor.tscn" type="PackedScene" id=8]
+[ext_resource path="res://DialogTrigger.tscn" type="PackedScene" id=9]
 
 [node name="Root" type="Node2D"]
 
 [node name="ShadowSpawner" type="Node2D" parent="."]
 script = ExtResource( 4 )
-
-[node name="Camera" type="Camera2D" parent="."]
-current = true
-zoom = Vector2( 2, 2 )
-smoothing_enabled = true
-smoothing_speed = 4.0
-script = ExtResource( 3 )
 
 [node name="Map" type="Node2D" parent="."]
 
@@ -119,5 +113,17 @@ position = Vector2( 896, -640 )
 
 [node name="StartLocation" parent="Map" instance=ExtResource( 6 )]
 
+[node name="Areas" type="Node2D" parent="Map"]
+
+[node name="DialogTrigger" parent="Map/Areas" instance=ExtResource( 9 )]
+dialog_name = "WhereAmI"
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 431, -473 )
+
+[node name="Camera" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 2, 2 )
+smoothing_enabled = true
+smoothing_speed = 6.0
+script = ExtResource( 3 )

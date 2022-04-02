@@ -17,5 +17,3 @@ func _process(delta):
   var results = space.intersect_point(
     Vector2(32, 32), 32, [], 2147483647, true
   )
-
-  # print(results)
