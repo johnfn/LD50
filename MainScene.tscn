@@ -114,6 +114,9 @@ position = Vector2( 0, -896 )
 [node name="Door" parent="Map/Objects/SwitchAndDoor" instance=ExtResource( 7 )]
 position = Vector2( 768, -640 )
 
+[node name="Door2" parent="Map/Objects/SwitchAndDoor" instance=ExtResource( 7 )]
+position = Vector2( 896, -640 )
+
 [node name="StartLocation" parent="Map" instance=ExtResource( 6 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
