@@ -16,7 +16,7 @@ var encountered_torches = false
 var current_level = 1
 
 func get_level(which_level):
-  var levels = $"/root/Root/Levels".get_children()
+  var levels = $"/root/Root/AllGameObjects/Levels".get_children()
 
   for i in range(len(levels)):
     if levels[i].name != "Level" + str(i + 1):
