@@ -23,7 +23,7 @@ func round_position(target):
   target.position.y = round(target.position.y / size) * size
 
 func move_to_level_start():
-  if Globals.current_level == 0 or Globals.IS_DEBUG:
+  if Globals.current_level == 0 :
     return
 
   var level = Globals.get_level(Globals.current_level)
@@ -37,7 +37,8 @@ func move_to_level_start():
 func _ready():
   $Graphics/LightSource.visible = true
   dialog.visible = false
-  move_to_level_start()
+  if not Globals.IS_DEBUG:
+    move_to_level_start()
   round_position(self)
   StateManager.checkpoint(global_position)
 
@@ -127,7 +128,8 @@ func _physics_process(delta):
 # Now that we've validated that it's save to move towards move_dir, 
 # let's actually do it!
 func move_in_direction(move_dir):
-  var old_pos = $Graphics.global_position
+  var old_pos = $Graphics.position
+  var old_global_position = $Graphics.global_position
   
   # We want to move them to the next square immediately, but
   # then play the animation in the next 0.2 sec
@@ -147,10 +149,11 @@ func move_in_direction(move_dir):
   # Move sprite back so we can animate it nicely
   
   var new_pos = $Graphics.global_position
-  $Graphics.global_position = old_pos
   
-  $Tween.interpolate_property($Graphics, "global_position",
-    old_pos, new_pos, 0.2,
+  $Graphics.global_position = old_global_position
+  
+  $Tween.interpolate_property($Graphics, "position",
+    old_pos, Vector2.ZERO, 0.2,
     Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
   $Tween.start()
   
@@ -158,7 +161,7 @@ func move_in_direction(move_dir):
   
   round_position(self)
   tick = 0.0
-
+  
 func push_block(block, direction):
   block.get_pushed(direction)
 
