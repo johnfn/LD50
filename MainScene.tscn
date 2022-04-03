@@ -10,7 +10,7 @@
 [ext_resource path="res://SwitchAndDoor.tscn" type="PackedScene" id=8]
 [ext_resource path="res://DialogTrigger.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Dialog.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Assets/PlayerLightCircle.png" type="Texture" id=11]
+[ext_resource path="res://assets/PlayerLightCircle.png" type="Texture" id=11]
 [ext_resource path="res://assets/Background.png" type="Texture" id=12]
 
 [sub_resource type="OccluderPolygon2D" id=1]
@@ -26,7 +26,8 @@ texture = ExtResource( 12 )
 
 [node name="ShadowSpawner" type="Node2D" parent="."]
 script = ExtResource( 4 )
-grid_offset = Vector2( 200, -300 )
+grid_offset = Vector2( 256, -128 )
+grid_size = 128.0
 
 [node name="Map" type="Node2D" parent="."]
 

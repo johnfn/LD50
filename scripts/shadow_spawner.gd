@@ -3,7 +3,7 @@ extends Node2D
 var Shadow = preload("res://Shadow.tscn")
 
 export var grid_offset : Vector2 = Vector2.ZERO
-export var grid_size : float = 64
+export var grid_size : float = 128
 export var shadow_propogation_time : float = 1
 # TODO should this include the player?
 export var raycast_mask = 0b11100
