@@ -69,16 +69,16 @@ frames = SubResource( 2 )
 animation = "right"
 centered = false
 
-[node name="Shape" type="CollisionShape2D" parent="."]
-position = Vector2( 64, 64 )
-shape = SubResource( 1 )
-
-[node name="LightSource" type="Light2D" parent="."]
+[node name="LightSource" type="Light2D" parent="Graphics"]
 position = Vector2( 65, 65 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 3 )
 color = Color( 0.921569, 0.92549, 0.607843, 1 )
 shadow_enabled = true
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2( 64, 64 )
+shape = SubResource( 1 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 anims/Jump = SubResource( 3 )
