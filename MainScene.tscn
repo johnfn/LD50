@@ -134,15 +134,16 @@ position = Vector2( 0, -1024 )
 
 [node name="Objects" type="Node2D" parent="Level1"]
 
-[node name="Switch" parent="Level1/Objects" instance=ExtResource( 2 )]
+[node name="SwitchAndDoors" type="Node2D" parent="Level1/Objects"]
+
+[node name="Switch" parent="Level1/Objects/SwitchAndDoors" instance=ExtResource( 2 )]
 position = Vector2( 256, -768 )
 linked_doors = [ NodePath("../Door"), NodePath("../Door2") ]
 
-[node name="Door" parent="Level1/Objects" instance=ExtResource( 7 )]
+[node name="Door" parent="Level1/Objects/SwitchAndDoors" instance=ExtResource( 7 )]
 position = Vector2( 768, -1152 )
-is_door_open = true
 
-[node name="Door2" parent="Level1/Objects" instance=ExtResource( 7 )]
+[node name="Door2" parent="Level1/Objects/SwitchAndDoors" instance=ExtResource( 7 )]
 position = Vector2( 896, -1152 )
 
 [node name="StartLocation" parent="Level1" instance=ExtResource( 6 )]
