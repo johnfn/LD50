@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Door",
 "language": "GDScript",
-"path": "res://scripts/Door.gd"
+"path": "res://scripts/door.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
