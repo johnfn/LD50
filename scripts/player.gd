@@ -12,15 +12,15 @@ func go_to_start_location():
   position = Globals.StartLocation.global_position
   Globals.StartLocation.queue_free()
 
-func round_position():
-  position.x = round(position.x / size) * size
-  position.y = round(position.y / size) * size
+func round_position(target):
+  target.position.x = round(target.position.x / size) * size
+  target.position.y = round(target.position.y / size) * size
 
 func _ready():
   dialog.visible = false
   
   go_to_start_location()
-  round_position()
+  round_position(self)
 
 func _process(delta):
   if Globals.game_mode() != "normal":
@@ -45,14 +45,19 @@ func _process(delta):
   var can_move = tick >= ticks_to_move
   
   if can_move and dist != Vector2.ZERO:
-    move_and_collide(dist)
-    round_position()
+    var collision = move_and_collide(dist)
+
+    if collision and collision.collider is KinematicBody2D:
+      var n: KinematicBody2D = collision.collider
+
+      if n.is_in_group("Pushable"):
+        n.move_and_collide(dist)
+        round_position(n)
+        
+    
+    round_position(self)
     
     tick = 0.0
-  
-  for i in get_slide_count():
-      var collision = get_slide_collision(i)
-      # print(collision)
 
 func start_dialog(dialog_name: String):
   # WhereAmI
