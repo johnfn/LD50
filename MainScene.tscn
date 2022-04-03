@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ProximitySwitch.tscn" type="PackedScene" id=2]
@@ -12,19 +12,12 @@
 [ext_resource path="res://assets/Background.png" type="Texture" id=12]
 [ext_resource path="res://scripts/fov.gd" type="Script" id=13]
 
-[sub_resource type="OccluderPolygon2D" id=1]
-polygon = PoolVector2Array( 0, 0, 0, 128, 128, 128, 128, 0 )
-
-[sub_resource type="OccluderPolygon2D" id=2]
-polygon = PoolVector2Array( -1664, 2688, -1664, 2944, 3584, 2944, 3584, -896, 3200, -896, 3200, 2688 )
-
 [node name="Root" type="Node2D"]
 
 [node name="fov" type="Node2D" parent="."]
 script = ExtResource( 13 )
 
 [node name="Background" type="Sprite" parent="."]
-visible = false
 light_mask = 3
 position = Vector2( 768, -256 )
 scale = Vector2( 4, 4 )
@@ -34,107 +27,130 @@ texture = ExtResource( 12 )
 script = ExtResource( 4 )
 grid_offset = Vector2( 256, -128 )
 
-[node name="Map" type="Node2D" parent="."]
+[node name="Level1" type="Node2D" parent="."]
 
-[node name="Walls" type="Node2D" parent="Map"]
+[node name="Walls" type="Node2D" parent="Level1"]
 
-[node name="Wall" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall" parent="Level1/Walls" instance=ExtResource( 5 )]
 
-[node name="Wall2" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall2" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 128, 0 )
 
-[node name="Wall3" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall3" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 256, 0 )
 
-[node name="Wall4" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall4" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 384, 0 )
 
-[node name="Wall5" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall5" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 512, 0 )
 
-[node name="Wall6" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall6" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 640, 0 )
 
-[node name="Wall7" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall7" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 768, 0 )
 
-[node name="Wall8" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall8" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 896, 0 )
 
-[node name="Wall9" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall9" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 1024, 0 )
 
-[node name="Wall10" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall10" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 1152, 0 )
 
-[node name="Wall11" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall11" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 1152, -128 )
 
-[node name="Wall12" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall12" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 1152, -256 )
 
-[node name="Wall13" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall13" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 1152, -384 )
 
-[node name="Wall14" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall14" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 1152, -512 )
 
-[node name="Wall15" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall15" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 1152, -640 )
 
-[node name="Wall16" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall16" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 1152, -768 )
 
-[node name="Wall17" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall17" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 1152, -896 )
 
-[node name="Wall18" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall18" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 1152, -1024 )
 
-[node name="Wall19" parent="Map/Walls" instance=ExtResource( 5 )]
-position = Vector2( 1152, -1024 )
+[node name="Wall19" parent="Level1/Walls" instance=ExtResource( 5 )]
+position = Vector2( 1152, -1152 )
 
-[node name="Wall20" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall28" parent="Level1/Walls" instance=ExtResource( 5 )]
+position = Vector2( 1024, -1152 )
+
+[node name="Wall29" parent="Level1/Walls" instance=ExtResource( 5 )]
+position = Vector2( 640, -1152 )
+
+[node name="Wall30" parent="Level1/Walls" instance=ExtResource( 5 )]
+position = Vector2( 512, -1152 )
+
+[node name="Wall31" parent="Level1/Walls" instance=ExtResource( 5 )]
+position = Vector2( 384, -1152 )
+
+[node name="Wall32" parent="Level1/Walls" instance=ExtResource( 5 )]
+position = Vector2( 256, -1152 )
+
+[node name="Wall33" parent="Level1/Walls" instance=ExtResource( 5 )]
+position = Vector2( 128, -1152 )
+
+[node name="Wall34" parent="Level1/Walls" instance=ExtResource( 5 )]
+position = Vector2( 0, -1152 )
+
+[node name="Wall20" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 0, -128 )
 
-[node name="Wall21" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall21" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 0, -256 )
 
-[node name="Wall22" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall22" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 0, -384 )
 
-[node name="Wall23" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall23" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 0, -512 )
 
-[node name="Wall24" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall24" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 0, -640 )
 
-[node name="Wall25" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall25" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 0, -768 )
 
-[node name="Wall26" parent="Map/Walls" instance=ExtResource( 5 )]
+[node name="Wall26" parent="Level1/Walls" instance=ExtResource( 5 )]
 position = Vector2( 0, -896 )
 
-[node name="Wall27" parent="Map/Walls" instance=ExtResource( 5 )]
-position = Vector2( 0, -896 )
+[node name="Wall27" parent="Level1/Walls" instance=ExtResource( 5 )]
+position = Vector2( 0, -1024 )
 
-[node name="Objects" type="Node2D" parent="Map"]
+[node name="Objects" type="Node2D" parent="Level1"]
 
-[node name="Switch" parent="Map/Objects" instance=ExtResource( 2 )]
+[node name="SwitchAndDoors" type="Node2D" parent="Level1/Objects"]
+
+[node name="Switch" parent="Level1/Objects/SwitchAndDoors" instance=ExtResource( 2 )]
+position = Vector2( 256, -768 )
 linked_doors = [ NodePath("../Door"), NodePath("../Door2") ]
 
-[node name="Door" parent="Map/Objects" instance=ExtResource( 7 )]
-position = Vector2( 768, -640 )
-is_door_open = true
+[node name="Door" parent="Level1/Objects/SwitchAndDoors" instance=ExtResource( 7 )]
+position = Vector2( 768, -1152 )
 
-[node name="Door2" parent="Map/Objects" instance=ExtResource( 7 )]
-position = Vector2( 896, -640 )
+[node name="Door2" parent="Level1/Objects/SwitchAndDoors" instance=ExtResource( 7 )]
+position = Vector2( 896, -1152 )
 
-[node name="StartLocation" parent="Map" instance=ExtResource( 6 )]
+[node name="StartLocation" parent="Level1" instance=ExtResource( 6 )]
 
-[node name="Areas" type="Node2D" parent="Map"]
+[node name="Areas" type="Node2D" parent="Level1"]
 
-[node name="DialogTrigger" parent="Map/Areas" instance=ExtResource( 9 )]
+[node name="DialogTrigger" parent="Level1/Areas" instance=ExtResource( 9 )]
 dialog_name = "WhereAmI"
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
@@ -148,18 +164,3 @@ zoom = Vector2( 2, 2 )
 smoothing_enabled = true
 smoothing_speed = 6.0
 script = ExtResource( 3 )
-
-[node name="Statue" type="LightOccluder2D" parent="." groups=["occluders"]]
-light_mask = 3
-position = Vector2( 512, -1024 )
-occluder = SubResource( 1 )
-light_mask = 3
-
-[node name="Border1" type="LightOccluder2D" parent="." groups=["occluders"]]
-position = Vector2( 512, -1024 )
-occluder = SubResource( 2 )
-
-[node name="Border2" type="LightOccluder2D" parent="." groups=["occluders"]]
-position = Vector2( 2432, 768 )
-rotation = -3.14159
-occluder = SubResource( 2 )

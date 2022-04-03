@@ -23,17 +23,6 @@ __meta__ = {
 position = Vector2( 64, 64 )
 shape = SubResource( 1 )
 
-[node name="BlobLightSource" type="Light2D" parent="."]
-visible = false
-light_mask = 2
-position = Vector2( 0, 128 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 3 )
-color = Color( 0.921569, 0.92549, 0.607843, 1 )
-range_item_cull_mask = 2
-shadow_enabled = true
-shadow_item_cull_mask = 2
-
 [node name="LightSource" type="Light2D" parent="."]
 position = Vector2( 64, 64 )
 scale = Vector2( 3, 3 )

@@ -42,7 +42,6 @@ func show_dialog_co(text_to_show: String):
     if skip:
       break
   
-  
   yield(get_tree(), "idle_frame")
   
   label.visible_characters = text_to_show.length()
