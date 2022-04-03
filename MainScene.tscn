@@ -125,6 +125,7 @@ linked_doors = [ NodePath("../Door"), NodePath("../Door2") ]
 
 [node name="Door" parent="Map/Objects" instance=ExtResource( 7 )]
 position = Vector2( 768, -640 )
+is_door_open = true
 
 [node name="Door2" parent="Map/Objects" instance=ExtResource( 7 )]
 position = Vector2( 896, -640 )

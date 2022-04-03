@@ -4,6 +4,11 @@ class_name Door
 
 export var is_door_open = false
 
+func _ready():
+  if is_door_open:
+    is_door_open = false
+    toggle_open()
+
 func toggle_open():
   if is_door_open:
     is_door_open = false
