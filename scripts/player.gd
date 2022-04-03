@@ -11,6 +11,9 @@ onready var dialog = $Dialog
 var torch = preload("res://Torch.tscn")
 export var torch_parent : NodePath
 onready var torch_parent_node = get_node(torch_parent)
+var press_order = ['left', 'right', 'up', 'down']
+var poss_move_dirs = []
+var move_raycast_mask = 0b1111100
 
 func respawn(spawn_point: Vector2):
   self.global_position = spawn_point
@@ -52,42 +55,73 @@ func _unhandled_input(event):
     
   if Input.is_action_just_pressed("respawn"):
     StateManager.return_to_checkpoint()
-    
+  
+  var new_press_order = []
+  for action_name in press_order:
+    if Input.is_action_just_pressed(action_name):
+      new_press_order.push_front(action_name)
+    else:
+      new_press_order.push_back(action_name)
+  press_order = new_press_order
+  
+  poss_move_dirs = []
+  var hmoved = false
+  var vmoved = false
+  for action_name in press_order:
+    if Input.is_action_pressed(action_name):
+      var dir = Vector2.ZERO
+      if action_name == 'left' and not hmoved:
+        dir.x -= 1
+        hmoved = true
+      elif action_name == 'right' and not hmoved:
+        dir.x += 1
+        hmoved = true
+      elif action_name == 'up' and not vmoved:
+        dir.y -= 1
+        vmoved = true
+      elif action_name == 'down' and not vmoved:
+        dir.y += 1
+        vmoved = true
+      if dir != Vector2.ZERO:
+        poss_move_dirs.append(dir)
+
+func set_facing(dir):
+  if dir == Vector2(0, 1):
+    $Sprite.animation = "down"
+  elif dir == Vector2(0, -1):
+    $Sprite.animation = "up"
+  elif dir == Vector2(-1, 0):
+    $Sprite.animation = "left"
+  elif dir == Vector2(1, 0):
+    $Sprite.animation = "right"
+
 
 func _physics_process(delta):
   if Globals.game_mode() != "normal":
     return
   
-  var dist = Vector2.ZERO
-  
   tick += delta
-  
-  if Input.is_action_pressed("left") and dist == Vector2.ZERO:
-    dist.x -= size
-  
-  if Input.is_action_pressed("right") and dist == Vector2.ZERO:
-    dist.x += size
-
-  if Input.is_action_pressed("up") and dist == Vector2.ZERO:
-    dist.y -= size
-  
-  if Input.is_action_pressed("down") and dist == Vector2.ZERO:
-    dist.y += size
-  
   var can_move = tick >= ticks_to_move
   
-  if can_move and dist != Vector2.ZERO:
-    var collision = move_and_collide(dist)
+  if can_move and len(poss_move_dirs) > 0:
+    var target_pos = null
+    var space = get_world_2d().get_direct_space_state()
+    var half_step = Vector2(Globals.grid_size / 2, Globals.grid_size / 2)
+    set_facing(poss_move_dirs[0])
+    for move_dir in poss_move_dirs:
+      target_pos = global_position + Globals.grid_size * move_dir
+      var cast_result = space.intersect_point(target_pos + half_step, 1, [], move_raycast_mask)
+      if cast_result.empty():
+        set_facing(move_dir)
+        var collision = move_and_collide(target_pos - global_position)
+        if collision and collision.collider is KinematicBody2D:
+          var n: KinematicBody2D = collision.collider
+          if n.is_in_group("Pushable"):
+            push_block(n, target_pos - global_position)
 
-    if collision and collision.collider is KinematicBody2D:
-      var n: KinematicBody2D = collision.collider
-
-      if n.is_in_group("Pushable"):
-        push_block(n, dist)
-
-    round_position(self)
-    
-    tick = 0.0
+        round_position(self)
+        tick = 0.0
+        break
 
 func push_block(block, direction):
   var collision = block.move_and_collide(direction)
