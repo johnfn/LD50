@@ -125,7 +125,7 @@ func _physics_process(delta):
     if actual_move_dir != null:
       move_in_direction(actual_move_dir)
     
-# Now that we've validated that it's save to move towards move_dir, 
+# Now that we've validated that it's safe to move towards move_dir, 
 # let's actually do it!
 func move_in_direction(move_dir):
   var old_global_position = $Graphics.global_position
