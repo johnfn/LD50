@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/Tiles.png" type="Texture" id=1]
+[ext_resource path="res://assets/Door Switch copy.png" type="Texture" id=1]
 [ext_resource path="res://scripts/proximity_switch.gd" type="Script" id=2]
+[ext_resource path="res://assets/Door Switch Pressed copy.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 64 )
@@ -11,13 +12,18 @@ position = Vector2( 0, 128 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-light_mask = 3
+position = Vector2( 64, 64 )
+rotation = 3.14159
 texture = ExtResource( 1 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 128, 128 )
+
+[node name="SpritePressed" type="Sprite" parent="."]
+visible = false
+position = Vector2( 64, 64 )
+rotation = 3.14159
+texture = ExtResource( 3 )
 
 [node name="Area" type="Area2D" parent="."]
+visible = false
 collision_layer = 128
 collision_mask = 0
 
