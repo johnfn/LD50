@@ -53,12 +53,13 @@ func _process(delta):
       if n.is_in_group("Pushable"):
         n.move_and_collide(dist)
         round_position(n)
-        
-    
+
     round_position(self)
     
     tick = 0.0
 
-func start_dialog(dialog_name: String):
-  # WhereAmI
-  dialog.show_dialog_co("Hey you triggered the dialog!")
+func start_dialog_co(dialog_name: String):
+  if dialog_name == "WhereAmI":
+    yield(dialog.show_dialog_co("Hey you triggered the dialog!"), "completed")
+  if dialog_name == "FirstEvilShadowTrigger":
+    yield(dialog.show_dialog_co("Oh no [insert ESS trigger text here]!"), "completed")

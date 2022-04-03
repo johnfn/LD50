@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://PushableStatue.tscn" type="PackedScene" id=1]
 [ext_resource path="res://StartLocation.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/evil_shadow_trigger.gd" type="Script" id=5]
 [ext_resource path="res://ProximitySwitch.tscn" type="PackedScene" id=6]
 [ext_resource path="res://DialogTrigger.tscn" type="PackedScene" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 576, 64 )
 
 [node name="Level1" type="Node2D"]
 
@@ -405,3 +409,15 @@ position = Vector2( 896, -2432 )
 [node name="DialogTrigger" parent="Areas" instance=ExtResource( 8 )]
 position = Vector2( 640, -768 )
 dialog_name = "WhereAmI"
+
+[node name="EvilShadowTrigger" type="Area2D" parent="Areas"]
+position = Vector2( 640, -2560 )
+collision_layer = 128
+collision_mask = 0
+script = ExtResource( 5 )
+
+[node name="Bounds" type="CollisionShape2D" parent="Areas/EvilShadowTrigger"]
+position = Vector2( 320, -64 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Areas/EvilShadowTrigger" to="Areas/EvilShadowTrigger" method="_on_EvilShadowTrigger_body_entered"]
