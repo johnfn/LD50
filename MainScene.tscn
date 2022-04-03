@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Switch.tscn" type="PackedScene" id=2]
@@ -10,15 +10,22 @@
 [ext_resource path="res://SwitchAndDoor.tscn" type="PackedScene" id=8]
 [ext_resource path="res://DialogTrigger.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Dialog.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/PlayerLightCircle.png" type="Texture" id=11]
 [ext_resource path="res://assets/Background.png" type="Texture" id=12]
+[ext_resource path="res://scripts/fov.gd" type="Script" id=13]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 0, 0, 0, 128, 128, 128, 128, 0 )
 
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( -1664, 2688, -1664, 2944, 3584, 2944, 3584, -896, 3200, -896, 3200, 2688 )
+
 [node name="Root" type="Node2D"]
 
+[node name="fov" type="Node2D" parent="."]
+script = ExtResource( 13 )
+
 [node name="Background" type="Sprite" parent="."]
+visible = false
 light_mask = 3
 position = Vector2( 768, -256 )
 scale = Vector2( 4, 4 )
@@ -136,24 +143,6 @@ position = Vector2( 512, -512 )
 
 [node name="Dialog" parent="Player" instance=ExtResource( 10 )]
 
-[node name="BlobLightSource" type="Light2D" parent="Player"]
-visible = false
-light_mask = 2
-position = Vector2( 0, 128 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 11 )
-color = Color( 0.921569, 0.92549, 0.607843, 1 )
-range_item_cull_mask = 2
-shadow_enabled = true
-shadow_item_cull_mask = 2
-
-[node name="LightSource" type="Light2D" parent="Player"]
-position = Vector2( 64, 64 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 11 )
-color = Color( 0.921569, 0.92549, 0.607843, 1 )
-shadow_enabled = true
-
 [node name="Camera" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 2, 2 )
@@ -161,8 +150,17 @@ smoothing_enabled = true
 smoothing_speed = 6.0
 script = ExtResource( 3 )
 
-[node name="BlobOccluder2D" type="LightOccluder2D" parent="."]
+[node name="Statue" type="LightOccluder2D" parent="." groups=["occluders"]]
 light_mask = 3
 position = Vector2( 512, -1024 )
 occluder = SubResource( 1 )
 light_mask = 3
+
+[node name="Border1" type="LightOccluder2D" parent="." groups=["occluders"]]
+position = Vector2( 512, -1024 )
+occluder = SubResource( 2 )
+
+[node name="Border2" type="LightOccluder2D" parent="." groups=["occluders"]]
+position = Vector2( 2432, 768 )
+rotation = -3.14159
+occluder = SubResource( 2 )
