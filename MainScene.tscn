@@ -32,33 +32,35 @@ texture = ExtResource( 12 )
 [node name="ShadowChecker" type="Node2D" parent="." groups=["shadow_checker"]]
 script = ExtResource( 7 )
 
-[node name="Levels" type="Node2D" parent="."]
+[node name="AllGameObjects" type="YSort" parent="."]
 
-[node name="Level1" parent="Levels" instance=ExtResource( 2 )]
+[node name="Levels" type="YSort" parent="AllGameObjects"]
 
-[node name="Level2" parent="Levels" instance=ExtResource( 5 )]
+[node name="Level1" parent="AllGameObjects/Levels" instance=ExtResource( 2 )]
+
+[node name="Level2" parent="AllGameObjects/Levels" instance=ExtResource( 5 )]
 position = Vector2( 6144, -3456 )
 
-[node name="Level3" parent="Levels" instance=ExtResource( 8 )]
+[node name="Level3" parent="AllGameObjects/Levels" instance=ExtResource( 8 )]
 position = Vector2( 9984, -3584 )
 
-[node name="Level4" parent="Levels" instance=ExtResource( 9 )]
+[node name="Level4" parent="AllGameObjects/Levels" instance=ExtResource( 9 )]
 position = Vector2( -3072, 3712 )
 
-[node name="Level5" parent="Levels" instance=ExtResource( 11 )]
+[node name="Level5" parent="AllGameObjects/Levels" instance=ExtResource( 11 )]
 position = Vector2( 2816, 4096 )
 
-[node name="Level6" parent="Levels" instance=ExtResource( 14 )]
+[node name="Level6" parent="AllGameObjects/Levels" instance=ExtResource( 14 )]
 position = Vector2( 8832, 4096 )
 
-[node name="Level7" parent="Levels" instance=ExtResource( 15 )]
+[node name="Level7" parent="AllGameObjects/Levels" instance=ExtResource( 15 )]
 position = Vector2( 2304, 8832 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 896, -2176 )
-torch_parent = NodePath("../Torches")
+[node name="Player" parent="AllGameObjects" instance=ExtResource( 1 )]
+position = Vector2( 7040, -1664 )
+torch_parent = NodePath("../../Torches")
 
-[node name="Dialog" parent="Player" instance=ExtResource( 10 )]
+[node name="Dialog" parent="AllGameObjects/Player" instance=ExtResource( 10 )]
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true
