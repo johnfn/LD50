@@ -7,13 +7,19 @@ var tick = 0
 # var ticks_to_move = 0.25
 var ticks_to_move = 0.1
 onready var dialog = $Dialog
+export var current_level = 1
 
 func round_position(target):
   target.position.x = round(target.position.x / size) * size
   target.position.y = round(target.position.y / size) * size
 
+func get_starting_position():
+  var levels = 
+
 func _ready():
   dialog.visible = false
+  
+  get_starting_position()
   
   round_position(self)
 
@@ -56,5 +62,11 @@ func _process(delta):
 func start_dialog_co(dialog_name: String):
   if dialog_name == "WhereAmI":
     yield(dialog.show_dialog_co("Hey you triggered the dialog!"), "completed")
+  
   if dialog_name == "FirstEvilShadowTrigger":
     yield(dialog.show_dialog_co("Oh no [insert ESS trigger text here]!"), "completed")
+
+
+func enter_stairs():
+  print("Enter stairs")
+

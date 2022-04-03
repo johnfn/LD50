@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://PushableStatue.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Stairs.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/evil_shadow_trigger.gd" type="Script" id=5]
@@ -821,6 +822,9 @@ position = Vector2( 1280, -3072 )
 
 [node name="PushableStatue4" parent="Objects" instance=ExtResource( 1 )]
 position = Vector2( 512, -3072 )
+
+[node name="Stairs" parent="Objects" instance=ExtResource( 2 )]
+position = Vector2( 896, -6528 )
 
 [node name="Areas" type="Node2D" parent="."]
 
