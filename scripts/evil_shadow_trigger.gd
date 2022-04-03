@@ -13,7 +13,8 @@ func player_trigger_evil_shadow():
   yield(Globals.Player.start_dialog_co("FirstEvilShadowTrigger"), "completed")
   
   # TODO, add a timer to make this actually playable:
-  shadow_checker.check_shadows()
+  if not Globals.DEBUG_NO_SHADOWS:
+    shadow_checker.check_shadows()
 
 func reset():
   triggered = false

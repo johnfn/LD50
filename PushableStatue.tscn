@@ -1,28 +1,51 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/statue_1.png" type="Texture" id=1]
 [ext_resource path="res://scripts/pushable_statue.gd" type="Script" id=2]
 
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( 0, 0, 0, 128, 128, 128, 128, 0 )
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 60, 60 )
 
-[sub_resource type="OccluderPolygon2D" id=2]
-polygon = PoolVector2Array( 0, 0, 0, 128, 128, 128, 128, 0 )
+[sub_resource type="Animation" id=3]
+resource_name = "Jump"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Graphics:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -25 ), Vector2( 0, 0 ) ]
+}
 
 [node name="PushableStatue" type="KinematicBody2D" groups=["Pushable", "resettable"]]
 collision_layer = 256
 collision_mask = 380
 script = ExtResource( 2 )
 
-[node name="Sprite2" type="Sprite" parent="."]
+[node name="Graphics" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Graphics"]
 position = Vector2( 0, -196 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 centered = false
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Graphics"]
+occluder = SubResource( 2 )
+
 [node name="Shape" type="CollisionShape2D" parent="."]
 position = Vector2( 64, 64 )
 shape = SubResource( 1 )
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-occluder = SubResource( 2 )
+[node name="Animation" type="AnimationPlayer" parent="."]
+anims/Jump = SubResource( 3 )
+
+[node name="Tween" type="Tween" parent="."]

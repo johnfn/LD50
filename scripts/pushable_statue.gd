@@ -17,6 +17,8 @@ func round_position(target):
   target.position.y = round(target.position.y / size) * size
 
 func get_pushed(direction: Vector2):
+  var old_pos = $Graphics.global_position
+  
   var collision = move_and_collide(direction)
   
   if collision and collision.collider is Node2D:
@@ -29,3 +31,14 @@ func get_pushed(direction: Vector2):
       return
   
   round_position(self)
+  
+  var new_pos = $Graphics.global_position
+
+  $Tween.interpolate_property($Graphics, "global_position",
+    old_pos, new_pos, 0.2,
+    Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+  
+  $Animation.play("Jump")
+  
+  $Tween.start()
+  $Graphics.global_position = old_pos
