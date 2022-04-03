@@ -12,7 +12,7 @@
 [ext_resource path="res://NorthWall.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 576, 448 )
+extents = Vector2( 576, 576 )
 
 [node name="Level1" type="YSort"]
 
@@ -799,7 +799,7 @@ dialog_name = "WhereAmI"
 position = Vector2( 960, -2624 )
 
 [node name="Bounds" parent="Areas/EvilShadowTrigger2F" index="0"]
-position = Vector2( 0, -128 )
+position = Vector2( 0, 0 )
 shape = SubResource( 1 )
 
 [editable path="Areas/EvilShadowTrigger2F"]
