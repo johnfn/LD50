@@ -1,10 +1,349 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/Shadow.png" type="Texture" id=1]
 [ext_resource path="res://scripts/shadow.gd" type="Script" id=2]
+[ext_resource path="res://Geosprite.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 64 )
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform vec2 offset = vec2(0);
+uniform float pixels = 40.0;
+uniform float fill_time = 1.5;
+uniform float time_alive = 0.0;
+uniform bool top = false;
+uniform bool bot = false;
+uniform bool lef = false;
+uniform bool rig = false;
+
+uniform float noise_scale = 1;
+
+vec3 mod289_3(vec3 x) {
+    return x - floor(x * (1.0 / 289.0)) * 289.0;
+}
+
+vec4 mod289_4(vec4 x) {
+    return x - floor(x * (1.0 / 289.0)) * 289.0;
+}
+
+vec4 permute(vec4 x) {
+    return mod289_4(((x * 34.0) + 1.0) * x);
+}
+
+vec4 taylorInvSqrt(vec4 r) {
+    return 2.79284291400159 - 0.85373472095314 * r;
+}
+
+float snoise(vec3 v) { 
+    vec2 C = vec2(1.0/6.0, 1.0/3.0) ;
+    vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
+    
+    // First corner
+    vec3 i  = floor(v + dot(v, vec3(C.y)) );
+    vec3 x0 = v - i + dot(i, vec3(C.x)) ;
+    
+    // Other corners
+    vec3 g = step(x0.yzx, x0.xyz);
+    vec3 l = 1.0 - g;
+    vec3 i1 = min( g.xyz, l.zxy );
+    vec3 i2 = max( g.xyz, l.zxy );
+    
+    //   x0 = x0 - 0.0 + 0.0 * C.xxx;
+    //   x1 = x0 - i1  + 1.0 * C.xxx;
+    //   x2 = x0 - i2  + 2.0 * C.xxx;
+    //   x3 = x0 - 1.0 + 3.0 * C.xxx;
+    vec3 x1 = x0 - i1 + vec3(C.x);
+    vec3 x2 = x0 - i2 + vec3(C.y); // 2.0*C.x = 1/3 = C.y
+    vec3 x3 = x0 - D.yyy;      // -1.0+3.0*C.x = -0.5 = -D.y
+    
+    // Permutations
+    i = mod289_3(i); 
+    vec4 p = permute( permute( permute( 
+    		 i.z + vec4(0.0, i1.z, i2.z, 1.0 ))
+    	   + i.y + vec4(0.0, i1.y, i2.y, 1.0 )) 
+    	   + i.x + vec4(0.0, i1.x, i2.x, 1.0 ));
+    
+    // Gradients: 7x7 points over a square, mapped onto an octahedron.
+    // The ring size 17*17 = 289 is close to a multiple of 49 (49*6 = 294)
+    float n_ = 0.142857142857; // 1.0/7.0
+    vec3  ns = n_ * D.wyz - D.xzx;
+    
+    vec4 j = p - 49.0 * floor(p * ns.z * ns.z);  //  mod(p,7*7)
+    
+    vec4 x_ = floor(j * ns.z);
+    vec4 y_ = floor(j - 7.0 * x_ );    // mod(j,N)
+    
+    vec4 x = x_ *ns.x + vec4(ns.y);
+    vec4 y = y_ *ns.x + vec4(ns.y);
+    vec4 h = 1.0 - abs(x) - abs(y);
+    
+    vec4 b0 = vec4( x.xy, y.xy );
+    vec4 b1 = vec4( x.zw, y.zw );
+    
+    //vec4 s0 = vec4(lessThan(b0,0.0))*2.0 - 1.0;
+    //vec4 s1 = vec4(lessThan(b1,0.0))*2.0 - 1.0;
+    vec4 s0 = floor(b0)*2.0 + 1.0;
+    vec4 s1 = floor(b1)*2.0 + 1.0;
+    vec4 sh = -step(h, vec4(0.0));
+    
+    vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy ;
+    vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww ;
+    
+    vec3 p0 = vec3(a0.xy,h.x);
+    vec3 p1 = vec3(a0.zw,h.y);
+    vec3 p2 = vec3(a1.xy,h.z);
+    vec3 p3 = vec3(a1.zw,h.w);
+    
+    //Normalise gradients
+    vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));
+    p0 *= norm.x;
+    p1 *= norm.y;
+    p2 *= norm.z;
+    p3 *= norm.w;
+    
+    // Mix final noise value
+    vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), vec4(0.0));
+    m = m * m;
+    return 22.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3) ) );
+}
+
+float rand(vec2 co){
+    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+}
+
+uniform float amplitude = -8.0;
+
+void vertex() {
+  VERTEX.y += -8.0 + amplitude * snoise(vec3(UV + offset, TIME / 4.0));
+}
+
+void fragment() {
+  float fake_time = mod(TIME, fill_time);
+//  float time = TIME - start_time;
+  
+  COLOR = texture(TEXTURE, UV);
+  COLOR.a = 0.0;
+  float source_dist = 10.0;
+  if (top)
+    source_dist = distance(UV, vec2(0.5, 0.0));
+  if (lef)
+    source_dist = min(distance(UV, vec2(0.0, 0.5)), source_dist);
+  if (rig)
+    source_dist = min(distance(UV, vec2(1.0, 0.5)), source_dist);
+  if (bot)
+    source_dist = min(distance(UV, vec2(0.5, 1.0)), source_dist);
+    
+  if (bot && lef)
+    source_dist = min(distance(UV, vec2(0.0, 1.0)), source_dist);
+  if (bot && rig)
+    source_dist = min(distance(UV, vec2(1.0, 1.0)), source_dist);
+  if (top && lef)
+    source_dist = min(distance(UV, vec2(0.0, 0.0)), source_dist);
+  if (top && rig)
+    source_dist = min(distance(UV, vec2(1.0, 0.0)), source_dist);
+    
+  if (source_dist > 2.0)
+    source_dist = distance(UV, vec2(0.5));
+  
+  float n = snoise(vec3((UV+offset)*noise_scale, TIME / 4.0));
+  
+  vec3 uv = vec3((UV + offset), TIME / 6.0);
+  
+  n = snoise(uv - vec3(0.0, 0.0, TIME / 3.0));
+  n += 0.5 * snoise(uv * 2.0 - vec3(0.0, 0.0, TIME / 2.5)); 
+  n += 0.25 * snoise(uv * 4.0 - vec3(0.0, 0.0, TIME / 2.0)); 
+  n += 0.125 * snoise(uv * 8.0 - vec3(0.0, 0.0, TIME / 1.8)); 
+  
+  float time = time_alive;
+  COLOR.a = (n / 2.0 + 1.0) * (pow(time / fill_time, 0.3)*2.0 - source_dist);
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = SubResource( 2 )
+shader_param/offset = Vector2( 0, 0 )
+shader_param/pixels = 40.0
+shader_param/fill_time = 1.5
+shader_param/time_alive = 0.0
+shader_param/top = false
+shader_param/bot = false
+shader_param/lef = false
+shader_param/rig = false
+shader_param/noise_scale = 1.0
+shader_param/amplitude = -8.0
+
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+
+uniform vec2 offset = vec2(0);
+uniform float pixels = 40.0;
+uniform float fill_time = 1.5;
+uniform float time_alive = 0.0;
+uniform bool top = false;
+uniform bool bot = false;
+uniform bool lef = false;
+uniform bool rig = false;
+
+uniform float noise_scale = 1;
+
+vec3 mod289_3(vec3 x) {
+    return x - floor(x * (1.0 / 289.0)) * 289.0;
+}
+
+vec4 mod289_4(vec4 x) {
+    return x - floor(x * (1.0 / 289.0)) * 289.0;
+}
+
+vec4 permute(vec4 x) {
+    return mod289_4(((x * 34.0) + 1.0) * x);
+}
+
+vec4 taylorInvSqrt(vec4 r) {
+    return 2.79284291400159 - 0.85373472095314 * r;
+}
+
+float snoise(vec3 v) { 
+    vec2 C = vec2(1.0/6.0, 1.0/3.0) ;
+    vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
+    
+    // First corner
+    vec3 i  = floor(v + dot(v, vec3(C.y)) );
+    vec3 x0 = v - i + dot(i, vec3(C.x)) ;
+    
+    // Other corners
+    vec3 g = step(x0.yzx, x0.xyz);
+    vec3 l = 1.0 - g;
+    vec3 i1 = min( g.xyz, l.zxy );
+    vec3 i2 = max( g.xyz, l.zxy );
+    
+    //   x0 = x0 - 0.0 + 0.0 * C.xxx;
+    //   x1 = x0 - i1  + 1.0 * C.xxx;
+    //   x2 = x0 - i2  + 2.0 * C.xxx;
+    //   x3 = x0 - 1.0 + 3.0 * C.xxx;
+    vec3 x1 = x0 - i1 + vec3(C.x);
+    vec3 x2 = x0 - i2 + vec3(C.y); // 2.0*C.x = 1/3 = C.y
+    vec3 x3 = x0 - D.yyy;      // -1.0+3.0*C.x = -0.5 = -D.y
+    
+    // Permutations
+    i = mod289_3(i); 
+    vec4 p = permute( permute( permute( 
+    		 i.z + vec4(0.0, i1.z, i2.z, 1.0 ))
+    	   + i.y + vec4(0.0, i1.y, i2.y, 1.0 )) 
+    	   + i.x + vec4(0.0, i1.x, i2.x, 1.0 ));
+    
+    // Gradients: 7x7 points over a square, mapped onto an octahedron.
+    // The ring size 17*17 = 289 is close to a multiple of 49 (49*6 = 294)
+    float n_ = 0.142857142857; // 1.0/7.0
+    vec3  ns = n_ * D.wyz - D.xzx;
+    
+    vec4 j = p - 49.0 * floor(p * ns.z * ns.z);  //  mod(p,7*7)
+    
+    vec4 x_ = floor(j * ns.z);
+    vec4 y_ = floor(j - 7.0 * x_ );    // mod(j,N)
+    
+    vec4 x = x_ *ns.x + vec4(ns.y);
+    vec4 y = y_ *ns.x + vec4(ns.y);
+    vec4 h = 1.0 - abs(x) - abs(y);
+    
+    vec4 b0 = vec4( x.xy, y.xy );
+    vec4 b1 = vec4( x.zw, y.zw );
+    
+    //vec4 s0 = vec4(lessThan(b0,0.0))*2.0 - 1.0;
+    //vec4 s1 = vec4(lessThan(b1,0.0))*2.0 - 1.0;
+    vec4 s0 = floor(b0)*2.0 + 1.0;
+    vec4 s1 = floor(b1)*2.0 + 1.0;
+    vec4 sh = -step(h, vec4(0.0));
+    
+    vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy ;
+    vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww ;
+    
+    vec3 p0 = vec3(a0.xy,h.x);
+    vec3 p1 = vec3(a0.zw,h.y);
+    vec3 p2 = vec3(a1.xy,h.z);
+    vec3 p3 = vec3(a1.zw,h.w);
+    
+    //Normalise gradients
+    vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));
+    p0 *= norm.x;
+    p1 *= norm.y;
+    p2 *= norm.z;
+    p3 *= norm.w;
+    
+    // Mix final noise value
+    vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), vec4(0.0));
+    m = m * m;
+    return 22.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3) ) );
+}
+
+float rand(vec2 co){
+    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+}
+
+uniform float amplitude = -8.0;
+uniform float vertscale = 0.3;
+
+void vertex() {
+  VERTEX.y += -8.0 + amplitude * snoise(vec3((UV + offset) * vertscale, TIME / 4.0));
+}
+
+void fragment() {
+  float fake_time = mod(TIME, fill_time);
+//  float time = TIME - start_time;
+  
+  COLOR = texture(TEXTURE, UV);
+  COLOR.a = 0.0;
+  float source_dist = 10.0;
+  if (top)
+    source_dist = distance(UV, vec2(0.5, 0.0));
+  if (lef)
+    source_dist = min(distance(UV, vec2(0.0, 0.5)), source_dist);
+  if (rig)
+    source_dist = min(distance(UV, vec2(1.0, 0.5)), source_dist);
+  if (bot)
+    source_dist = min(distance(UV, vec2(0.5, 1.0)), source_dist);
+    
+  if (bot && lef)
+    source_dist = min(distance(UV, vec2(0.0, 1.0)), source_dist);
+  if (bot && rig)
+    source_dist = min(distance(UV, vec2(1.0, 1.0)), source_dist);
+  if (top && lef)
+    source_dist = min(distance(UV, vec2(0.0, 0.0)), source_dist);
+  if (top && rig)
+    source_dist = min(distance(UV, vec2(1.0, 0.0)), source_dist);
+    
+  if (source_dist > 2.0)
+    source_dist = distance(UV, vec2(0.5));
+  
+  float n = snoise(vec3((UV+offset)*noise_scale, TIME / 4.0));
+  
+  vec3 uv = vec3((UV + offset), TIME / 6.0);
+  
+  n = snoise(uv - vec3(0.0, 0.0, TIME / 3.0));
+  n += 0.5 * snoise(uv * 2.0 - vec3(0.0, 0.0, TIME / 2.5)); 
+  n += 0.25 * snoise(uv * 4.0 - vec3(0.0, 0.0, TIME / 2.0)); 
+  n += 0.125 * snoise(uv * 8.0 - vec3(0.0, 0.0, TIME / 1.8)); 
+  
+  float time = time_alive;
+  COLOR.a = (n / 2.0 + 1.0) * (pow(time / fill_time, 0.3)*2.0 - source_dist);
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+shader_param/offset = Vector2( 0, 0 )
+shader_param/pixels = 40.0
+shader_param/fill_time = 1.5
+shader_param/time_alive = 0.0
+shader_param/top = false
+shader_param/bot = false
+shader_param/lef = false
+shader_param/rig = false
+shader_param/noise_scale = 1.0
+shader_param/amplitude = -8.0
+shader_param/vertscale = 0.6
 
 [node name="Shadow" type="StaticBody2D" groups=["shadows"]]
 collision_layer = 4
@@ -15,7 +354,16 @@ script = ExtResource( 2 )
 position = Vector2( 64, 64 )
 shape = SubResource( 1 )
 
-[node name="Graphic" type="Sprite" parent="."]
+[node name="Graphic0" type="Sprite" parent="."]
+visible = false
+material = SubResource( 3 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 centered = false
+
+[node name="Graphic" parent="." instance=ExtResource( 3 )]
+material = SubResource( 5 )
+position = Vector2( 64, 64 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+resolution = 8

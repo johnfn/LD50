@@ -6,7 +6,7 @@ export var nonblob_raycast_mask = 0b1010000
 export var point_mask = 0b101011100
 
 onready var player = Globals.Player
-onready var shadow_spawner = get_node("../ShadowSpawner")
+onready var shadow_spawner = get_node("../AllGameObjects/ShadowSpawner")
 
 var raycast_instance: RayCast2D;
 var tile_set = {}
