@@ -111,6 +111,8 @@ func _physics_process(delta):
     var half_step = Vector2(Globals.grid_size / 2, Globals.grid_size / 2)
     
     set_facing(poss_move_dirs[0])
+    $Animation.play("Jump")
+    
     
     for move_dir in poss_move_dirs:
       target_pos = global_position + Globals.grid_size * move_dir
