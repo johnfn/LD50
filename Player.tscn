@@ -38,6 +38,12 @@ collision_layer = 2
 collision_mask = 508
 script = ExtResource( 2 )
 
+[node name="Shadow" type="Sprite" parent="."]
+modulate = Color( 0.113725, 0.0784314, 0.192157, 0.466667 )
+position = Vector2( 65, 74 )
+scale = Vector2( 0.218, 0.103 )
+texture = ExtResource( 3 )
+
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -89.309 )
 scale = Vector2( 0.5, 0.5 )
@@ -50,7 +56,7 @@ position = Vector2( 64, 64 )
 shape = SubResource( 1 )
 
 [node name="LightSource" type="Light2D" parent="."]
-position = Vector2( 64, 64 )
+position = Vector2( 65, 65 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 3 )
 color = Color( 0.921569, 0.92549, 0.607843, 1 )

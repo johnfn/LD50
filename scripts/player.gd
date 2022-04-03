@@ -109,7 +109,9 @@ func _physics_process(delta):
     var target_pos = null
     var space = get_world_2d().get_direct_space_state()
     var half_step = Vector2(Globals.grid_size / 2, Globals.grid_size / 2)
+    
     set_facing(poss_move_dirs[0])
+    
     for move_dir in poss_move_dirs:
       target_pos = global_position + Globals.grid_size * move_dir
       var cast_result = space.intersect_point(target_pos + half_step, 1, [], move_raycast_mask)
