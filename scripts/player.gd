@@ -61,7 +61,6 @@ func _process(delta):
       if n.is_in_group("Pushable"):
         push_block(n, dist)
 
-
     round_position(self)
     
     tick = 0.0

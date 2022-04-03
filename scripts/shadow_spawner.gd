@@ -29,8 +29,12 @@ func spawn_shadow(spawn_position: Vector2):
 
 
 func _physics_process(delta):
+  if Globals.game_mode() != "normal":
+    return
+  
   var space = get_world_2d().get_direct_space_state()
   var to_remove = []
+  
   for i in range(len(boundary_shadows)):
     var shadow : Shadow = boundary_shadows[i]
     if shadow.time_since_spawn > shadow_propogation_time:
