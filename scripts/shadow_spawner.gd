@@ -8,7 +8,7 @@ export var shadow_propogation_time : float = 1
 export var torch_buffer : int = 3
 # TODO should this include the player?
 export var raycast_mask = 0b11100
-export var movable_raycast_mask = 0b1000000
+export var movable_raycast_mask = 0b101000000
 
 var boundary_shadows = []
 var spawn_offsets = [

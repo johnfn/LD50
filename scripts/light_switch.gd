@@ -5,7 +5,7 @@ export var linked_doors : Array
 
 export var player_light_distance : float = 4000
 export var torch_light_distance : float = 4000
-export var raycast_mask : int = 0b1011100
+export var raycast_mask : int = 0b101011100
 
 # These are Doors
 var linked_door_nodes : Array

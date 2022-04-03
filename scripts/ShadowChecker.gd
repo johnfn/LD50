@@ -4,8 +4,9 @@ var Shadow = preload("res://Shadow.tscn")
 
 export var grid_offset : Vector2 = Vector2.ZERO
 export var grid_size : float = 128
-export var raycast_mask = 0b1010100 # things that stop shadowcasters (walls, doors, etc)
-export var shadowcasters_raycast_mask = 0b100000000 # things that cast shadow blob generators
+export var allcasters_raycast_mask = 0b101011000
+export var nonblob_raycast_mask = 0b1010000
+export var point_mask = 0b101011100
 
 onready var player = Globals.Player
 onready var shadow_spawner = get_node("../ShadowSpawner")
@@ -31,27 +32,20 @@ func _get_light_sources():
 func update_flood_fill_based_on_player_location():
   _update_flood_fill(player.global_position + Vector2(grid_size/2, grid_size/2))
   
-      
-func _cast_ray(location_under_test, light_source):
+func _point_unoccupied(location_under_test):
   var space = get_world_2d().get_direct_space_state()
-  var raycast_result = space.intersect_ray(location_under_test, light_source, [], shadowcasters_raycast_mask)
-  if !raycast_result.empty():    
-    # hit a shadow caster
-    # Check if our hit is at our current location
-    if raycast_result["position"] == location_under_test:
-      return
-    
-    # check if we hit a wall
-    var los_blocker_cast_result = space.intersect_ray(location_under_test, light_source, [raycast_result["collider"]], raycast_mask)
-    if los_blocker_cast_result.empty():
-      # we did not get obstructed by any walls/doors/etc. But DID hit a shadow caster
-      # this means this location spawns a blob
-      shadow_spawner.spawn_shadow(location_under_test - Vector2(grid_size/2, grid_size/2))
-      if _debug:
-        _debug_lines.append([location_under_test, light_source, Color.green])
-    else:
-      if _debug:
-        _debug_lines.append([location_under_test, light_source, Color.red])
+  var cast_result = space.intersect_point(location_under_test, 1, [], point_mask)
+  return cast_result.empty()
+
+func _is_in_shadow(location_under_test, light_source):
+  var space = get_world_2d().get_direct_space_state()
+  var raycast_result = space.intersect_ray(location_under_test, light_source, [], allcasters_raycast_mask)
+  return not raycast_result.empty()
+
+func _is_walled_off(location_under_test, light_source):
+  var space = get_world_2d().get_direct_space_state()
+  var raycast_result = space.intersect_ray(location_under_test, light_source, [], nonblob_raycast_mask)
+  return not raycast_result.empty()
 
 var _debug = false
 var _debug_lines = []
@@ -63,19 +57,42 @@ func _draw():
       draw_line(line[0], line[1], line[2])
       
     # useful for debugging flood fill bugs
-    #for dot in _debug_dots:
-     # draw_circle(dot[0], 10, Color.purple)
+    for dot in _debug_dots:
+      draw_circle(dot[0], 10, Color.purple)
     
      
 func _on_Button_pressed():
   check_shadows()
   
+# TODO should the placed lights be able to spawn ESS?
+# If not only check is_not_walled from the player position
 func check_shadows():
   var light_sources = _get_light_sources()
   _debug_lines.clear()
-  for light_source in light_sources:
-    for location in tile_set.keys():
-      _cast_ray(location, light_source.global_position)
+  var half_step = Vector2(Globals.grid_size / 2, Globals.grid_size / 2)
+  for location in tile_set.keys():
+    var is_shaded = true
+    for light_source in light_sources:
+      var light_pos = light_source.global_position + half_step
+      is_shaded = is_shaded and _is_in_shadow(location, light_pos)
+#
+#    if _debug:
+#      _debug_lines.append([location, Globals.Player.global_position + half_step, Color.red if is_shaded else Color.green])
+
+    if is_shaded and _point_unoccupied(location):
+      var is_not_walled = false
+      for light_source in light_sources:
+        var light_pos = light_source.global_position + half_step
+    
+        if _debug:
+          _debug_lines.append([location, light_pos, Color.red if _is_walled_off(location, light_pos) else Color.green])
+
+        if not _is_walled_off(location, light_pos):
+          is_not_walled = true
+          break
+      if is_not_walled:
+        shadow_spawner.spawn_shadow(location - half_step)
+        
   if _debug:
     update() 
 
@@ -107,8 +124,10 @@ func _update_flood_fill(origin : Vector2):
         continue
       if len(point_results) == 1:
         continue
+      print(point_results)
       print("Unexpected, multiple collision items occupying same location: "+str(next) +", items:" + str(len(point_results)))
     
   tile_set = seen
+  print("Found ", len(tile_set), " locations to raycast to")
   if _debug:
     update()
