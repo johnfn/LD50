@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/dialog_trigger.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 256, 128 )
+extents = Vector2( 320, 128 )
 
 [node name="DialogTrigger" type="Area2D"]
 collision_layer = 128

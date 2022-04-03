@@ -5,8 +5,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 64 )
 
-[node name="ProximitySwitch" type="Node2D"]
-position = Vector2( 256, -512 )
+[node name="DarkSwitch" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
 light_mask = 3
