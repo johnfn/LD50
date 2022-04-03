@@ -1,11 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/Tiles.png" type="Texture" id=1]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 64, 64 )
+[ext_resource path="res://scripts/dark_switch.gd" type="Script" id=2]
 
 [node name="DarkSwitch" type="Node2D"]
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 light_mask = 3
@@ -13,13 +12,3 @@ texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 128, 128 )
-
-[node name="Area" type="Area2D" parent="."]
-collision_layer = 128
-collision_mask = 4
-
-[node name="Collision" type="CollisionShape2D" parent="Area"]
-position = Vector2( 64, 64 )
-shape = SubResource( 1 )
-
-[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
