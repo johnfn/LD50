@@ -26,7 +26,8 @@ func reset():
   boundary_shadows = []
 
 func _ready():
-  spawn_shadow(grid_offset)
+  if not Globals.DEBUG_NO_SHADOWS:
+    spawn_shadow(grid_offset)
   
 func spawn_shadow(spawn_position: Vector2):
   var shadow = Shadow.instance()

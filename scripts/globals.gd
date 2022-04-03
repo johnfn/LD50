@@ -2,6 +2,11 @@ extends Node2D
 
 onready var Player = $"/root/Root/Player"
 
+var IS_GRANT = OS.has_environment("USER") and (OS.get_environment("USER") == "grant")
+
+var IS_DEBUG = IS_GRANT
+var DEBUG_NO_SHADOWS = IS_DEBUG
+
 var is_showing_dialog = false
 var grid_size = 128
 var num_torches = 0
