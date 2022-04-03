@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/Player.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player.gd" type="Script" id=2]
+[ext_resource path="res://Assets/PlayerLightCircle.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 62, 62 )
@@ -19,3 +20,21 @@ __meta__ = {
 [node name="Shape" type="CollisionShape2D" parent="."]
 position = Vector2( 64, 64 )
 shape = SubResource( 1 )
+
+[node name="BlobLightSource" type="Light2D" parent="."]
+visible = false
+light_mask = 2
+position = Vector2( 0, 128 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 3 )
+color = Color( 0.921569, 0.92549, 0.607843, 1 )
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_item_cull_mask = 2
+
+[node name="LightSource" type="Light2D" parent="."]
+position = Vector2( 64, 64 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 3 )
+color = Color( 0.921569, 0.92549, 0.607843, 1 )
+shadow_enabled = true
