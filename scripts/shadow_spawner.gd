@@ -4,7 +4,7 @@ var Shadow = preload("res://Shadow.tscn")
 
 export var grid_offset : Vector2 = Vector2.ZERO
 export var grid_size : float = 128
-export var shadow_propogation_time : float = 1
+export var shadow_propogation_time : float = 1.3
 export var torch_buffer : int = 3
 # TODO should this include the player?
 export var raycast_mask = 0b11100
@@ -31,7 +31,6 @@ func _ready():
 func spawn_shadow(spawn_position: Vector2):
   var shadow = Shadow.instance()
   shadow.position = spawn_position
-  shadow.modulate = Color(1, 1, 1, 0)
   add_child(shadow)
   boundary_shadows.append(shadow)
 
@@ -76,10 +75,10 @@ func _physics_process(delta):
       
       if blocked == len(spawn_offsets):
         to_remove.append(i)
-    else:
-      shadow.time_since_spawn += delta
-      shadow.modulate = Color(1, 1, 1, shadow.time_since_spawn / shadow_propogation_time)
-  
+#    else:
+#      shadow.time_since_spawn += delta
+#      shadow.modulate = Color(1, 1, 1, shadow.time_since_spawn / shadow_propogation_time)
+
   for i in range(len(to_remove)):
     boundary_shadows.remove(to_remove[len(to_remove)-1-i])
     
