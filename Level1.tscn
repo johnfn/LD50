@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://PushableStatue.tscn" type="PackedScene" id=1]
-[ext_resource path="res://StartLocation.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/evil_shadow_trigger.gd" type="Script" id=5]
@@ -551,6 +550,54 @@ position = Vector2( 1152, -5248 )
 [node name="Wall131" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1152, -5632 )
 
+[node name="Wall242" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 1152, -5760 )
+
+[node name="Wall243" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 1152, -5888 )
+
+[node name="Wall244" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 640, -5888 )
+
+[node name="Wall245" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 640, -5760 )
+
+[node name="Wall246" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 1152, -6016 )
+
+[node name="Wall247" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 1152, -6144 )
+
+[node name="Wall250" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 1280, -6272 )
+
+[node name="Wall251" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 1408, -6272 )
+
+[node name="Wall252" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 1536, -6272 )
+
+[node name="Wall253" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 1664, -6400 )
+
+[node name="Wall248" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 640, -6144 )
+
+[node name="Wall254" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 512, -6272 )
+
+[node name="Wall255" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 384, -6272 )
+
+[node name="Wall256" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 256, -6272 )
+
+[node name="Wall257" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 128, -6400 )
+
+[node name="Wall249" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 640, -6016 )
+
 [node name="Wall132" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1152, -5376 )
 
@@ -731,6 +778,38 @@ position = Vector2( 896, -1024 )
 [node name="Door2" parent="Objects/SwitchAndDoors2" instance=ExtResource( 4 )]
 position = Vector2( 1024, -1024 )
 
+[node name="SwitchAndDoors3" type="Node2D" parent="Objects"]
+position = Vector2( -256, -1024 )
+
+[node name="Switch" parent="Objects/SwitchAndDoors3" instance=ExtResource( 6 )]
+position = Vector2( -128, -3456 )
+linked_doors = [ NodePath("../Door"), NodePath("../Door2"), NodePath("../Door3") ]
+
+[node name="Door" parent="Objects/SwitchAndDoors3" instance=ExtResource( 4 )]
+position = Vector2( 1024, -4352 )
+
+[node name="Door2" parent="Objects/SwitchAndDoors3" instance=ExtResource( 4 )]
+position = Vector2( 1152, -4352 )
+
+[node name="Door3" parent="Objects/SwitchAndDoors3" instance=ExtResource( 4 )]
+position = Vector2( 1280, -4352 )
+
+[node name="SwitchAndDoors4" type="Node2D" parent="Objects"]
+position = Vector2( -256, -1024 )
+
+[node name="Switch" parent="Objects/SwitchAndDoors4" instance=ExtResource( 6 )]
+position = Vector2( 2560, -3584 )
+linked_doors = [ NodePath("../Door"), NodePath("../Door2"), NodePath("../Door3") ]
+
+[node name="Door" parent="Objects/SwitchAndDoors4" instance=ExtResource( 4 )]
+position = Vector2( 1024, -4608 )
+
+[node name="Door2" parent="Objects/SwitchAndDoors4" instance=ExtResource( 4 )]
+position = Vector2( 1152, -4608 )
+
+[node name="Door3" parent="Objects/SwitchAndDoors4" instance=ExtResource( 4 )]
+position = Vector2( 1280, -4608 )
+
 [node name="PushableStatue" parent="Objects" instance=ExtResource( 1 )]
 position = Vector2( 512, -2432 )
 
@@ -742,9 +821,6 @@ position = Vector2( 1280, -3072 )
 
 [node name="PushableStatue4" parent="Objects" instance=ExtResource( 1 )]
 position = Vector2( 512, -3072 )
-
-[node name="StartLocation" parent="." instance=ExtResource( 2 )]
-position = Vector2( 896, -2432 )
 
 [node name="Areas" type="Node2D" parent="."]
 

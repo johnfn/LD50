@@ -8,10 +8,6 @@ var tick = 0
 var ticks_to_move = 0.1
 onready var dialog = $Dialog
 
-func go_to_start_location():
-  position = Globals.StartLocation.global_position
-  Globals.StartLocation.queue_free()
-
 func round_position(target):
   target.position.x = round(target.position.x / size) * size
   target.position.y = round(target.position.y / size) * size
@@ -19,7 +15,6 @@ func round_position(target):
 func _ready():
   dialog.visible = false
   
-  go_to_start_location()
   round_position(self)
 
 func _process(delta):
