@@ -20,3 +20,6 @@ func _physics_process(delta):
       has_been_triggered = true
       for door in linked_door_nodes:
         door.toggle_open()
+
+func reset():
+  has_been_triggered = false

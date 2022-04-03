@@ -9,7 +9,8 @@ export var raycast_mask : int = 0b101011100
 
 # These are Doors
 var linked_door_nodes : Array
-var is_on : bool = false
+export var is_on : bool = false
+onready var og_is_on = is_on
 
 func _ready():
   for door_path in linked_doors:
@@ -35,3 +36,6 @@ func _physics_process(delta):
       is_on = not is_on
       for door in linked_door_nodes:
         door.toggle_open()
+
+func reset():
+  is_on = og_is_on

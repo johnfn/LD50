@@ -1,7 +1,11 @@
 extends Area2D
 onready var shadow_checker = get_node("/root/Root/ShadowChecker")
+
+var triggered = false
+
 func _on_EvilShadowTrigger_body_entered(body):
-  if body == Globals.Player:
+  if not triggered and body == Globals.Player:
+    triggered = true
     player_trigger_evil_shadow()
 
 func player_trigger_evil_shadow():
@@ -9,5 +13,6 @@ func player_trigger_evil_shadow():
   
   # TODO, add a timer to make this actually playable:
   shadow_checker.check_shadows()
-  
-  print("DONE")
+
+func reset():
+  triggered = false

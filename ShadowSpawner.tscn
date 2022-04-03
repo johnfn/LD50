@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/shadow_spawner.gd" type="Script" id=1]
+
+[node name="ShadowSpawner" type="Node2D" groups=["resettable"]]
+script = ExtResource( 1 )
+grid_offset = Vector2( 256, -128 )

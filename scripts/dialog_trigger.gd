@@ -9,3 +9,6 @@ func _on_DialogTrigger_body_entered(body):
     triggered_dialogs[dialog_name] = true
     
     Globals.Player.start_dialog_co(dialog_name)
+
+func reset():
+  triggered_dialogs = {}

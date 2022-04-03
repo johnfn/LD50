@@ -1,9 +1,6 @@
 extends Node2D
 
-var Shadow = preload("res://Shadow.tscn")
-
 export var grid_offset : Vector2 = Vector2.ZERO
-export var grid_size : float = 128
 export var allcasters_raycast_mask = 0b101011000
 export var nonblob_raycast_mask = 0b1010000
 export var point_mask = 0b101011100
@@ -15,10 +12,10 @@ var raycast_instance: RayCast2D;
 var tile_set = {}
 
 var spawn_offsets = [
-    Vector2(0, grid_size),
-    Vector2(0, -grid_size),
-    Vector2(grid_size, 0),
-    Vector2(-grid_size, 0),
+    Vector2(0, Globals.grid_size),
+    Vector2(0, -Globals.grid_size),
+    Vector2(Globals.grid_size, 0),
+    Vector2(-Globals.grid_size, 0),
   ]
 
 func _ready() -> void:  
@@ -30,7 +27,7 @@ func _get_light_sources():
   return arr
   
 func update_flood_fill_based_on_player_location():
-  _update_flood_fill(player.global_position + Vector2(grid_size/2, grid_size/2))
+  _update_flood_fill(player.global_position + Vector2(Globals.grid_size/2, Globals.grid_size/2))
   
 func _point_unoccupied(location_under_test):
   var space = get_world_2d().get_direct_space_state()

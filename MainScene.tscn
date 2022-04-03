@@ -3,7 +3,7 @@
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Level1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/camera.gd" type="Script" id=3]
-[ext_resource path="res://scripts/shadow_spawner.gd" type="Script" id=4]
+[ext_resource path="res://ShadowSpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Level2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/ShadowChecker.gd" type="Script" id=7]
@@ -22,11 +22,9 @@ position = Vector2( 766, -256 )
 scale = Vector2( 20, 20 )
 texture = ExtResource( 12 )
 
-[node name="ShadowSpawner" type="Node2D" parent="."]
-script = ExtResource( 4 )
-grid_offset = Vector2( 256, -128 )
+[node name="ShadowSpawner" parent="." instance=ExtResource( 4 )]
 
-[node name="ShadowChecker" type="Node2D" parent="."]
+[node name="ShadowChecker" type="Node2D" parent="." groups=["shadow_checker"]]
 script = ExtResource( 7 )
 
 [node name="Levels" type="Node2D" parent="."]

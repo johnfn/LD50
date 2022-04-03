@@ -18,6 +18,12 @@ var spawn_offsets = [
     Vector2(-grid_size, 0),
   ]
 
+func reset():
+  for shadow in get_children():
+    remove_child(shadow)
+    shadow.queue_free()
+  boundary_shadows = []
+
 func _ready():
   spawn_shadow(grid_offset)
   
@@ -50,6 +56,7 @@ func _physics_process(delta):
           raycast_results = space.intersect_ray(shadow_center, shadow_center + spawn_offset, [shadow], movable_raycast_mask)
           if len(raycast_results) == 0:
             var torch_blocked = false
+            # TODO perform raycast here instead of just a distance check
             for torch in get_tree().get_nodes_in_group("torches"):
               var xdiff = abs(torch.global_position.x - shadow.global_position.x)
               var ydiff = abs(torch.global_position.y - shadow.global_position.y)

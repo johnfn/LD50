@@ -9,5 +9,10 @@ func _unhandled_input(event):
       Globals.encountered_torches = true
       Globals.num_torches += 1
       is_open = true
-      $Open.visible = false
-      $Closed.visible = true
+      $Open.visible = true
+      $Closed.visible = false
+
+func reset():
+  is_open = false
+  $Open.visible = false
+  $Closed.visible = true

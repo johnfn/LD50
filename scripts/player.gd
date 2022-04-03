@@ -12,11 +12,14 @@ var torch = preload("res://Torch.tscn")
 export var torch_parent : NodePath
 onready var torch_parent_node = get_node(torch_parent)
 
+func respawn(spawn_point: Vector2):
+  self.global_position = spawn_point
+
 func round_position(target):
   target.position.x = round(target.position.x / size) * size
   target.position.y = round(target.position.y / size) * size
 
-func get_start_location():
+func move_to_level_start():
   if Globals.current_level == 0:
     return
     
@@ -30,10 +33,9 @@ func get_start_location():
 
 func _ready():
   dialog.visible = false
-  
-  get_start_location()
-  
+  move_to_level_start()
   round_position(self)
+  StateManager.checkpoint(global_position)
 
 func _unhandled_input(event):
   if Input.is_action_just_pressed("place item") and Globals.num_torches > 0:
@@ -47,6 +49,9 @@ func _unhandled_input(event):
       new_torch.add_to_group("torches")
       torch_parent_node.add_child(new_torch)
       new_torch.global_position = global_position
+    
+  if Input.is_action_just_pressed("respawn"):
+    StateManager.return_to_checkpoint()
     
 
 func _physics_process(delta):
@@ -91,8 +96,8 @@ func push_block(block, direction):
     var node: Node2D = collision.collider
     
     if node.is_in_group("Hole"):
-      node.queue_free()
-      block.queue_free()
+      node.fill()
+      block.drop_in_hole()
       
   round_position(block)
 
@@ -107,4 +112,4 @@ func start_dialog_co(dialog_name: String):
 func enter_stairs():
   Globals.current_level += 1
   
-  get_start_location()
+  move_to_level_start()

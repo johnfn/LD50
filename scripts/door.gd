@@ -3,6 +3,7 @@ extends Node2D
 class_name Door
 
 export var is_door_open = false
+onready var og_is_door_open = is_door_open
 
 func _ready():
   if is_door_open:
@@ -20,3 +21,7 @@ func toggle_open():
     get_node("StaticBody/CollisionShape").set_deferred("disabled", true)
     get_node("LightOccluder2D").visible = false
     get_node("Sprite").modulate.a = 0.5  
+
+func reset():
+  if og_is_door_open != is_door_open:
+    toggle_open()
