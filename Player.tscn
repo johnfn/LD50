@@ -37,7 +37,7 @@ extents = Vector2( 62, 62 )
 resource_name = "Jump"
 length = 0.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("Graphics/Sprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -54,13 +54,15 @@ collision_layer = 2
 collision_mask = 508
 script = ExtResource( 2 )
 
-[node name="Shadow" type="Sprite" parent="."]
+[node name="Graphics" type="Node2D" parent="."]
+
+[node name="Shadow" type="Sprite" parent="Graphics"]
 modulate = Color( 0.113725, 0.0784314, 0.192157, 0.466667 )
 position = Vector2( 65, 74 )
 scale = Vector2( 0.218, 0.103 )
 texture = ExtResource( 3 )
 
-[node name="Sprite" type="AnimatedSprite" parent="."]
+[node name="Sprite" type="AnimatedSprite" parent="Graphics"]
 position = Vector2( 2, -89 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 2 )

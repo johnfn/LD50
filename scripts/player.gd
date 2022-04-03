@@ -89,13 +89,13 @@ func _unhandled_input(event):
 
 func set_facing(dir):
   if dir == Vector2(0, 1):
-    $Sprite.animation = "down"
+    $Graphics/Sprite.animation = "down"
   elif dir == Vector2(0, -1):
-    $Sprite.animation = "up"
+    $Graphics/Sprite.animation = "up"
   elif dir == Vector2(-1, 0):
-    $Sprite.animation = "left"
+    $Graphics/Sprite.animation = "left"
   elif dir == Vector2(1, 0):
-    $Sprite.animation = "right"
+    $Graphics/Sprite.animation = "right"
 
 
 func _physics_process(delta):
@@ -127,15 +127,23 @@ func _physics_process(delta):
 # Now that we've validated that it's save to move towards move_dir, 
 # let's actually do it!
 func move_in_direction(move_dir):
+  var old_pos = self.position
+  
+  # Move immediately, so that we don't induce race conditions / out of sync stuff
+  
   var target_pos = global_position + Globals.grid_size * move_dir
   set_facing(move_dir)
   
   var collision = move_and_collide(target_pos - global_position)
+  
   if collision and collision.collider is KinematicBody2D:
     var n: KinematicBody2D = collision.collider
     if n.is_in_group("Pushable"):
       push_block(n, target_pos - global_position)
-
+  
+  # Move sprite back so we can animate it nicely
+  
+  
   round_position(self)
   tick = 0.0
 
