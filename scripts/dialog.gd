@@ -35,7 +35,7 @@ func show_dialog_co(text_to_show: String):
     for x in range(text_speed):
       yield(get_tree(), "idle_frame")
     
-      if Input.is_action_just_pressed("advance_dialog"):
+      if Input.is_action_just_pressed("interact"):
         skip = true
         break
     
@@ -50,7 +50,7 @@ func show_dialog_co(text_to_show: String):
   while true:
     yield(get_tree(), "idle_frame")
     
-    if Input.is_action_just_pressed("advance_dialog"):
+    if Input.is_action_just_pressed("interact"):
       break
     
   self.visible = false

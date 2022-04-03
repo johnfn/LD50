@@ -30,16 +30,16 @@ func _process(delta):
   
   tick += delta
   
-  if Input.is_action_pressed("ui_left") and dist == Vector2.ZERO:
+  if Input.is_action_pressed("left") and dist == Vector2.ZERO:
     dist.x -= size
   
-  if Input.is_action_pressed("ui_right") and dist == Vector2.ZERO:
+  if Input.is_action_pressed("right") and dist == Vector2.ZERO:
     dist.x += size
 
-  if Input.is_action_pressed("ui_up") and dist == Vector2.ZERO:
+  if Input.is_action_pressed("up") and dist == Vector2.ZERO:
     dist.y -= size
   
-  if Input.is_action_pressed("ui_down") and dist == Vector2.ZERO:
+  if Input.is_action_pressed("down") and dist == Vector2.ZERO:
     dist.y += size
   
   var can_move = tick >= ticks_to_move
