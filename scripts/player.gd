@@ -22,10 +22,10 @@ func round_position(target):
 func move_to_level_start():
   if Globals.current_level == 0:
     return
-    
+
   var level = Globals.get_level(Globals.current_level)
   var start_location = level.get_node("Objects/StartLocation")
-  
+
   start_location.visible = false
   
   self.global_position = start_location.global_position
