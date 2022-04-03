@@ -125,7 +125,7 @@ func _physics_process(delta):
     if actual_move_dir != null:
       move_in_direction(actual_move_dir)
     
-# Now that we've validated that it's save to move towards move_dir, 
+# Now that we've validated that it's safe to move towards move_dir, 
 # let's actually do it!
 func move_in_direction(move_dir):
   var old_global_position = $Graphics.global_position
@@ -154,6 +154,7 @@ func move_in_direction(move_dir):
   $Tween.interpolate_property($Graphics, "position",
     $Graphics.position, Vector2.ZERO, 0.2,
     Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+
   $Tween.start()
   
   $Animation.play("Jump")

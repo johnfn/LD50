@@ -186,6 +186,8 @@ uniform bool top = false;
 uniform bool bot = false;
 uniform bool lef = false;
 uniform bool rig = false;
+uniform bool lfix = false;
+uniform bool rfix = false;
 
 uniform float noise_scale = 1;
 
@@ -286,7 +288,14 @@ uniform float amplitude = -8.0;
 uniform float vertscale = 0.3;
 
 void vertex() {
-  VERTEX.y += -8.0 + amplitude * snoise(vec3((UV + offset) * vertscale, TIME / 4.0));
+  float yoffset = -8.0 + amplitude * snoise(vec3((UV + offset) * vertscale, TIME / 4.0));
+  if (lfix && rfix)
+    yoffset *= 1.0 - UV.y;
+  else if (lfix)
+    yoffset *= 1.0 - UV.y * (1.0 - UV.x);
+  else if (rfix)
+    yoffset *= 1.0 - UV.y * UV.x;
+  VERTEX.y += yoffset;
 }
 
 void fragment() {
@@ -341,6 +350,8 @@ shader_param/top = false
 shader_param/bot = false
 shader_param/lef = false
 shader_param/rig = false
+shader_param/lfix = false
+shader_param/rfix = false
 shader_param/noise_scale = 1.0
 shader_param/amplitude = -8.0
 shader_param/vertscale = 0.6
