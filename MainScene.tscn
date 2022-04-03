@@ -16,7 +16,7 @@ script = ExtResource( 13 )
 [node name="Background" type="Sprite" parent="."]
 light_mask = 3
 position = Vector2( 768, -256 )
-scale = Vector2( 15.68, 15.6374 )
+scale = Vector2( 20, 20 )
 texture = ExtResource( 12 )
 
 [node name="ShadowSpawner" type="Node2D" parent="."]
