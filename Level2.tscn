@@ -18,9 +18,9 @@ extents = Vector2( 768, 768 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 704, 192 )
 
-[node name="Level2" type="Node2D"]
+[node name="Level2" type="YSort"]
 
-[node name="Walls" type="Node2D" parent="."]
+[node name="Walls" type="YSort" parent="."]
 
 [node name="Wall" parent="Walls" instance=ExtResource( 5 )]
 
@@ -759,7 +759,7 @@ position = Vector2( 0, 2816 )
 [node name="Statue7" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1792, 2560 )
 
-[node name="Objects" type="Node2D" parent="."]
+[node name="Objects" type="YSort" parent="."]
 
 [node name="StartLocation" parent="Objects" instance=ExtResource( 1 )]
 position = Vector2( 512, 128 )

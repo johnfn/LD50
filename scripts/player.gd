@@ -154,6 +154,7 @@ func move_in_direction(move_dir):
   $Tween.interpolate_property($Graphics, "position",
     $Graphics.position, Vector2.ZERO, 0.2,
     Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+
   $Tween.start()
   
   $Animation.play("Jump")
