@@ -1,12 +1,12 @@
 class_name Player
 extends KinematicBody2D
 
-var size = 128
+var size = Globals.grid_size
 var tick = 0
 onready var shadow_checker = get_node("/root/Root/ShadowChecker")
 
 # var ticks_to_move = 0.25
-var ticks_to_move = 0.1
+var ticks_to_move = 0.25
 onready var dialog = $Dialog
 var torch = preload("res://Torch.tscn")
 export var torch_parent : NodePath
@@ -23,7 +23,7 @@ func round_position(target):
   target.position.y = round(target.position.y / size) * size
 
 func move_to_level_start():
-  if Globals.current_level == 0:
+  if Globals.current_level == 0 or Globals.IS_DEBUG:
     return
 
   var level = Globals.get_level(Globals.current_level)
@@ -35,6 +35,7 @@ func move_to_level_start():
   shadow_checker.update_flood_fill_based_on_player_location()
 
 func _ready():
+  $Graphics/LightSource.visible = true
   dialog.visible = false
   move_to_level_start()
   round_position(self)
@@ -89,13 +90,13 @@ func _unhandled_input(event):
 
 func set_facing(dir):
   if dir == Vector2(0, 1):
-    $Sprite.animation = "down"
+    $Graphics/Sprite.animation = "down"
   elif dir == Vector2(0, -1):
-    $Sprite.animation = "up"
+    $Graphics/Sprite.animation = "up"
   elif dir == Vector2(-1, 0):
-    $Sprite.animation = "left"
+    $Graphics/Sprite.animation = "left"
   elif dir == Vector2(1, 0):
-    $Sprite.animation = "right"
+    $Graphics/Sprite.animation = "right"
 
 
 func _physics_process(delta):
@@ -109,33 +110,57 @@ func _physics_process(delta):
     var target_pos = null
     var space = get_world_2d().get_direct_space_state()
     var half_step = Vector2(Globals.grid_size / 2, Globals.grid_size / 2)
+    
     set_facing(poss_move_dirs[0])
-    for move_dir in poss_move_dirs:
-      target_pos = global_position + Globals.grid_size * move_dir
+    
+    var actual_move_dir = null
+    
+    for possible_move_dir in poss_move_dirs:
+      target_pos = global_position + Globals.grid_size * possible_move_dir
       var cast_result = space.intersect_point(target_pos + half_step, 1, [], move_raycast_mask)
       if cast_result.empty():
-        set_facing(move_dir)
-        var collision = move_and_collide(target_pos - global_position)
-        if collision and collision.collider is KinematicBody2D:
-          var n: KinematicBody2D = collision.collider
-          if n.is_in_group("Pushable"):
-            push_block(n, target_pos - global_position)
-
-        round_position(self)
-        tick = 0.0
-        break
+        actual_move_dir = possible_move_dir
+    
+    if actual_move_dir != null:
+      move_in_direction(actual_move_dir)
+    
+# Now that we've validated that it's save to move towards move_dir, 
+# let's actually do it!
+func move_in_direction(move_dir):
+  var old_pos = $Graphics.global_position
+  
+  # We want to move them to the next square immediately, but
+  # then play the animation in the next 0.2 sec
+  
+  # Move and resolve collisions immediately, so that we don't induce race conditions / out of sync stuff
+  
+  var target_pos = global_position + Globals.grid_size * move_dir
+  set_facing(move_dir)
+  
+  var collision = move_and_collide(target_pos - global_position)
+  
+  if collision and collision.collider is KinematicBody2D:
+    var n: KinematicBody2D = collision.collider
+    if n.is_in_group("Pushable"):
+      push_block(n, target_pos - global_position)
+  
+  # Move sprite back so we can animate it nicely
+  
+  var new_pos = $Graphics.global_position
+  $Graphics.global_position = old_pos
+  
+  $Tween.interpolate_property($Graphics, "global_position",
+    old_pos, new_pos, 0.2,
+    Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+  $Tween.start()
+  
+  $Animation.play("Jump")
+  
+  round_position(self)
+  tick = 0.0
 
 func push_block(block, direction):
-  var collision = block.move_and_collide(direction)
-  
-  if collision and collision.collider is Node2D:
-    var node: Node2D = collision.collider
-    
-    if node.is_in_group("Hole"):
-      node.fill()
-      block.drop_in_hole()
-      
-  round_position(block)
+  block.get_pushed(direction)
 
 func start_dialog_co(dialog_name: String):
   if dialog_name == "WhereAmI":

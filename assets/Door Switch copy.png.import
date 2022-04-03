@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tiles.png-9e1ad3fc1b48c159fa79dd265549bd0a.stex"
+path="res://.import/Door Switch copy.png-ea9c1d765457b7baf1ce54c1f815155d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles.png"
-dest_files=[ "res://.import/Tiles.png-9e1ad3fc1b48c159fa79dd265549bd0a.stex" ]
+source_file="res://assets/Door Switch copy.png"
+dest_files=[ "res://.import/Door Switch copy.png-ea9c1d765457b7baf1ce54c1f815155d.stex" ]
 
 [params]
 

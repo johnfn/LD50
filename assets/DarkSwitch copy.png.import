@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tiles.png-9e1ad3fc1b48c159fa79dd265549bd0a.stex"
+path="res://.import/DarkSwitch copy.png-9fda4a375189dd67ea42491aa915f295.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles.png"
-dest_files=[ "res://.import/Tiles.png-9e1ad3fc1b48c159fa79dd265549bd0a.stex" ]
+source_file="res://assets/DarkSwitch copy.png"
+dest_files=[ "res://.import/DarkSwitch copy.png-9fda4a375189dd67ea42491aa915f295.stex" ]
 
 [params]
 

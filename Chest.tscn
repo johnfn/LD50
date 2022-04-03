@@ -1,11 +1,253 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/chest_open.png" type="Texture" id=1]
 [ext_resource path="res://scripts/chest.gd" type="Script" id=2]
 [ext_resource path="res://assets/chest_closed.png" type="Texture" id=3]
+[ext_resource path="res://scripts/interactable.gd" type="Script" id=4]
+[ext_resource path="res://assets/crayon kids.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/RoundedRect.png" type="Texture" id=6]
+[ext_resource path="res://assets/PlayerLightCircle.png" type="Texture" id=7]
+
+[sub_resource type="Shader" id=6]
+code = "shader_type canvas_item;
+
+uniform vec4 color : hint_color = vec4(1.0);
+uniform float width : hint_range(0, 50) = 1.0;
+uniform int pattern : hint_range(0, 2) = 0; // diamond, circle, square
+uniform bool inside = false;
+uniform bool add_margins = true; // only useful when inside is false
+
+void vertex() {
+	if (add_margins) {
+		VERTEX += (UV * 2.0 - 1.0) * width;
+	}
+}
+
+bool hasContraryNeighbour(vec2 uv, vec2 texture_pixel_size, sampler2D texture) {
+	for (float i = -ceil(width); i <= ceil(width); i++) {
+		float x = abs(i) > width ? width * sign(i) : i;
+		float offset;
+		
+		if (pattern == 0) {
+			offset = width - abs(x);
+		} else if (pattern == 1) {
+			offset = floor(sqrt(pow(width + 0.5, 2) - x * x));
+		} else if (pattern == 2) {
+			offset = width;
+		}
+		
+		for (float j = -ceil(offset); j <= ceil(offset); j++) {
+			float y = abs(j) > offset ? offset * sign(j) : j;
+			vec2 xy = uv + texture_pixel_size * vec2(x, y);
+			
+			if ((xy != clamp(xy, vec2(0.0), vec2(1.0)) || texture(texture, xy).a == 0.0) == inside) {
+				return true;
+			}
+		}
+	}
+	
+	return false;
+}
+
+void fragment() {
+	vec2 uv = UV;
+	
+	if (add_margins) {
+		vec2 texture_pixel_size = vec2(1.0) / (vec2(1.0) / TEXTURE_PIXEL_SIZE + vec2(width * 2.0));
+		
+		uv = (uv - texture_pixel_size * width) * TEXTURE_PIXEL_SIZE / texture_pixel_size;
+		
+		if (uv != clamp(uv, vec2(0.0), vec2(1.0))) {
+			COLOR.a = 0.0;
+		} else {
+			COLOR = texture(TEXTURE, uv);
+		}
+	} else {
+		COLOR = texture(TEXTURE, uv);
+	}
+	
+	if ((COLOR.a > 0.0) == inside && hasContraryNeighbour(uv, TEXTURE_PIXEL_SIZE, TEXTURE)) {
+		COLOR.rgb = inside ? mix(COLOR.rgb, color.rgb, color.a) : color.rgb;
+		COLOR.a += (1.0 - COLOR.a) * color.a;
+	}
+}
+"
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
+shader_param/color = Color( 1, 1, 1, 1 )
+shader_param/width = 10.0
+shader_param/pattern = 0
+shader_param/inside = false
+shader_param/add_margins = true
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 256, 256 )
+extents = Vector2( 64, 64 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 192, 192 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Default"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextUpscaler/Button/Circle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.164706, 0.184314, 0.482353, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Interact"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextUpscaler/Button/Circle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.406129, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.164706, 0.184314, 0.482353, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Glow"
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Closed:material:shader_param/color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Closed:material:shader_param/color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Closed:material:shader_param/color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Closed:material:shader_param/color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Closed:material:shader_param/color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Closed:material:shader_param/color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Closed:material:shader_param/color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Closed:material:shader_param/color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
 
 [node name="Chest" type="StaticBody2D" groups=["resettable"]]
 collision_layer = 8
@@ -15,18 +257,98 @@ script = ExtResource( 2 )
 [node name="Open" type="Sprite" parent="."]
 visible = false
 light_mask = 3
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 centered = false
-region_enabled = true
 region_rect = Rect2( 0, 0, 128, 128 )
 
 [node name="Closed" type="Sprite" parent="."]
 light_mask = 3
+material = SubResource( 7 )
+position = Vector2( 5, 1 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 centered = false
-region_enabled = true
 region_rect = Rect2( 0, 0, 128, 128 )
 
 [node name="Shape" type="CollisionShape2D" parent="."]
-position = Vector2( 256, 256 )
+visible = false
+position = Vector2( 64, 64 )
 shape = SubResource( 1 )
+
+[node name="Interactor" type="Node2D" parent="."]
+script = ExtResource( 4 )
+interaction_name = "Open Chest"
+
+[node name="Area" type="Area2D" parent="Interactor"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactor/Area"]
+position = Vector2( 64, 64 )
+shape = SubResource( 2 )
+
+[node name="InteractionHint" type="Node2D" parent="Interactor"]
+
+[node name="TextUpscaler" type="Node2D" parent="Interactor/InteractionHint"]
+scale = Vector2( 2, 2 )
+z_index = 999
+
+[node name="Rect" type="NinePatchRect" parent="Interactor/InteractionHint/TextUpscaler"]
+margin_left = -71.0
+margin_top = -42.0
+margin_right = 166.0
+margin_bottom = -2.0
+rect_pivot_offset = Vector2( 512, 384 )
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 128, 128 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="Interactor/InteractionHint/TextUpscaler/Rect"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 164.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 3 )
+text = "Open Chest"
+
+[node name="Button" type="Control" parent="Interactor/InteractionHint/TextUpscaler"]
+margin_left = 0.5
+margin_top = -3.0
+margin_right = 40.5
+margin_bottom = 37.0
+
+[node name="Circle" type="TextureRect" parent="Interactor/InteractionHint/TextUpscaler/Button"]
+modulate = Color( 0.164706, 0.184314, 0.482353, 1 )
+light_mask = 0
+margin_left = -576.0
+margin_top = -391.0
+margin_right = -76.0
+margin_bottom = 109.0
+rect_scale = Vector2( 0.0944537, 0.0944537 )
+rect_pivot_offset = Vector2( 512, 384 )
+texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="Interactor/InteractionHint/TextUpscaler/Button"]
+margin_left = -98.0
+margin_top = -35.0
+margin_right = -72.0
+margin_bottom = -5.0
+rect_scale = Vector2( 1.36329, 1.36329 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "X"
+
+[node name="Animation" type="AnimationPlayer" parent="Interactor/InteractionHint"]
+anims/Default = SubResource( 5 )
+anims/Fade = SubResource( 10 )
+anims/Interact = SubResource( 4 )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+anims/Glow = SubResource( 8 )
+anims/RESET = SubResource( 9 )
+
+[connection signal="body_entered" from="Interactor/Area" to="Interactor" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Interactor/Area" to="Interactor" method="_on_Area_body_exited"]
