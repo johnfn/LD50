@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/chest_closed.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 256, 256 )
+extents = Vector2( 64, 64 )
 
 [node name="Chest" type="StaticBody2D" groups=["resettable"]]
 collision_layer = 8
@@ -15,18 +15,18 @@ script = ExtResource( 2 )
 [node name="Open" type="Sprite" parent="."]
 visible = false
 light_mask = 3
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 centered = false
-region_enabled = true
 region_rect = Rect2( 0, 0, 128, 128 )
 
 [node name="Closed" type="Sprite" parent="."]
 light_mask = 3
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 centered = false
-region_enabled = true
 region_rect = Rect2( 0, 0, 128, 128 )
 
 [node name="Shape" type="CollisionShape2D" parent="."]
-position = Vector2( 256, 256 )
+position = Vector2( 64, 64 )
 shape = SubResource( 1 )

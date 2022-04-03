@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Level1.tscn" type="PackedScene" id=2]
@@ -7,9 +7,14 @@
 [ext_resource path="res://Level2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/ShadowChecker.gd" type="Script" id=7]
+[ext_resource path="res://Level3.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Level4.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Dialog.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Level5.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/Background.png" type="Texture" id=12]
 [ext_resource path="res://scripts/fov.gd" type="Script" id=13]
+[ext_resource path="res://Level6.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Level7.tscn" type="PackedScene" id=15]
 
 [node name="Root" type="Node2D"]
 
@@ -32,7 +37,22 @@ script = ExtResource( 7 )
 [node name="Level1" parent="Levels" instance=ExtResource( 2 )]
 
 [node name="Level2" parent="Levels" instance=ExtResource( 5 )]
-position = Vector2( 7040, 128 )
+position = Vector2( 6144, -3456 )
+
+[node name="Level3" parent="Levels" instance=ExtResource( 8 )]
+position = Vector2( 9984, -3584 )
+
+[node name="Level4" parent="Levels" instance=ExtResource( 9 )]
+position = Vector2( -3072, 3712 )
+
+[node name="Level5" parent="Levels" instance=ExtResource( 11 )]
+position = Vector2( 2816, 4096 )
+
+[node name="Level6" parent="Levels" instance=ExtResource( 14 )]
+position = Vector2( 8832, 4096 )
+
+[node name="Level7" parent="Levels" instance=ExtResource( 15 )]
+position = Vector2( 2304, 8832 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 896, -2944 )
