@@ -35,6 +35,7 @@ func move_to_level_start():
   shadow_checker.update_flood_fill_based_on_player_location()
 
 func _ready():
+  $Graphics/LightSource.visible = true
   dialog.visible = false
   move_to_level_start()
   round_position(self)

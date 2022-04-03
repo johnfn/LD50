@@ -70,6 +70,7 @@ animation = "right"
 centered = false
 
 [node name="LightSource" type="Light2D" parent="Graphics"]
+visible = false
 position = Vector2( 65, 65 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 3 )
