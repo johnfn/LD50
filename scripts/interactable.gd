@@ -18,7 +18,7 @@ func can_interact():
 
 func interact():
   interacted = true
-  
+
   animation.play("Interact")
   yield(animation, "animation_finished")
   
@@ -29,8 +29,14 @@ func _on_Area2D_body_entered(body):
   if body != Globals.Player or interacted:
     return
   
+  animation.stop()
+  
+  animation.play("Default")
+  yield(animation, "animation_finished")
+  
   visible = true
   
+  $"../Animation".play("Glow")
   show_text_co(interaction_name)
 
 func show_text_co(text: String):  
@@ -51,4 +57,11 @@ func _on_Area_body_exited(body):
   if body != Globals.Player or interacted:
     return
     
+  animation.play("Default")
+  yield(animation, "animation_finished")
+
+  animation.play("Fade")
+  yield(animation, "animation_finished")
+  
+  $"../Animation".play("RESET")
   visible = false
