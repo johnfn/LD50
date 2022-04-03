@@ -6,7 +6,7 @@ var tick = 0
 onready var shadow_checker = get_node("/root/Root/ShadowChecker")
 
 # var ticks_to_move = 0.25
-var ticks_to_move = 0.1
+var ticks_to_move = 0.25
 onready var dialog = $Dialog
 var torch = preload("res://Torch.tscn")
 export var torch_parent : NodePath
@@ -111,7 +111,6 @@ func _physics_process(delta):
     var half_step = Vector2(Globals.grid_size / 2, Globals.grid_size / 2)
     
     set_facing(poss_move_dirs[0])
-    $Animation.play("Jump")
     
     var actual_move_dir = null
     
@@ -127,7 +126,7 @@ func _physics_process(delta):
 # Now that we've validated that it's save to move towards move_dir, 
 # let's actually do it!
 func move_in_direction(move_dir):
-  var old_pos = self.position
+  var old_pos = $Graphics.global_position
   
   # Move immediately, so that we don't induce race conditions / out of sync stuff
   
@@ -142,6 +141,16 @@ func move_in_direction(move_dir):
       push_block(n, target_pos - global_position)
   
   # Move sprite back so we can animate it nicely
+  
+  var new_pos = $Graphics.global_position
+  $Graphics.global_position = old_pos
+  
+  $Tween.interpolate_property($Graphics, "global_position",
+    old_pos, new_pos, 0.2,
+    Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+  $Tween.start()
+  
+  $Animation.play("Jump")
   
   
   round_position(self)
