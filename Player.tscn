@@ -9,6 +9,11 @@
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "down",
+"speed": 2.0
+}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "left",
@@ -22,11 +27,6 @@ animations = [ {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "up",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "down",
 "speed": 2.0
 } ]
 
@@ -58,8 +58,8 @@ script = ExtResource( 2 )
 
 [node name="Shadow" type="Sprite" parent="Graphics"]
 modulate = Color( 0.113725, 0.0784314, 0.192157, 0.466667 )
-position = Vector2( 65, 74 )
-scale = Vector2( 0.218, 0.103 )
+position = Vector2( 64.5, 66.5 )
+scale = Vector2( 0.13, 0.106 )
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="AnimatedSprite" parent="Graphics"]
