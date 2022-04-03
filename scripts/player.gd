@@ -7,6 +7,9 @@ var tick = 0
 # var ticks_to_move = 0.25
 var ticks_to_move = 0.1
 onready var dialog = $Dialog
+var torch = preload("res://Torch.tscn")
+export var torch_parent : NodePath
+onready var torch_parent_node = get_node(torch_parent)
 
 func round_position(target):
   target.position.x = round(target.position.x / size) * size
@@ -27,7 +30,21 @@ func _ready():
   
   round_position(self)
 
-func _process(delta):
+func _unhandled_input(event):
+  if Input.is_action_just_pressed("place item") and Globals.num_torches > 0:
+    var already_torched = false
+    for torch in get_tree().get_nodes_in_group("torches"):
+      if torch.global_position.distance_to(global_position) < Globals.grid_size:
+        already_torched = true
+    if not already_torched:
+      Globals.num_torches -= 1
+      var new_torch = torch.instance()
+      new_torch.add_to_group("torches")
+      torch_parent_node.add_child(new_torch)
+      new_torch.global_position = global_position
+    
+
+func _physics_process(delta):
   if Globals.game_mode() != "normal":
     return
   

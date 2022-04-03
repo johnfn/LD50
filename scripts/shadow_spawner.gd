@@ -5,6 +5,7 @@ var Shadow = preload("res://Shadow.tscn")
 export var grid_offset : Vector2 = Vector2.ZERO
 export var grid_size : float = 128
 export var shadow_propogation_time : float = 1
+export var torch_buffer : int = 3
 # TODO should this include the player?
 export var raycast_mask = 0b11100
 export var movable_raycast_mask = 0b1000000
@@ -27,7 +28,7 @@ func spawn_shadow(spawn_position: Vector2):
   add_child(shadow)
   boundary_shadows.append(shadow)
 
-
+# TODO remove all uses of position
 func _physics_process(delta):
   var space = get_world_2d().get_direct_space_state()
   var to_remove = []
@@ -44,8 +45,15 @@ func _physics_process(delta):
         else:
           raycast_results = space.intersect_ray(shadow_center, shadow_center + spawn_offset, [shadow], movable_raycast_mask)
           if len(raycast_results) == 0:
-            spawn_shadow(shadow.position + spawn_offset)
-            blocked += 1
+            var torch_blocked = false
+            for torch in get_tree().get_nodes_in_group("torches"):
+              var xdiff = abs(torch.global_position.x - shadow.global_position.x)
+              var ydiff = abs(torch.global_position.y - shadow.global_position.y)
+              if (xdiff + ydiff) <= torch_buffer * Globals.grid_size:
+                torch_blocked = true 
+            if not torch_blocked:
+              spawn_shadow(shadow.global_position + spawn_offset)
+              blocked += 1
       
       if blocked == len(spawn_offsets):
         to_remove.append(i)
