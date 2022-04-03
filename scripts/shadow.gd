@@ -23,6 +23,21 @@ func _ready():
   
   $Graphic.material.set_shader_param("offset", global_position / Globals.grid_size);
 
+  var lfix = false
+  var rfix = false
+  var wall_mask = 0b10000
+  if not space.intersect_point(center + Vector2(0, Globals.grid_size), 1, [], wall_mask).empty():
+    lfix = true
+    rfix = true
+  elif not space.intersect_point(center + Vector2(-Globals.grid_size, Globals.grid_size), 1, [], wall_mask).empty():
+    lfix = true
+  elif not space.intersect_point(center + Vector2(Globals.grid_size, Globals.grid_size), 1, [], wall_mask).empty():
+    rfix = true
+    
+  $Graphic.material.set_shader_param("lfix", lfix);
+  $Graphic.material.set_shader_param("rfix", rfix);
+
+
 func _process(delta):
   time_since_spawn += delta
   $Graphic.material.set_shader_param("time_alive", time_since_spawn);
