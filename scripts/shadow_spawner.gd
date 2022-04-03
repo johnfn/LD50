@@ -8,6 +8,7 @@ export var shadow_propogation_time : float = 1
 export var torch_buffer : int = 3
 # TODO should this include the player?
 export var raycast_mask = 0b11100
+var player_mask = 0b10
 export var movable_raycast_mask = 0b101000000
 
 var boundary_shadows = []
@@ -49,9 +50,15 @@ func _physics_process(delta):
       shadow.modulate = Color(1, 1, 1, 1)
       var blocked = 0
       for spawn_offset in spawn_offsets:
-        var raycast_results = space.intersect_ray(shadow_center, shadow_center + spawn_offset, [shadow], raycast_mask)
+        var raycast_results = space.intersect_ray(shadow_center, shadow_center + spawn_offset, [shadow], raycast_mask | player_mask)
+        
+        #TODO: raycast_results is a dictionary not an array lol
         if len(raycast_results) > 0:
           blocked += 1
+          
+          if raycast_results.collider == Globals.Player:
+            Globals.Player.start_dying_co()
+          
         else:
           raycast_results = space.intersect_ray(shadow_center, shadow_center + spawn_offset, [shadow], movable_raycast_mask)
           if len(raycast_results) == 0:
@@ -62,6 +69,7 @@ func _physics_process(delta):
               var ydiff = abs(torch.global_position.y - shadow.global_position.y)
               if (xdiff + ydiff) <= torch_buffer * Globals.grid_size:
                 torch_blocked = true 
+            
             if not torch_blocked:
               spawn_shadow(shadow.global_position + spawn_offset)
               blocked += 1

@@ -121,10 +121,11 @@ func _update_flood_fill(origin : Vector2):
         continue
       if len(point_results) == 1:
         continue
-      print(point_results)
-      print("Unexpected, multiple collision items occupying same location: "+str(next) +", items:" + str(len(point_results)))
+      # print(point_results)
+      
+      # print("Unexpected, multiple collision items occupying same location: "+str(next) +", items:" + point_results[0].collider.get_parent().name + " " + point_results[1].collider.get_parent().name)
     
   tile_set = seen
-  print("Found ", len(tile_set), " locations to raycast to")
+  # print("Found ", len(tile_set), " locations to raycast to")
   if _debug:
     update()
