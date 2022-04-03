@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/statue smash.mp3-86795e2d5876050d11fa3771479090a7.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/statue smash.mp3"
+dest_files=[ "res://.import/statue smash.mp3-86795e2d5876050d11fa3771479090a7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

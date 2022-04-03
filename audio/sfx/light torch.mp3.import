@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/light torch.mp3-8dcdd5d99fd341d77c232d38eba1a151.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/light torch.mp3"
+dest_files=[ "res://.import/light torch.mp3-8dcdd5d99fd341d77c232d38eba1a151.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

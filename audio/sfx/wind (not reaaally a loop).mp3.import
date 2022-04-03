@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/wind (not reaaally a loop).mp3-6406bf8b3d87fcace954651aeb48a23e.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/wind (not reaaally a loop).mp3"
+dest_files=[ "res://.import/wind (not reaaally a loop).mp3-6406bf8b3d87fcace954651aeb48a23e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

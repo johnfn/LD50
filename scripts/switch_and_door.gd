@@ -19,6 +19,7 @@ func on_player_enter_switch():
     for door in doors:
       # Why do you have to do this dumb thing?
       door.get_node("StaticBody/CollisionShape").set_deferred("disabled", true)
+      door.get_node("LightOccluder2D").visible = false
       door.get_node("Sprite").modulate.a = 0.5
     return
   
@@ -27,5 +28,6 @@ func on_player_enter_switch():
 
     for door in doors:
       door.get_node("StaticBody/CollisionShape").set_deferred("disabled", false)
+      door.get_node("LightOccluder2D").visible = true
       door.get_node("Sprite").modulate.a = 1.0
     return
