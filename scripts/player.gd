@@ -128,7 +128,6 @@ func _physics_process(delta):
 # Now that we've validated that it's save to move towards move_dir, 
 # let's actually do it!
 func move_in_direction(move_dir):
-  var old_pos = $Graphics.position
   var old_global_position = $Graphics.global_position
   
   # We want to move them to the next square immediately, but
@@ -153,7 +152,7 @@ func move_in_direction(move_dir):
   $Graphics.global_position = old_global_position
   
   $Tween.interpolate_property($Graphics, "position",
-    old_pos, Vector2.ZERO, 0.2,
+    $Graphics.position, Vector2.ZERO, 0.2,
     Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
   $Tween.start()
   
