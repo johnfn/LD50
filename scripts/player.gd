@@ -40,9 +40,11 @@ func _ready():
 func _unhandled_input(event):
   if Input.is_action_just_pressed("place item") and Globals.num_torches > 0:
     var already_torched = false
+
     for torch in get_tree().get_nodes_in_group("torches"):
       if torch.global_position.distance_to(global_position) < Globals.grid_size:
         already_torched = true
+    
     if not already_torched:
       Globals.num_torches -= 1
       var new_torch = torch.instance()
@@ -108,6 +110,15 @@ func start_dialog_co(dialog_name: String):
   if dialog_name == "FirstEvilShadowTrigger":
     yield(dialog.show_dialog_co("Oh no [insert ESS trigger text here]!"), "completed")
 
+func start_dying_co():
+  yield(get_tree(), 'idle_frame')
+  
+  print("YOU HAVE DIED")
+  
+  # TODO: Death cinematic
+  
+  StateManager.return_to_checkpoint()
+  
 
 func enter_stairs():
   Globals.current_level += 1
