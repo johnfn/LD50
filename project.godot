@@ -113,6 +113,7 @@ respawn={
 2d_physics/layer_6="Hole"
 2d_physics/layer_7="Nonstatic"
 2d_physics/layer_8="TriggerAreas"
+2d_physics/layer_9="ShadowCaster"
 
 [physics]
 

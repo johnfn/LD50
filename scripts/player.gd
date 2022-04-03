@@ -3,6 +3,7 @@ extends KinematicBody2D
 
 var size = 128
 var tick = 0
+onready var shadow_checker = get_node("/root/Root/ShadowChecker")
 
 # var ticks_to_move = 0.25
 var ticks_to_move = 0.1
@@ -25,6 +26,7 @@ func get_start_location():
   start_location.visible = false
   
   self.global_position = start_location.global_position
+  shadow_checker.update_flood_fill_based_on_player_location()
 
 func _ready():
   dialog.visible = false
