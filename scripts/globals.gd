@@ -4,9 +4,11 @@ onready var Player: Player = $"/root/Root/Player"
 
 var is_showing_dialog = false
 var grid_size = 128
-var num_torches = 10
-var encountered_torches = true
-var current_level = 1
+var num_torches = 0
+var encountered_torches = false
+
+# 0 is a special value that means to not load in any level.
+var current_level = 0
 
 func get_level(which_level):
   var levels = $"/root/Root/Levels".get_children()

@@ -16,6 +16,9 @@ func round_position(target):
   target.position.y = round(target.position.y / size) * size
 
 func get_start_location():
+  if Globals.current_level == 0:
+    return
+    
   var level = Globals.get_level(Globals.current_level)
   var start_location = level.get_node("Objects/StartLocation")
   
@@ -73,12 +76,23 @@ func _physics_process(delta):
       var n: KinematicBody2D = collision.collider
 
       if n.is_in_group("Pushable"):
-        n.move_and_collide(dist)
-        round_position(n)
+        push_block(n, dist)
 
     round_position(self)
     
     tick = 0.0
+
+func push_block(block, direction):
+  var collision = block.move_and_collide(direction)
+  
+  if collision and collision.collider is Node2D:
+    var node: Node2D = collision.collider
+    
+    if node.is_in_group("Hole"):
+      node.queue_free()
+      block.queue_free()
+      
+  round_position(block)
 
 func start_dialog_co(dialog_name: String):
   if dialog_name == "WhereAmI":
