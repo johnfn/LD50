@@ -10,8 +10,8 @@
 [ext_resource path="res://SwitchAndDoor.tscn" type="PackedScene" id=8]
 [ext_resource path="res://DialogTrigger.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Dialog.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scripts/fov.gd" type="Script" id=11]
 [ext_resource path="res://assets/Background.png" type="Texture" id=12]
+[ext_resource path="res://scripts/fov.gd" type="Script" id=13]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 0, 0, 0, 128, 128, 128, 128, 0 )
@@ -22,7 +22,7 @@ polygon = PoolVector2Array( -1664, 2688, -1664, 2944, 3584, 2944, 3584, -896, 32
 [node name="Root" type="Node2D"]
 
 [node name="fov" type="Node2D" parent="."]
-script = ExtResource( 11 )
+script = ExtResource( 13 )
 
 [node name="Background" type="Sprite" parent="."]
 visible = false
@@ -33,7 +33,7 @@ texture = ExtResource( 12 )
 
 [node name="ShadowSpawner" type="Node2D" parent="."]
 script = ExtResource( 4 )
-grid_offset = Vector2( 200, -300 )
+grid_offset = Vector2( 256, -128 )
 
 [node name="Map" type="Node2D" parent="."]
 
