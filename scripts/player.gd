@@ -1,7 +1,7 @@
 class_name Player
 extends KinematicBody2D
 
-var size = 128
+var size = Globals.grid_size
 var tick = 0
 onready var shadow_checker = get_node("/root/Root/ShadowChecker")
 
@@ -23,7 +23,7 @@ func round_position(target):
   target.position.y = round(target.position.y / size) * size
 
 func move_to_level_start():
-  if Globals.current_level == 0:
+  if Globals.current_level == 0 or Globals.IS_DEBUG:
     return
 
   var level = Globals.get_level(Globals.current_level)
@@ -128,7 +128,10 @@ func _physics_process(delta):
 func move_in_direction(move_dir):
   var old_pos = $Graphics.global_position
   
-  # Move immediately, so that we don't induce race conditions / out of sync stuff
+  # We want to move them to the next square immediately, but
+  # then play the animation in the next 0.2 sec
+  
+  # Move and resolve collisions immediately, so that we don't induce race conditions / out of sync stuff
   
   var target_pos = global_position + Globals.grid_size * move_dir
   set_facing(move_dir)
@@ -152,21 +155,11 @@ func move_in_direction(move_dir):
   
   $Animation.play("Jump")
   
-  
   round_position(self)
   tick = 0.0
 
 func push_block(block, direction):
-  var collision = block.move_and_collide(direction)
-  
-  if collision and collision.collider is Node2D:
-    var node: Node2D = collision.collider
-    
-    if node.is_in_group("Hole"):
-      node.fill()
-      block.drop_in_hole()
-      
-  round_position(block)
+  block.get_pushed(direction)
 
 func start_dialog_co(dialog_name: String):
   if dialog_name == "WhereAmI":
