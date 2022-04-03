@@ -82,4 +82,3 @@ func _physics_process(delta):
   
   for i in range(len(to_remove)):
     boundary_shadows.remove(to_remove[len(to_remove)-1-i])
-    

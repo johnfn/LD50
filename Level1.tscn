@@ -795,11 +795,11 @@ position = Vector2( 640, -256 )
 position = Vector2( 640, -768 )
 dialog_name = "WhereAmI"
 
-[node name="EvilShadowTrigger2" parent="Areas" instance=ExtResource( 5 )]
+[node name="EvilShadowTrigger2F" parent="Areas" instance=ExtResource( 5 )]
 position = Vector2( 960, -2624 )
 
-[node name="Bounds" parent="Areas/EvilShadowTrigger2" index="0"]
+[node name="Bounds" parent="Areas/EvilShadowTrigger2F" index="0"]
 position = Vector2( 0, -128 )
 shape = SubResource( 1 )
 
-[editable path="Areas/EvilShadowTrigger2"]
+[editable path="Areas/EvilShadowTrigger2F"]

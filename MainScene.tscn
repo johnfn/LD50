@@ -55,7 +55,7 @@ position = Vector2( 8832, 4096 )
 position = Vector2( 2304, 8832 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 896, -2944 )
+position = Vector2( 768, -512 )
 torch_parent = NodePath("../Torches")
 
 [node name="Dialog" parent="Player" instance=ExtResource( 10 )]

@@ -6,6 +6,7 @@ var triggered = false
 func _on_EvilShadowTrigger_body_entered(body):
   if not triggered and body == Globals.Player:
     triggered = true
+    print(self.name)
     player_trigger_evil_shadow()
 
 func player_trigger_evil_shadow():

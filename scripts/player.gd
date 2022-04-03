@@ -113,21 +113,31 @@ func _physics_process(delta):
     set_facing(poss_move_dirs[0])
     $Animation.play("Jump")
     
+    var actual_move_dir = null
     
-    for move_dir in poss_move_dirs:
-      target_pos = global_position + Globals.grid_size * move_dir
+    for possible_move_dir in poss_move_dirs:
+      target_pos = global_position + Globals.grid_size * possible_move_dir
       var cast_result = space.intersect_point(target_pos + half_step, 1, [], move_raycast_mask)
       if cast_result.empty():
-        set_facing(move_dir)
-        var collision = move_and_collide(target_pos - global_position)
-        if collision and collision.collider is KinematicBody2D:
-          var n: KinematicBody2D = collision.collider
-          if n.is_in_group("Pushable"):
-            push_block(n, target_pos - global_position)
+        actual_move_dir = possible_move_dir
+    
+    if actual_move_dir != null:
+      move_in_direction(actual_move_dir)
+    
+# Now that we've validated that it's save to move towards move_dir, 
+# let's actually do it!
+func move_in_direction(move_dir):
+  var target_pos = global_position + Globals.grid_size * move_dir
+  set_facing(move_dir)
+  
+  var collision = move_and_collide(target_pos - global_position)
+  if collision and collision.collider is KinematicBody2D:
+    var n: KinematicBody2D = collision.collider
+    if n.is_in_group("Pushable"):
+      push_block(n, target_pos - global_position)
 
-        round_position(self)
-        tick = 0.0
-        break
+  round_position(self)
+  tick = 0.0
 
 func push_block(block, direction):
   var collision = block.move_and_collide(direction)
