@@ -32,7 +32,7 @@ grid_offset = Vector2( 256, -128 )
 position = Vector2( 7040, 128 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 896, -6144 )
+position = Vector2( 896, -2944 )
 
 [node name="Dialog" parent="Player" instance=ExtResource( 10 )]
 
