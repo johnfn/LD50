@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Level1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/camera.gd" type="Script" id=3]
 [ext_resource path="res://scripts/shadow_spawner.gd" type="Script" id=4]
-[ext_resource path="res://UI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Level2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Dialog.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/Background.png" type="Texture" id=12]
 [ext_resource path="res://scripts/fov.gd" type="Script" id=13]
@@ -24,10 +25,15 @@ texture = ExtResource( 12 )
 script = ExtResource( 4 )
 grid_offset = Vector2( 256, -128 )
 
-[node name="Level1" parent="." instance=ExtResource( 2 )]
+[node name="Levels" type="Node2D" parent="."]
+
+[node name="Level1" parent="Levels" instance=ExtResource( 2 )]
+
+[node name="Level2" parent="Levels" instance=ExtResource( 5 )]
+position = Vector2( 7040, 128 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 896, -3456 )
+position = Vector2( 896, -6144 )
 
 [node name="Dialog" parent="Player" instance=ExtResource( 10 )]
 
@@ -38,4 +44,4 @@ smoothing_enabled = true
 smoothing_speed = 6.0
 script = ExtResource( 3 )
 
-[node name="UI" parent="." instance=ExtResource( 5 )]
+[node name="UI" parent="." instance=ExtResource( 6 )]
