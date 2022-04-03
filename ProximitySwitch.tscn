@@ -7,6 +7,7 @@
 extents = Vector2( 64, 64 )
 
 [node name="ProximitySwitch" type="Node2D" groups=["resettable"]]
+position = Vector2( 0, 128 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
