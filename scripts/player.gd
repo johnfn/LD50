@@ -7,19 +7,23 @@ var tick = 0
 # var ticks_to_move = 0.25
 var ticks_to_move = 0.1
 onready var dialog = $Dialog
-export var current_level = 1
 
 func round_position(target):
   target.position.x = round(target.position.x / size) * size
   target.position.y = round(target.position.y / size) * size
 
-func get_starting_position():
-  var levels = 
+func get_start_location():
+  var level = Globals.get_level(Globals.current_level)
+  var start_location = level.get_node("Objects/StartLocation")
+  
+  start_location.visible = false
+  
+  self.global_position = start_location.global_position
 
 func _ready():
   dialog.visible = false
   
-  get_starting_position()
+  get_start_location()
   
   round_position(self)
 
@@ -68,5 +72,6 @@ func start_dialog_co(dialog_name: String):
 
 
 func enter_stairs():
-  print("Enter stairs")
-
+  Globals.current_level += 1
+  
+  get_start_location()
