@@ -27,7 +27,6 @@ texture = ExtResource( 12 )
 [node name="ShadowSpawner" type="Node2D" parent="."]
 script = ExtResource( 4 )
 grid_offset = Vector2( 256, -128 )
-grid_size = 128.0
 
 [node name="Map" type="Node2D" parent="."]
 
