@@ -12,6 +12,7 @@ polygon = PoolVector2Array( 0, 0, 0, 128, 128, 128, 128, 0 )
 position = Vector2( 256, -512 )
 
 [node name="Sprite" type="Sprite" parent="."]
+light_mask = 3
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true

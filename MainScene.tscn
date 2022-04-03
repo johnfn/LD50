@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Switch.tscn" type="PackedScene" id=2]
@@ -13,9 +13,13 @@
 [ext_resource path="res://Assets/PlayerLightCircle.png" type="Texture" id=11]
 [ext_resource path="res://assets/Background.png" type="Texture" id=12]
 
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PoolVector2Array( 0, 0, 0, 128, 128, 128, 128, 0 )
+
 [node name="Root" type="Node2D"]
 
 [node name="Background" type="Sprite" parent="."]
+light_mask = 3
 position = Vector2( 768, -256 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 12 )
@@ -127,10 +131,20 @@ position = Vector2( 896, -640 )
 dialog_name = "WhereAmI"
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 431, -473 )
+position = Vector2( 512, -512 )
 
 [node name="Dialog" parent="Player" instance=ExtResource( 10 )]
+
+[node name="BlobLightSource" type="Light2D" parent="Player"]
 visible = false
+light_mask = 2
+position = Vector2( 0, 128 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 11 )
+color = Color( 0.921569, 0.92549, 0.607843, 1 )
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_item_cull_mask = 2
 
 [node name="LightSource" type="Light2D" parent="Player"]
 position = Vector2( 64, 64 )
@@ -145,3 +159,9 @@ zoom = Vector2( 2, 2 )
 smoothing_enabled = true
 smoothing_speed = 6.0
 script = ExtResource( 3 )
+
+[node name="BlobOccluder2D" type="LightOccluder2D" parent="."]
+light_mask = 3
+position = Vector2( 512, -1024 )
+occluder = SubResource( 1 )
+light_mask = 3
