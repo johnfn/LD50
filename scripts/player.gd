@@ -55,9 +55,5 @@ func _process(delta):
       # print(collision)
 
 func start_dialog(dialog_name: String):
-  print(dialog_name)
-  print(dialog)
-  print(dialog.get_node("DialogUpscaler"))
-  
   # WhereAmI
   dialog.show_dialog_co("Hey you triggered the dialog!")
