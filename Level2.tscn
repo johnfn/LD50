@@ -949,10 +949,10 @@ position = Vector2( 640, 1792 )
 position = Vector2( 2688, 1536 )
 
 [node name="Statue" parent="Objects" instance=ExtResource( 3 )]
-position = Vector2( 0, 256 )
+position = Vector2( 0, 384 )
 
 [node name="Statue2" parent="Objects" instance=ExtResource( 3 )]
-position = Vector2( 1024, 256 )
+position = Vector2( 1024, 384 )
 
 [node name="Statue3" parent="Objects" instance=ExtResource( 3 )]
 position = Vector2( -768, 768 )
@@ -974,7 +974,6 @@ position = Vector2( 512, -384 )
 initial_delay = 3
 
 [node name="Areas" type="Node2D" parent="."]
-visible = false
 
 [node name="EvilShadowTrigger3" parent="Areas" instance=ExtResource( 6 )]
 position = Vector2( 256, 896 )
@@ -985,6 +984,7 @@ shape = SubResource( 2 )
 
 [node name="EvilShadowTrigger6" parent="Areas" instance=ExtResource( 6 )]
 position = Vector2( 256, 896 )
+once_only = true
 
 [node name="Bounds" parent="Areas/EvilShadowTrigger6" index="0"]
 position = Vector2( 448, 32 )

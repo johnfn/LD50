@@ -10,9 +10,9 @@
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 6 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "left",
+"name": "up",
 "speed": 2.0
 }, {
 "frames": [ ExtResource( 1 ) ],
@@ -20,9 +20,9 @@ animations = [ {
 "name": "right",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "up",
+"name": "left",
 "speed": 2.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -124,6 +124,7 @@ position = Vector2( 64, 26 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 3 )
 texture_scale = 10.0
+shadow_enabled = true
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 position = Vector2( 64, 64 )
