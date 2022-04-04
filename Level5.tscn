@@ -155,51 +155,39 @@ position = Vector2( 1408, 1536 )
 
 [node name="Wall228" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1536, 1536 )
-rotation = -0.0289649
 
 [node name="Wall229" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1664, 1536 )
-rotation = -0.0289649
 
 [node name="Wall234" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1792, 1664 )
-rotation = -0.0289649
 
 [node name="Wall235" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1792, 1792 )
-rotation = -0.0289649
 
 [node name="Wall236" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1792, 1920 )
-rotation = -0.0289649
 
 [node name="Wall237" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 256, 1664 )
-rotation = -0.0289649
 
 [node name="Wall238" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 256, 1792 )
-rotation = -0.0289649
 
 [node name="Wall239" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 256, 1920 )
-rotation = -0.0289649
 
 [node name="Wall240" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 384, 2048 )
-rotation = -0.0289649
 
 [node name="Wall230" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1664, 2048 )
-rotation = -0.0289649
 
 [node name="Wall231" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1536, 2048 )
-rotation = -0.0289649
 
 [node name="Wall232" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1408, 2048 )
-rotation = -0.0289649
 
 [node name="Wall225" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1152, 2048 )
