@@ -17,14 +17,17 @@ func initially_hide_interactor():
   yield(get_tree().create_timer(1.0), "timeout")
   
   var i = interactor.instance()
-  interactor.interaction_name = "Pick up lantern"
+  i.interaction_name = "Pick up lantern"
   add_child(i)
   i.position = pos
 
 func _unhandled_input(event):
   if Input.is_action_just_pressed("interact"):
-    if $Interactor.can_interact():
-      $Interactor.interact()
+    # == null accomodates for the period when the interactor does not exist
+    
+    if $Interactor == null or $Interactor.can_interact():
+      if $Interactor != null:
+        $Interactor.interact()
       
       queue_free()
       Globals.num_torches += 1
