@@ -134,8 +134,11 @@ anims/Jump = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="Overlay" type="Sprite" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Overlay" type="Sprite" parent="CanvasLayer"]
 material = SubResource( 5 )
-scale = Vector2( 100, 100 )
+position = Vector2( 512, 300 )
+scale = Vector2( 16, 16 )
 z_index = 2
 texture = ExtResource( 7 )
