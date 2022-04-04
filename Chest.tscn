@@ -82,7 +82,7 @@ shader_param/inside = false
 shader_param/add_margins = true
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 64, 64 )
+extents = Vector2( 40, 38 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 192, 192 )
@@ -272,8 +272,7 @@ centered = false
 region_rect = Rect2( 0, 0, 128, 128 )
 
 [node name="Shape" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 64, 64 )
+position = Vector2( 68, 72 )
 shape = SubResource( 1 )
 
 [node name="Interactor" type="Node2D" parent="."]

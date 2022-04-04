@@ -7,7 +7,7 @@
 polygon = PoolVector2Array( 0, 0, 0, 128, 128, 128, 128, 0 )
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 60, 60 )
+extents = Vector2( 58.5, 59 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "Jump"
@@ -42,7 +42,7 @@ centered = false
 occluder = SubResource( 2 )
 
 [node name="Shape" type="CollisionShape2D" parent="."]
-position = Vector2( 64, 64 )
+position = Vector2( 64.5, 64 )
 shape = SubResource( 1 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
