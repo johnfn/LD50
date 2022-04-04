@@ -73,22 +73,18 @@ void fragment() {
     if (rhs) angle += 1.0;
     COLOR = vec4(vec3(angle / 4.0), 1.0);
     COLOR = vec4(vec3(0.0), 0.0);
-    if (wipe < 0.4) {
-      if (wipe * 1.25 > angle / 4.0) COLOR.a = 1.0;
-    } else if (wipe < 0.6) {
-      COLOR.a = 1.0;
+    if (wipe < 0.5) {
+      if (wipe > angle / 4.0) COLOR.a = 1.0;
     } else {
-      if ((wipe - 0.6) * 1.25 < angle / 4.0) COLOR.a = 1.0;
+      if (wipe - 0.5 < angle / 4.0) COLOR.a = 1.0;
     }
   } else if (enclose > 0.0) {
     float dist_frac = distance(UV, vec2(0.5)) / 1.5;
-    if (enclose < 0.4) {
-       if (dist_frac > (0.4 - enclose) * 1.25)
+    if (enclose < 0.5) {
+       if (dist_frac > 0.5 - enclose)
           COLOR.a = 1.0;
-    } else if (enclose < 0.6) {
-      COLOR.a = 1.0;
     } else {
-       if (dist_frac > (enclose - 0.6) * 1.25)
+       if (dist_frac > enclose - 0.5)
           COLOR.a = 1.0;
     }
   } else {

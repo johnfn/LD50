@@ -14,9 +14,13 @@ func _ready():
   for door_path in linked_doors:
     linked_door_nodes.append(get_node(door_path))
 
+# press the switch
 func _on_Area_body_entered(body):
   if body == Globals.Player:
     is_on = not is_on
+    
+    Sfx.play_sound(Sfx.Switch)
+    
     for door in linked_door_nodes:
       door.toggle_open()
   update_gfx()
@@ -29,8 +33,8 @@ func reset():
   is_on = og_is_on
   update_gfx()
 
+# come near the switch
 func _on_NearbyArea_body_entered(body):
-  print("Enter")
   for door in linked_door_nodes:
     door.glow()
 
