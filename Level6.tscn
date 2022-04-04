@@ -15,7 +15,7 @@
 [ext_resource path="res://ShadowSourceBlock.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 192, 384 )
+extents = Vector2( 704, 512 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 256, 256 )

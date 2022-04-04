@@ -14,12 +14,11 @@ func _on_EvilShadowTrigger_body_entered(body):
 func player_trigger_evil_shadow():
   yield(Globals.Player.start_dialog_co("FirstEvilShadowTrigger"), "completed")
   
-  # TODO, add a timer to make this actually playable:
-  if not Globals.DEBUG_NO_SHADOWS:
-    
+  if not Globals.DEBUG_NO_SHADOWS:  
     for x in range(3):
       Sfx.play_sound(Sfx.Tick1, true)
       yield(get_tree().create_timer(1), "timeout")
+    
     Sfx.play_sound(Sfx.Tick2, true)
     shadow_checker.check_shadows()
 

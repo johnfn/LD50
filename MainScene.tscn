@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Level1.tscn" type="PackedScene" id=2]
@@ -16,6 +16,9 @@
 [ext_resource path="res://Level6.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Level7.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/screened.material" type="Material" id=16]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1026.5, 607 )
 
 [node name="Root" type="Node2D"]
 
@@ -58,7 +61,7 @@ position = Vector2( 8832, 4096 )
 position = Vector2( 2304, 8832 )
 
 [node name="Player" parent="AllGameObjects" instance=ExtResource( 1 )]
-position = Vector2( 6970, -2886 )
+position = Vector2( 5398, -2553 )
 torch_parent = NodePath("../../Torches")
 
 [node name="Dialog" parent="AllGameObjects/Player" instance=ExtResource( 10 )]
@@ -72,6 +75,13 @@ smoothing_enabled = true
 smoothing_speed = 6.0
 script = ExtResource( 3 )
 
+[node name="CameraBounds" type="Area2D" parent="Camera"]
+collision_layer = 16
+
+[node name="Shape" type="CollisionShape2D" parent="Camera/CameraBounds"]
+position = Vector2( 0.5, -5 )
+shape = SubResource( 1 )
+
 [node name="Torches" type="Node2D" parent="."]
 
 [node name="UI" parent="." instance=ExtResource( 6 )]
@@ -83,3 +93,6 @@ script = ExtResource( 3 )
 [node name="AudioStreamPlayerHighPri" type="AudioStreamPlayer" parent="Audio"]
 
 [node name="BgmPlayer" type="AudioStreamPlayer" parent="Audio"]
+
+[node name="TestNode" type="Node2D" parent="."]
+position = Vector2( 5648, -2500 )

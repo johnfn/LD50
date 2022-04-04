@@ -72,9 +72,6 @@ func check_shadows():
     for light_source in light_sources:
       var light_pos = light_source.global_position + half_step
       is_shaded = is_shaded and _is_in_shadow(location, light_pos)
-#
-#    if _debug:
-#      _debug_lines.append([location, Globals.Player.global_position + half_step, Color.red if is_shaded else Color.green])
 
     if is_shaded and _point_unoccupied(location):
       var is_not_walled = false
