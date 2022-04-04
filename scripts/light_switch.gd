@@ -15,6 +15,9 @@ onready var og_is_on = is_on
 func _ready():
   for door_path in linked_doors:
     linked_door_nodes.append(get_node(door_path))
+  
+  $Sprite.visible = is_on
+  $LightSwitchOff.visible = not is_on
 
 func _physics_process(delta):
   var is_lit = false
@@ -36,14 +39,20 @@ func _physics_process(delta):
 
   if is_lit != is_on:
     is_on = not is_on
+    
     for door in linked_door_nodes:
       door.toggle_open()
     
     if is_lit:
       # high pri because steps override
       Sfx.play_sound(Sfx.DoorOpen, true)
+      
     if not is_lit:
       Sfx.play_sound(Sfx.DoorClose, true)
+    
+    $LightSwitchOff.visible = not is_lit
+    $Sprite.visible = is_lit
+
 
 func reset():
   is_on = og_is_on
