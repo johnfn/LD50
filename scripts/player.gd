@@ -29,21 +29,29 @@ func move_to_level_start():
 
   var level = Globals.get_level(Globals.current_level)
   var start_location = level.get_node("Objects/StartLocation")
-  var shadow_source = level.get_node("Objects/ShadowSourceBlock")
 
   start_location.visible = false
   
   self.global_position = start_location.global_position
-  shadow_checker.update_flood_fill_based_on_player_location()
-  
-  if shadow_source:
-    shadow_source.activate()
+
+func trigger_level_start_shadows():
+  if not Globals.DEBUG_NO_SHADOWS:
+    var level = Globals.get_level(Globals.current_level)
+    var shadow_source = level.get_node("Objects/ShadowSourceBlock")
+    
+    shadow_checker.update_flood_fill_based_on_player_location()
+    
+    if shadow_source:
+      shadow_source.activate()
 
 func _ready():
   $Graphics/LightSource.visible = true
   dialog.visible = false
   if not Globals.IS_DEBUG:
     move_to_level_start()
+  
+  trigger_level_start_shadows()
+    
   round_position(self)
   StateManager.checkpoint(global_position)
 
@@ -135,6 +143,8 @@ func _physics_process(delta):
 func move_in_direction(move_dir):
   var old_global_position = $Graphics.global_position
   
+  Sfx.step()
+  
   # We want to move them to the next square immediately, but
   # then play the animation in the next 0.2 sec
   
@@ -185,6 +195,7 @@ func start_dying_co():
   # TODO: Death cinematic
   
   StateManager.return_to_checkpoint()
+  trigger_level_start_shadows()
   
 
 func enter_stairs(var from_level):

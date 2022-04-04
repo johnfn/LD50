@@ -4,8 +4,8 @@ onready var Player = $"/root/Root/AllGameObjects/Player"
 
 var IS_GRANT = OS.has_environment("USER") and (OS.get_environment("USER") == "grant")
 
-var IS_DEBUG = IS_GRANT && false
-var DEBUG_NO_SHADOWS = IS_DEBUG
+var IS_DEBUG = IS_GRANT
+var DEBUG_NO_SHADOWS = false
 
 var is_showing_dialog = false
 var grid_size = 128

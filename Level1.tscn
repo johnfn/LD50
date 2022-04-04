@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Statue.tscn" type="PackedScene" id=1]
 [ext_resource path="res://StartLocation.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Stairs.tscn" type="PackedScene" id=7]
 [ext_resource path="res://DialogTrigger.tscn" type="PackedScene" id=8]
 [ext_resource path="res://CheckpointZone.tscn" type="PackedScene" id=9]
+[ext_resource path="res://DoorRight.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ShadowSourceBlock.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -288,7 +289,6 @@ facing = 2
 
 [node name="Wall125" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1024, -4096 )
-facing = 2
 
 [node name="Wall143" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1024, -4608 )
@@ -341,7 +341,7 @@ facing = 2
 
 [node name="Wall231" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 256, -5504 )
-facing = 5
+facing = 3
 
 [node name="Wall232" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 640, -5504 )
@@ -674,6 +674,10 @@ facing = 3
 position = Vector2( 128, -7040 )
 facing = 3
 
+[node name="Wall266" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 128, -7168 )
+facing = 5
+
 [node name="Wall260" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 256, -7168 )
 
@@ -705,11 +709,15 @@ position = Vector2( 1280, -7168 )
 position = Vector2( 1408, -7168 )
 
 [node name="Wall271" parent="Walls" instance=ExtResource( 3 )]
-position = Vector2( 1536, -7040 )
+position = Vector2( 1536, -7168 )
 facing = 4
 
 [node name="Wall272" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1536, -6912 )
+facing = 1
+
+[node name="Wall274" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 1536, -7040 )
 facing = 1
 
 [node name="Wall249" parent="Walls" instance=ExtResource( 3 )]
@@ -907,8 +915,7 @@ linked_doors = [ NodePath("../Door"), NodePath("../Door2") ]
 [node name="Door" parent="Objects/SwitchAndDoors" instance=ExtResource( 4 )]
 position = Vector2( 768, -1152 )
 
-[node name="Door2" parent="Objects/SwitchAndDoors" instance=ExtResource( 4 )]
-position = Vector2( 896, -1152 )
+[node name="Door2" parent="Objects/SwitchAndDoors" instance=ExtResource( 10 )]
 
 [node name="SwitchAndDoors2" type="YSort" parent="Objects"]
 position = Vector2( -256, -1024 )
@@ -920,7 +927,7 @@ linked_doors = [ NodePath("../Door"), NodePath("../Door2") ]
 [node name="Door" parent="Objects/SwitchAndDoors2" instance=ExtResource( 4 )]
 position = Vector2( 1024, -1024 )
 
-[node name="Door2" parent="Objects/SwitchAndDoors2" instance=ExtResource( 4 )]
+[node name="Door2" parent="Objects/SwitchAndDoors2" instance=ExtResource( 10 )]
 position = Vector2( 1152, -1024 )
 
 [node name="SwitchAndDoors3" type="YSort" parent="Objects"]

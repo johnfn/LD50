@@ -72,7 +72,7 @@ centered = false
 
 [node name="LightSource" type="Light2D" parent="Graphics"]
 light_mask = 3
-position = Vector2( 65, 65 )
+position = Vector2( 64, 26 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 3 )
 texture_scale = 10.0
