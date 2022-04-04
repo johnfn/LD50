@@ -10,7 +10,7 @@ var DEBUG_NO_SHADOWS = IS_DEBUG
 var is_showing_dialog = false
 var grid_size = 128
 var num_torches = 0
-var encountered_torches = false
+var encountered_torches = true
 
 # 0 is a special value that means to not load in any level.
 var current_level = 0
