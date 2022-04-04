@@ -226,9 +226,16 @@ func push_block(block, direction):
   Sfx.play_sound(Sfx.StatueSlide)
   block.get_pushed(direction)
 
+var is_first_lantern = true
+
 func start_dialog_co(dialog_name: String):
   if dialog_name == "OpenChestLantern":
-    yield(dialog.show_dialog_co("Hey, I found a lantern!"), "completed")
+    if is_first_lantern and not Globals.IS_DEBUG:
+      yield(dialog.show_dialog_co("Hey, I found a lantern!"), "completed")
+      yield(dialog.show_dialog_co("I can drop these with Q, and I can pick them up later."), "completed")
+      yield(dialog.show_dialog_co("If I place them, they might keep the shadows away... for a little while."), "completed")
+    else:
+      yield(dialog.show_dialog_co("I got a lantern."), "completed")
   
   if dialog_name == "WhereAmI":
     yield(dialog.show_dialog_co("Whoa, so THIS is what the Underground Archives look like.", "Test"), "completed")
