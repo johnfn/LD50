@@ -7,6 +7,8 @@ onready var Step1 = preload("res://audio/sfx/step1.mp3")
 onready var Step2 = preload("res://audio/sfx/step2.mp3")
 onready var Step3 = preload("res://audio/sfx/step3.mp3")
 
+onready var StatueSlide = preload("res://audio/sfx/statue slide.mp3")
+
 onready var Player: AudioStreamPlayer = $"/root/Root/Audio/AudioStreamPlayer"
 onready var HighPriorityPlayer: AudioStreamPlayer = $"/root/Root/Audio/AudioStreamPlayerHighPri"
 

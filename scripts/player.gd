@@ -178,6 +178,7 @@ func move_in_direction(move_dir):
   tick = 0.0
   
 func push_block(block, direction):
+  Sfx.play_sound(Sfx.StatueSlide)
   block.get_pushed(direction)
 
 func start_dialog_co(dialog_name: String):
