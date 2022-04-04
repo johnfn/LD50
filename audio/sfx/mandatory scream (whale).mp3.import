@@ -11,5 +11,5 @@ dest_files=[ "res://.import/mandatory scream (whale).mp3-793c914068680fec74c974c
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -14,7 +14,12 @@ func player_trigger_evil_shadow():
   
   # TODO, add a timer to make this actually playable:
   if not Globals.DEBUG_NO_SHADOWS:
-    yield(get_tree().create_timer(2.0), "timeout")
+    
+    for x in range(3):
+      Sfx.play_sound(Sfx.Tick1)
+      yield(get_tree().create_timer(1), "timeout")
+    
+    Sfx.play_sound(Sfx.Tick2)
     shadow_checker.check_shadows()
 
 func reset():

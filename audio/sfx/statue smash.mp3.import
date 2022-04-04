@@ -11,5 +11,5 @@ dest_files=[ "res://.import/statue smash.mp3-86795e2d5876050d11fa3771479090a7.mp
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

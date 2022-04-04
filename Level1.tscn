@@ -927,7 +927,7 @@ linked_doors = [ NodePath("../Door"), NodePath("../Door2") ]
 [node name="Door" parent="Objects/SwitchAndDoors2" instance=ExtResource( 4 )]
 position = Vector2( 1024, -1024 )
 
-[node name="Door2" parent="Objects/SwitchAndDoors2" instance=ExtResource( 4 )]
+[node name="Door2" parent="Objects/SwitchAndDoors2" instance=ExtResource( 10 )]
 position = Vector2( 1152, -1024 )
 
 [node name="SwitchAndDoors3" type="YSort" parent="Objects"]

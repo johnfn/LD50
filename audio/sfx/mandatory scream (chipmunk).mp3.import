@@ -11,5 +11,5 @@ dest_files=[ "res://.import/mandatory scream (chipmunk).mp3-b8c967624235ca7d67b4
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
