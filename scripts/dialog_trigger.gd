@@ -3,7 +3,6 @@ extends Area2D
 export var dialog_name = ""
 var triggered_dialogs = {}
 
-
 func _on_DialogTrigger_body_entered(body):
   if body == Globals.Player and not dialog_name in triggered_dialogs:
     triggered_dialogs[dialog_name] = true
@@ -11,4 +10,5 @@ func _on_DialogTrigger_body_entered(body):
     Globals.Player.start_dialog_co(dialog_name)
 
 func reset():
-  triggered_dialogs = {}
+  pass
+  # triggered_dialogs = {}
