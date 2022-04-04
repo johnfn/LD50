@@ -15,7 +15,7 @@
 [ext_resource path="res://Chest.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 128, 320 )
+extents = Vector2( 704, 512 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 192, 384 )
@@ -690,7 +690,6 @@ position = Vector2( 1152, -640 )
 
 [node name="EvilShadowTrigger2" parent="Areas" instance=ExtResource( 6 )]
 position = Vector2( 2560, 128 )
-once_only = true
 
 [node name="Bounds" parent="Areas/EvilShadowTrigger2" index="0"]
 position = Vector2( -256, -448 )
@@ -698,7 +697,6 @@ shape = SubResource( 1 )
 
 [node name="EvilShadowTrigger3" parent="Areas" instance=ExtResource( 6 )]
 position = Vector2( 2560, 128 )
-once_only = true
 
 [node name="Bounds" parent="Areas/EvilShadowTrigger3" index="0"]
 position = Vector2( -320, 640 )
