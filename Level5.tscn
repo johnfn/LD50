@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://StartLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=2]
@@ -11,9 +11,10 @@
 [ext_resource path="res://DarkSwitch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://LightSwitch.tscn" type="PackedScene" id=10]
 [ext_resource path="res://PushableStatue.tscn" type="PackedScene" id=11]
+[ext_resource path="res://CheckpointZone.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 704, 512 )
+extents = Vector2( 192, 320 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 192, 384 )
@@ -652,6 +653,9 @@ position = Vector2( 2560, 128 )
 [node name="Bounds" parent="Areas/EvilShadowTrigger3" index="0"]
 position = Vector2( -320, 640 )
 shape = SubResource( 2 )
+
+[node name="Checkpoint" parent="Areas" instance=ExtResource( 12 )]
+position = Vector2( 1024, 1152 )
 
 [node name="Wall" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1280, -1024 )

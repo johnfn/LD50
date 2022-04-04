@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://StartLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=2]
@@ -10,12 +10,13 @@
 [ext_resource path="res://PushableStatue.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Hole.tscn" type="PackedScene" id=9]
 [ext_resource path="res://CheckpointZone.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ShadowSourceBlock.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 512, 512 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 896, 448 )
+extents = Vector2( 832, 448 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 896, 160 )
@@ -30,7 +31,7 @@ facing = 1
 
 [node name="Wall14" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1536, 0 )
-facing = 1
+facing = 4
 
 [node name="Wall17" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1408, 0 )
@@ -248,7 +249,7 @@ position = Vector2( -512, 1408 )
 
 [node name="Wall110" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( -384, 1408 )
-facing = 1
+facing = 4
 
 [node name="Wall111" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( -384, 1536 )
@@ -268,12 +269,14 @@ position = Vector2( 0, 2304 )
 
 [node name="Wall134" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 128, 2304 )
+facing = 4
 
 [node name="Wall135" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 128, 2432 )
 
 [node name="Wall136" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( -256, 2304 )
+facing = 5
 
 [node name="Wall130" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( -640, 2816 )
@@ -313,6 +316,7 @@ facing = 1
 
 [node name="Wall117" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( -384, 2304 )
+facing = 4
 
 [node name="Wall118" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( -768, 1920 )
@@ -394,12 +398,14 @@ position = Vector2( 512, 2432 )
 
 [node name="Wall149" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 512, 2304 )
+facing = 5
 
 [node name="Wall152" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 640, 2304 )
 
 [node name="Wall153" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 768, 2304 )
+facing = 4
 
 [node name="Wall150" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 768, 2432 )
@@ -415,12 +421,14 @@ position = Vector2( 1152, 2432 )
 
 [node name="Wall158" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1152, 2688 )
+facing = 2
 
 [node name="Wall159" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1280, 2432 )
 
 [node name="Wall160" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1280, 2688 )
+facing = 2
 
 [node name="Wall157" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1152, 2816 )
@@ -442,11 +450,15 @@ position = Vector2( 1920, 2048 )
 position = Vector2( 1408, 2048 )
 
 [node name="Wall193" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 1280, 2176 )
-facing = 3
+position = Vector2( 1280, 2048 )
+facing = 5
 
 [node name="Wall194" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1280, 2304 )
+facing = 3
+
+[node name="Wall205" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 1280, 2176 )
 facing = 3
 
 [node name="Wall195" parent="Walls" instance=ExtResource( 5 )]
@@ -468,15 +480,19 @@ position = Vector2( 2432, 2048 )
 
 [node name="Wall197" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 2432, 2176 )
+facing = 1
 
 [node name="Wall198" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 2432, 2304 )
+facing = 1
 
 [node name="Wall199" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 2432, 2816 )
+facing = 4
 
 [node name="Wall200" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 2432, 2944 )
+facing = 1
 
 [node name="Wall169" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 2560, 2048 )
@@ -492,7 +508,7 @@ position = Vector2( 2944, 2048 )
 
 [node name="Wall173" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 3072, 2048 )
-facing = 1
+facing = 4
 
 [node name="Wall201" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 3072, 2176 )
@@ -617,7 +633,7 @@ facing = 2
 
 [node name="Wall24" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 896, 512 )
-facing = 2
+facing = 4
 
 [node name="Wall25" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 384, 384 )
@@ -649,15 +665,9 @@ facing = 6
 
 [node name="Wall33" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 896, 640 )
-facing = 2
 
 [node name="Wall53" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1024, 640 )
-facing = 2
-
-[node name="Wall54" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 1024, 512 )
-facing = 2
 
 [node name="Wall55" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1024, 384 )
@@ -913,11 +923,10 @@ facing = 2
 
 [node name="Wall15" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1152, 512 )
-facing = 2
+facing = 5
 
 [node name="Wall16" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1152, 640 )
-facing = 2
 
 [node name="Wall22" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1152, 1024 )
@@ -961,6 +970,10 @@ position = Vector2( -128, 2560 )
 [node name="Hole4" parent="Objects" instance=ExtResource( 9 )]
 position = Vector2( 1152, 2560 )
 
+[node name="ShadowSourceBlock" parent="Objects" instance=ExtResource( 11 )]
+position = Vector2( 384, 1024 )
+initial_delay = 3
+
 [node name="Areas" type="YSort" parent="."]
 
 [node name="EvilShadowTrigger2" parent="Areas" instance=ExtResource( 6 )]
@@ -974,7 +987,7 @@ shape = SubResource( 1 )
 position = Vector2( 512, 384 )
 
 [node name="Bounds" parent="Areas/EvilShadowTrigger4" index="0"]
-position = Vector2( 1664, 2240 )
+position = Vector2( 1728, 2240 )
 shape = SubResource( 2 )
 
 [node name="EvilShadowTrigger3" parent="Areas" instance=ExtResource( 6 )]
