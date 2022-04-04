@@ -2,6 +2,7 @@ extends Node2D
 
 onready var label = $DialogUpscaler/Rect/Label
 onready var rect = $DialogUpscaler/Rect
+onready var xbutton = $DialogUpscaler/XButton
 
 var max_width = 400
 var text_speed = 2 # smaller = faster
@@ -15,6 +16,9 @@ func resize_img():
   
   new_rect_size.x = min(rect_size_oneline.x, new_rect_size.x)
   rect.rect_size = new_rect_size + Vector2(16, 16)
+  
+  xbutton.rect_position.x = rect.rect_position.x + rect.rect_size.x - 20
+  xbutton.rect_position.y = rect.rect_position.y + rect.rect_size.y - 20
 
 func show_dialog_co(text_to_show: String):
   if Globals.is_showing_dialog:
