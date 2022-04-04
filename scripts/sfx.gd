@@ -9,6 +9,8 @@ onready var Step3 = preload("res://audio/sfx/step3.mp3")
 
 onready var Switch = preload("res://audio/sfx/switch.mp3")
 
+onready var Chest = preload("res://audio/sfx/chest.mp3")
+
 onready var Blob1 = preload("res://audio/sfx/blob1.mp3")
 
 onready var StatueSlide = preload("res://audio/sfx/statue slide.mp3")

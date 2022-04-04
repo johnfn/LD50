@@ -17,6 +17,7 @@ func initially_hide_interactor():
   yield(get_tree().create_timer(1.0), "timeout")
   
   var i = interactor.instance()
+  interactor.interaction_name = "Pick up lantern"
   add_child(i)
   i.position = pos
 
