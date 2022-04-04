@@ -14,7 +14,7 @@ func player_trigger_evil_shadow():
   
   # TODO, add a timer to make this actually playable:
   if not Globals.DEBUG_NO_SHADOWS:
-    yield(get_tree().create_timer(1.5), "timeout")
+    yield(get_tree().create_timer(2.0), "timeout")
     shadow_checker.check_shadows()
 
 func reset():
