@@ -38,6 +38,10 @@ func _physics_process(delta):
     is_on = not is_on
     for door in linked_door_nodes:
       door.toggle_open()
+    
+    if is_lit:
+      # high pri because steps override
+      Sfx.play_sound(Sfx.DoorOpen, true)
 
 func reset():
   is_on = og_is_on
