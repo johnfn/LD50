@@ -228,6 +228,7 @@ func push_block(block, direction):
   block.get_pushed(direction)
 
 var is_first_lantern = true
+var is_first_shadow = true
 
 func start_dialog_co(dialog_name: String):
   if dialog_name == "OpenChestLantern":
@@ -252,21 +253,20 @@ func start_dialog_co(dialog_name: String):
   if dialog_name == "FirstDoor":
     yield(dialog.show_dialog_co("Huh? A door? But the Curator never gave me a key..."), "completed")
     yield(dialog.show_dialog_co("Maybe there's another way to open it."), "completed")
-    
-  if dialog_name == "FirstShadows":
-    yield(dialog.show_dialog_co("Hey, what's that ticking sound?"), "completed")
-    
-  if dialog_name == "UnfirstShadows":
-    yield(dialog.show_dialog_co("Oh no, it's happening again!"), "completed")
 
-  if dialog_name == "FirstAtrium":
+  if dialog_name == "Atrium1":
     yield(dialog.show_dialog_co("Yikes, I've never seen shadows that could chase someone before!"), "completed")
     yield(dialog.show_dialog_co("Maybe there's more to the Archives than meets the eye."), "completed")
     yield(dialog.show_dialog_co("But that's not gonna stop me! Second floor, here I come!"), "completed")
 
   if dialog_name == "FirstEvilShadowTrigger":
-    yield(dialog.show_dialog_co("Oh no [insert ESS trigger text here]!"), "completed")
-    yield(dialog.show_dialog_co("test!"), "completed")
+    if is_first_lantern and not Globals.IS_DEBUG:
+      is_first_lantern = false
+      yield(dialog.show_dialog_co("Hey, what's that ticking sound?"), "completed")
+    else:
+      yield(dialog.show_dialog_co("Oh no, it's happening again!"), "completed")
+      
+        
 
 func start_dying_co():
   yield(get_tree(), 'idle_frame')
