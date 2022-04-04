@@ -42,6 +42,8 @@ func _physics_process(delta):
     if is_lit:
       # high pri because steps override
       Sfx.play_sound(Sfx.DoorOpen, true)
+    if not is_lit:
+      Sfx.play_sound(Sfx.DoorClose, true)
 
 func reset():
   is_on = og_is_on

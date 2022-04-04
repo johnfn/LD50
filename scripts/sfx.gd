@@ -17,6 +17,7 @@ onready var VoiceClara = preload("res://audio/sfx/voice-clara.mp3")
 onready var PopDialogEnd = preload("res://audio/sfx/pop-dialog-end.mp3")
 
 onready var DoorOpen = preload("res://audio/sfx/chest.mp3")
+onready var DoorClose = preload("res://audio/sfx/door-close.mp3")
 
 onready var Blob1 = preload("res://audio/sfx/blob1.mp3")
 
