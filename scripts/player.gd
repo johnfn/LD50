@@ -35,7 +35,8 @@ func move_to_level_start():
   self.global_position = start_location.global_position
   shadow_checker.update_flood_fill_based_on_player_location()
   
-  shadow_source.activate()
+  if shadow_source:
+    shadow_source.activate()
 
 func _ready():
   $Graphics/LightSource.visible = true

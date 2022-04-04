@@ -5,8 +5,6 @@ func _on_Area_body_entered(body):
     print("enter_stairs")
     var path = self.get_path()
     var regex = RegEx.new()
-    regex.compile("\\\\Level(\\d+)\\\\") #escaaaaapppeee
+    regex.compile("\/Level(\\d+)\/") #escaaaaapppeee
     var result = regex.search(path)
-    if result:
-        print(result.get_string())
-    Globals.Player.enter_stairs(result)
+    Globals.Player.enter_stairs(int(result.get_string(1)))
