@@ -33,3 +33,5 @@ func _unhandled_input(event):
       
       queue_free()
       Globals.num_torches += 1
+      
+      Sfx.play_sound(Sfx.PickupLantern)

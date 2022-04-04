@@ -83,6 +83,7 @@ func _unhandled_input(event):
         already_torched = true
     
     if not already_torched:
+      Sfx.play_sound(Sfx.DropLantern)
       Globals.num_torches -= 1
       var new_torch = torch.instance()
       new_torch.add_to_group("torches")
