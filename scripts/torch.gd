@@ -1,11 +1,14 @@
 extends Node2D
 
 var interactor = preload("res://Interactor.tscn")
+var is_on = true
 
 func reset():
   queue_free()
 
 func _ready():
+  is_on = true
+  
   initially_hide_interactor()
 
 # hide interactor for a sec so that it doesnt seem spammy when u immediately
@@ -31,7 +34,14 @@ func _unhandled_input(event):
       if $Interactor != null:
         $Interactor.interact()
       
-      queue_free()
       Globals.num_torches += 1
       
       Sfx.play_sound(Sfx.PickupLantern)
+      
+      is_on = false
+      
+      # Allow physics update - this is important to update light status of switches, etc, via is_on variable
+      yield(get_tree(), "idle_frame")
+      yield(get_tree(), "idle_frame")
+      
+      queue_free()

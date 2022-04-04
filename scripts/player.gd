@@ -232,6 +232,8 @@ var is_first_lantern = true
 func start_dialog_co(dialog_name: String):
   if dialog_name == "OpenChestLantern":
     if is_first_lantern and not Globals.IS_DEBUG:
+      is_first_lantern = false
+      
       yield(dialog.show_dialog_co("Hey, I found a lantern!"), "completed")
       yield(dialog.show_dialog_co("I can drop these with Q, and I can pick them up later."), "completed")
       yield(dialog.show_dialog_co("If I place them, they might keep the shadows away... for a little while."), "completed")
