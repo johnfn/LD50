@@ -4,35 +4,36 @@
 [ext_resource path="res://scripts/door.gd" type="Script" id=2]
 [ext_resource path="res://assets/screened.material" type="Material" id=3]
 [ext_resource path="res://scripts/four_way_occluder.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/Door_N copy.png" type="Texture" id=5]
+[ext_resource path="res://assets/Door_Back.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 64 )
 
 [node name="Door" type="Node2D" groups=["resettable"]]
-position = Vector2( 256, -512 )
 script = ExtResource( 2 )
 
 [node name="FourWayOccluder" parent="." instance=ExtResource( 4 )]
-position = Vector2( 0, -87 )
-height = 215.0
-e_occlude = false
-w_occlude = false
+position = Vector2( 105, -215 )
+scale = Vector2( 0.5, 0.5 )
+width = 21.0
+height = 343.0
+n_occlude = false
+s_occlude = false
 
 [node name="TileDoor" type="Sprite" parent="."]
 material = ExtResource( 3 )
-position = Vector2( -304, -98 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 5 )
-centered = false
-offset = Vector2( 608, 21.8358 )
-
-[node name="TileDoorOpen" type="Sprite" parent="."]
-material = ExtResource( 3 )
-position = Vector2( 0, -215 )
+position = Vector2( 105, -215 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 centered = false
+
+[node name="TileDoorOpen" type="Sprite" parent="."]
+material = ExtResource( 3 )
+position = Vector2( 0, -87 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+centered = false
+flip_h = true
 
 [node name="StaticBody" type="StaticBody2D" parent="."]
 collision_layer = 64
