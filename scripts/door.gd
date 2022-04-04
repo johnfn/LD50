@@ -8,10 +8,20 @@ onready var tile_door_open = $TileDoorOpen
 onready var tile_door_closed = $TileDoor
 
 var initial_material = preload("res://assets/screened.material")
+var glow_material = preload("res://assets/GlowMaterial.tres")
 
 var glowing = false
+var initial_modulate = Color(1, 1, 1, 1)
+var tween1: Tween
+var tween2: Tween
 
 func _ready():
+  tween1 = Tween.new()
+  tween2 = Tween.new()
+  
+  add_child(tween1)
+  add_child(tween2)
+  
   if is_door_open:
     is_door_open = false
     toggle_open()
@@ -24,6 +34,28 @@ func update_door_sprites():
   
   tile_door_open.material = null if glowing else initial_material
   tile_door_closed.material = null if glowing else initial_material
+  
+  if glowing:
+    tween1.interpolate_property(
+      tile_door_open, "modulate", 
+      Color(2, 2, 2, 1), Color(.5, .5, .5, 1), 1,
+      Tween.TRANS_QUAD, Tween.EASE_IN)
+    tween1.start()
+    tween1.repeat = true
+    tween2.interpolate_property(
+      tile_door_closed, "modulate", 
+      Color(2, 2, 2, 1), Color(.5, .5, .5, 1), 1,
+      Tween.TRANS_QUAD, Tween.EASE_IN)
+    tween2.start()
+    tween2.repeat = true
+    
+    # tile_door_open.modulate = Color(2, 2, 2, 1)
+    # tile_door_closed.modulate = Color(2, 2, 2, 1)
+  else:
+    tween1.stop(tile_door_open)
+    tween2.stop(tile_door_closed)
+    tile_door_open.modulate = initial_modulate
+    tile_door_closed.modulate = initial_modulate
   
 func toggle_open():
   if is_door_open:
