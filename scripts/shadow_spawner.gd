@@ -29,6 +29,31 @@ func spawn_shadow(spawn_position: Vector2):
   var shadow = Shadow.instance()
   shadow.position = spawn_position
   add_child(shadow)
+
+  
+  # Check we're actually in bounds!
+  var ss = get_world_2d().direct_space_state
+  var results = ss.intersect_point(
+    shadow.global_position,
+    32,
+    [],
+    0b11111,
+    true,
+    true
+  )
+  
+  var in_bounds = false
+  
+  for r in results:
+    if r.collider.name == "CameraBounds":
+      in_bounds = true
+  
+  if not in_bounds:
+    # offscreen
+    shadow.queue_free()
+    return
+
+  
   boundary_shadows.append(shadow)
 
 # TODO remove all uses of position

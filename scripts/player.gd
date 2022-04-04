@@ -133,7 +133,7 @@ func set_facing(dir):
     $Graphics/Sprite.animation = "right"
 
 
-func _physics_process(delta):
+func _physics_process(delta):  
   if Globals.game_mode() != "normal":
     return
   

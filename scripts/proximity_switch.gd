@@ -8,7 +8,10 @@ export var linked_doors : Array
 var linked_door_nodes : Array
 onready var og_is_on = is_on
 
+var initial_modulate = Color(0.2, 0.2, 0.2, 1.0)
+
 func _ready():
+  $Sprite.modulate = initial_modulate
   update_gfx()
   
   for door_path in linked_doors:
@@ -35,9 +38,11 @@ func reset():
 
 # come near the switch
 func _on_NearbyArea_body_entered(body):
+  $Sprite.modulate = Color(0.5, 0.5, 0.5, 1.0)
   for door in linked_door_nodes:
     door.glow()
 
 func _on_NearbyArea_body_exited(body):
+  $Sprite.modulate = initial_modulate
   for door in linked_door_nodes:
     door.glow_stop()
