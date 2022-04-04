@@ -15,27 +15,46 @@ onready var og_is_on = is_on
 func _ready():
   for door_path in linked_doors:
     linked_door_nodes.append(get_node(door_path))
+  
+  $Sprite.visible = is_on
+  $LightSwitchOff.visible = not is_on
 
 func _physics_process(delta):
   var is_lit = false
+  
   if Globals.Player.global_position.distance_to(global_position) < player_light_distance:
     var space = get_world_2d().get_direct_space_state()
     var half_step = Vector2(Globals.grid_size / 2, Globals.grid_size / 2)
     var raycast_result = space.intersect_ray(global_position + half_step, Globals.Player.global_position + half_step, [], raycast_mask)
     if len(raycast_result) == 0:
       is_lit = true
+
   for torch in get_tree().get_nodes_in_group("torches"):
-    if torch.global_position.distance_to(global_position) < torch_light_distance:
+    if torch.is_on and torch.global_position.distance_to(global_position) < torch_light_distance:
       var space = get_world_2d().get_direct_space_state()
       var half_step = Vector2(Globals.grid_size / 2, Globals.grid_size / 2)
       var raycast_result = space.intersect_ray(global_position + half_step, torch.global_position + half_step, [], raycast_mask)
       if len(raycast_result) == 0:
-        is_lit = true
+        is_lit = true 
+
+  if is_lit != is_on:
+    is_on = not is_on
     
-    if is_lit != is_on:
-      is_on = not is_on
-      for door in linked_door_nodes:
-        door.toggle_open()
+    for door in linked_door_nodes:
+      door.toggle_open()
+    
+    if is_lit:
+      # high pri because steps override
+      Sfx.play_sound(Sfx.DoorOpen, true)
+      
+    if not is_lit:
+      Sfx.play_sound(Sfx.DoorClose, true)
+    
+    
+    print(is_on)
+    $LightSwitchOff.visible = not is_on
+    $Sprite.visible = is_on
+
 
 func reset():
   is_on = og_is_on

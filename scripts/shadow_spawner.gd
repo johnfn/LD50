@@ -68,7 +68,6 @@ func _physics_process(delta):
   for i in range(len(boundary_shadows)):
     var shadow : Shadow = boundary_shadows[i]
     if shadow.time_since_spawn > shadow_propogation_time:
-       
       Sfx.play_sound(Sfx.Blob1)
       
       var shadow_center = shadow.position + Vector2(grid_size / 2, grid_size / 2)

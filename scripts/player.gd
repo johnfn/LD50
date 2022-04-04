@@ -83,6 +83,7 @@ func _unhandled_input(event):
         already_torched = true
     
     if not already_torched:
+      Sfx.play_sound(Sfx.DropLantern)
       Globals.num_torches -= 1
       var new_torch = torch.instance()
       new_torch.add_to_group("torches")
@@ -226,12 +227,46 @@ func push_block(block, direction):
   Sfx.play_sound(Sfx.StatueSlide)
   block.get_pushed(direction)
 
+var is_first_lantern = true
+var is_first_shadow = true
+
 func start_dialog_co(dialog_name: String):
-  if dialog_name == "WhereAmI":
-    yield(dialog.show_dialog_co("Hey you triggered the dialog!"), "completed")
+  if dialog_name == "OpenChestLantern":
+    if is_first_lantern and not Globals.IS_DEBUG:
+      is_first_lantern = false
+      
+      yield(dialog.show_dialog_co("Hey, I found a lantern!"), "completed")
+      yield(dialog.show_dialog_co("I can drop these with Q, and I can pick them up later."), "completed")
+      yield(dialog.show_dialog_co("If I place them, they might keep the shadows away... for a little while."), "completed")
+    else:
+      yield(dialog.show_dialog_co("I got a lantern."), "completed")
   
+  if dialog_name == "WhereAmI":
+    yield(dialog.show_dialog_co("Whoa, so THIS is what the Underground Archives look like.", "Test"), "completed")
+    yield(dialog.show_dialog_co("What was it the Curator wanted me to go grab again..."), "completed")
+    yield(dialog.show_dialog_co("Oh right! The Unholy Grail!"), "completed")
+    yield(dialog.show_dialog_co("He said it was in the eighth floor of the basement, so I'd better get going."), "completed")
+    yield(dialog.show_dialog_co("And he also said to beware the dark...?"), "completed")
+    yield(dialog.show_dialog_co("But that's so silly. I'm an adult!"), "completed")
+    yield(dialog.show_dialog_co("Now, where might those steps to the second floor be?"), "completed")
+  
+  if dialog_name == "FirstDoor":
+    yield(dialog.show_dialog_co("Huh? A door? But the Curator never gave me a key..."), "completed")
+    yield(dialog.show_dialog_co("Maybe there's another way to open it."), "completed")
+
+  if dialog_name == "Atrium1":
+    yield(dialog.show_dialog_co("Yikes, I've never seen shadows that could chase someone before!"), "completed")
+    yield(dialog.show_dialog_co("Maybe there's more to the Archives than meets the eye."), "completed")
+    yield(dialog.show_dialog_co("But that's not gonna stop me! Second floor, here I come!"), "completed")
+
   if dialog_name == "FirstEvilShadowTrigger":
-    yield(dialog.show_dialog_co("Oh no [insert ESS trigger text here]!"), "completed")
+    if is_first_lantern and not Globals.IS_DEBUG:
+      is_first_lantern = false
+      yield(dialog.show_dialog_co("Hey, what's that ticking sound?"), "completed")
+    else:
+      yield(dialog.show_dialog_co("Oh no, it's happening again!"), "completed")
+      
+        
 
 func start_dying_co():
   yield(get_tree(), 'idle_frame')

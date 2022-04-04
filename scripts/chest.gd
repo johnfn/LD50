@@ -8,11 +8,15 @@ func _unhandled_input(event):
     if $Interactor.can_interact():
       $Interactor.interact()
       
+      Sfx.play_sound(Sfx.Chest)
+      
       Globals.encountered_torches = true
       Globals.num_torches += 1
       is_open = true
       $Open.visible = true
       $Closed.visible = false
+      
+      yield(Globals.Player.start_dialog_co("OpenChestLantern"), "completed")
 
 func reset():
   is_open = false

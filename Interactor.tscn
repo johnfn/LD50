@@ -1,0 +1,157 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/interactable.gd" type="Script" id=1]
+[ext_resource path="res://assets/crayon kids.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/RoundedRect.png" type="Texture" id=3]
+[ext_resource path="res://assets/PlayerLightCircle.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 192, 192 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Default"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextUpscaler/Button/Circle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.164706, 0.184314, 0.482353, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Interact"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextUpscaler/Button/Circle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.406129, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.164706, 0.184314, 0.482353, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Interactor" type="Node2D" groups=["resettable"]]
+script = ExtResource( 1 )
+interaction_name = "Open Chest"
+
+[node name="Area" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+position = Vector2( 64, 64 )
+shape = SubResource( 2 )
+
+[node name="InteractionHint" type="Node2D" parent="."]
+
+[node name="TextUpscaler" type="Node2D" parent="InteractionHint"]
+scale = Vector2( 2, 2 )
+z_index = 10
+
+[node name="Rect" type="NinePatchRect" parent="InteractionHint/TextUpscaler"]
+margin_left = -71.0
+margin_top = -42.0
+margin_right = 166.0
+margin_bottom = -2.0
+rect_pivot_offset = Vector2( 512, 384 )
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 128, 128 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="InteractionHint/TextUpscaler/Rect"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 164.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 3 )
+text = "Open Chest"
+
+[node name="Button" type="Control" parent="InteractionHint/TextUpscaler"]
+margin_left = 0.5
+margin_top = -3.0
+margin_right = 40.5
+margin_bottom = 37.0
+
+[node name="Circle" type="TextureRect" parent="InteractionHint/TextUpscaler/Button"]
+modulate = Color( 0.164706, 0.184314, 0.482353, 1 )
+light_mask = 0
+margin_left = -576.0
+margin_top = -391.0
+margin_right = -76.0
+margin_bottom = 109.0
+rect_scale = Vector2( 0.0944537, 0.0944537 )
+rect_pivot_offset = Vector2( 512, 384 )
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="InteractionHint/TextUpscaler/Button"]
+margin_left = -98.0
+margin_top = -35.0
+margin_right = -72.0
+margin_bottom = -5.0
+rect_scale = Vector2( 1.36329, 1.36329 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "X"
+
+[node name="Animation" type="AnimationPlayer" parent="InteractionHint"]
+anims/Default = SubResource( 5 )
+anims/Fade = SubResource( 10 )
+anims/Interact = SubResource( 4 )
+
+[connection signal="body_entered" from="Area" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]

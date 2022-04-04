@@ -9,6 +9,16 @@ onready var Step3 = preload("res://audio/sfx/step3.mp3")
 
 onready var Switch = preload("res://audio/sfx/switch.mp3")
 
+onready var Chest = preload("res://audio/sfx/chest.mp3")
+onready var PickupLantern = preload("res://audio/sfx/lantern_up.mp3")
+onready var DropLantern = preload("res://audio/sfx/lantern_down.mp3")
+
+onready var VoiceClara = preload("res://audio/sfx/voice-clara.mp3")
+onready var PopDialogEnd = preload("res://audio/sfx/pop-dialog-end.mp3")
+
+onready var DoorOpen = preload("res://audio/sfx/chest.mp3")
+onready var DoorClose = preload("res://audio/sfx/door-close.mp3")
+
 onready var Blob1 = preload("res://audio/sfx/blob1.mp3")
 
 onready var StatueSlide = preload("res://audio/sfx/statue slide.mp3")
