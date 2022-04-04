@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/pop-dialog-end.mp3-d7c782369b64ac044b18ae39f7c0c592.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/pop-dialog-end.mp3"
+dest_files=[ "res://.import/pop-dialog-end.mp3-d7c782369b64ac044b18ae39f7c0c592.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

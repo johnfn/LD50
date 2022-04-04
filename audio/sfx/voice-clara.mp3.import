@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/voice-clara.mp3-55ee45a434f0aecac0b60f9b50d14674.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/voice-clara.mp3"
+dest_files=[ "res://.import/voice-clara.mp3-55ee45a434f0aecac0b60f9b50d14674.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
