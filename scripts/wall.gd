@@ -22,7 +22,8 @@ func _ready():
   set_wall_vis()
   
   if not Engine.editor_hint:
-    show_proper_light_occluder()
+    pass
+    # show_proper_light_occluder()
 
 func show_proper_light_occluder():
   if facing == Facing.North:
