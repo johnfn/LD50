@@ -3,6 +3,8 @@ extends Node
 onready var Tick1 = preload("res://audio/sfx/tick1.mp3")
 onready var Tick2 = preload("res://audio/sfx/tick2.mp3")
 
+onready var BlobSpawn = preload("res://audio/sfx/blob_spawn_new.mp3")
+
 onready var Step1 = preload("res://audio/sfx/step1.mp3")
 onready var Step2 = preload("res://audio/sfx/step2.mp3")
 onready var Step3 = preload("res://audio/sfx/step3.mp3")

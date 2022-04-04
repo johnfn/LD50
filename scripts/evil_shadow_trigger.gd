@@ -28,7 +28,7 @@ func player_trigger_evil_shadow():
       yield(get_tree().create_timer(1), "timeout")
     
     Globals.UI.EssTimeLeft.visible = false
-    Sfx.play_sound(Sfx.Tick2, true)
+    Sfx.play_sound(Sfx.BlobSpawn, true)
     shadow_checker.check_shadows()
 
 func reset():
