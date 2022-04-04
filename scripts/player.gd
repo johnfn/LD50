@@ -34,6 +34,9 @@ func round_position(target):
 func move_to_level_start():
   if Globals.current_level == 0 :
     return
+    
+  if Globals.current_level == 8 :
+    Sfx.play_song("end")
 
   var level = Globals.get_level(Globals.current_level)
   var start_location = level.get_node("Objects/StartLocation")
@@ -56,6 +59,7 @@ func trigger_level_start_shadows():
       shadow_source.activate()
 
 func _ready():
+  Sfx.play_song("level")
   if not Globals.IS_DEBUG:
     $Graphics/LightSource.visible = true
   else:

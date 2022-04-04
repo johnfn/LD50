@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/floor_8_music.mp3-4fe356c22aa9845aab3a6f3a3936ca2c.mp3str"
+
+[deps]
+
+source_file="res://audio/bgm/floor_8_music.mp3"
+dest_files=[ "res://.import/floor_8_music.mp3-4fe356c22aa9845aab3a6f3a3936ca2c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
