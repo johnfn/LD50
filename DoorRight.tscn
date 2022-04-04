@@ -1,13 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/door.gd" type="Script" id=1]
 [ext_resource path="res://assets/tile_door.png" type="Texture" id=2]
-
-[sub_resource type="OccluderPolygon2D" id=2]
-polygon = PoolVector2Array( 0, 0, 0, 128, 128, 128, 128, 0 )
-
-[sub_resource type="OccluderPolygon2D" id=3]
-polygon = PoolVector2Array( 0, -128, 0, 128, 128, 128, 128, -128 )
+[ext_resource path="res://scripts/four_way_occluder.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 64 )
@@ -22,21 +17,13 @@ scale = Vector2( 0.5, 0.595349 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="TileDoor"]
-position = Vector2( 0, 215 )
-scale = Vector2( 2, 1.67969 )
-occluder = SubResource( 2 )
+[node name="FourWayOccluder" parent="TileDoor" instance=ExtResource( 3 )]
 
 [node name="TileDoorOpen" type="Sprite" parent="."]
 position = Vector2( 113, -128 )
 scale = Vector2( 0.0585938, 0.595349 )
 texture = ExtResource( 2 )
 centered = false
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="TileDoorOpen"]
-position = Vector2( 0, 215 )
-scale = Vector2( 2, 1.67969 )
-occluder = SubResource( 3 )
 
 [node name="StaticBody" type="StaticBody2D" parent="."]
 collision_layer = 64

@@ -13,7 +13,7 @@
 [ext_resource path="res://ShadowSourceBlock.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 512, 512 )
+extents = Vector2( 512, 576 )
 
 [node name="Level1" type="YSort"]
 
@@ -841,6 +841,9 @@ position = Vector2( 768, -1152 )
 
 [node name="Door2" parent="Objects/SwitchAndDoors" instance=ExtResource( 10 )]
 
+[node name="Door3" parent="Objects/SwitchAndDoors" instance=ExtResource( 10 )]
+position = Vector2( 791, -502 )
+
 [node name="SwitchAndDoors2" type="YSort" parent="Objects"]
 position = Vector2( -256, -1024 )
 
@@ -910,9 +913,6 @@ position = Vector2( 1152, -3072 )
 [node name="Statue4" parent="Objects" instance=ExtResource( 1 )]
 position = Vector2( 512, -3072 )
 
-[node name="Statue5" parent="Objects" instance=ExtResource( 1 )]
-position = Vector2( 896, -2688 )
-
 [node name="Statue6" parent="Objects" instance=ExtResource( 1 )]
 position = Vector2( 768, -2688 )
 
@@ -926,6 +926,7 @@ position = Vector2( 256, -128 )
 position = Vector2( 640, -256 )
 
 [node name="Areas" type="Node2D" parent="."]
+visible = false
 
 [node name="DialogTrigger" parent="Areas" instance=ExtResource( 8 )]
 position = Vector2( 640, -768 )
