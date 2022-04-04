@@ -899,7 +899,7 @@ facing = 3
 
 [node name="Objects" type="YSort" parent="."]
 
-[node name="SwitchAndDoors" type="Node2D" parent="Objects"]
+[node name="SwitchAndDoors" type="YSort" parent="Objects"]
 
 [node name="Switch" parent="Objects/SwitchAndDoors" instance=ExtResource( 6 )]
 position = Vector2( 256, -768 )
@@ -911,7 +911,7 @@ position = Vector2( 768, -1152 )
 [node name="Door2" parent="Objects/SwitchAndDoors" instance=ExtResource( 4 )]
 position = Vector2( 896, -1152 )
 
-[node name="SwitchAndDoors2" type="Node2D" parent="Objects"]
+[node name="SwitchAndDoors2" type="YSort" parent="Objects"]
 position = Vector2( -256, -1024 )
 
 [node name="Switch" parent="Objects/SwitchAndDoors2" instance=ExtResource( 6 )]
@@ -924,7 +924,7 @@ position = Vector2( 1024, -1024 )
 [node name="Door2" parent="Objects/SwitchAndDoors2" instance=ExtResource( 4 )]
 position = Vector2( 1152, -1024 )
 
-[node name="SwitchAndDoors3" type="Node2D" parent="Objects"]
+[node name="SwitchAndDoors3" type="YSort" parent="Objects"]
 position = Vector2( -256, -1024 )
 
 [node name="Switch" parent="Objects/SwitchAndDoors3" instance=ExtResource( 6 )]
@@ -937,7 +937,7 @@ position = Vector2( 1024, -4736 )
 [node name="Door2" parent="Objects/SwitchAndDoors3" instance=ExtResource( 4 )]
 position = Vector2( 1152, -4736 )
 
-[node name="SwitchAndDoors4" type="Node2D" parent="Objects"]
+[node name="SwitchAndDoors4" type="YSort" parent="Objects"]
 position = Vector2( -256, -1024 )
 
 [node name="Switch" parent="Objects/SwitchAndDoors4" instance=ExtResource( 6 )]
