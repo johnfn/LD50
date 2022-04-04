@@ -14,7 +14,7 @@
 [ext_resource path="res://PushableStatue.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 512, 576 )
+extents = Vector2( 512, 565.592 )
 
 [node name="Level1" type="YSort"]
 
@@ -1028,11 +1028,21 @@ position = Vector2( 640, 1152 )
 position = Vector2( -256, -2048 )
 dialog_name = "WhereAmI"
 
+[node name="DialogTrigger2" parent="Areas" instance=ExtResource( 8 )]
+position = Vector2( 128, 1024 )
+scale = Vector2( 1.99194, 1.03142 )
+dialog_name = "WhereAmI"
+
+[node name="DialogTrigger3" parent="Areas" instance=ExtResource( 8 )]
+position = Vector2( 128, -384 )
+scale = Vector2( 1.99194, 1.03142 )
+dialog_name = "FirstDoor"
+
 [node name="EvilShadowTrigger2F" parent="Areas" instance=ExtResource( 5 )]
 position = Vector2( 960, -2624 )
 
 [node name="Bounds" parent="Areas/EvilShadowTrigger2F" index="0"]
-position = Vector2( -64, -64 )
+position = Vector2( -64, -74.408 )
 shape = SubResource( 1 )
 
 [node name="Checkpoint" parent="Areas" instance=ExtResource( 9 )]
