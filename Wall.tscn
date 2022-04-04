@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/Wall_E_Tall copy.png" type="Texture" id=1]
 [ext_resource path="res://scripts/wall.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/Wall_SW_Tall copy.png" type="Texture" id=7]
 [ext_resource path="res://assets/Wall_W copy.png" type="Texture" id=8]
 [ext_resource path="res://assets/Wall_W_Tall copy.png" type="Texture" id=9]
+[ext_resource path="res://assets/screened.material" type="Material" id=10]
 
 [sub_resource type="OccluderPolygon2D" id=2]
 polygon = PoolVector2Array( 0, -89, 0, 128, 128, 128, 128, -90 )
@@ -40,6 +41,7 @@ script = ExtResource( 2 )
 [node name="Graphics" type="Node2D" parent="."]
 
 [node name="WallN" type="Sprite" parent="Graphics"]
+material = ExtResource( 10 )
 position = Vector2( 64, 20.5 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
@@ -51,6 +53,7 @@ occluder = SubResource( 2 )
 
 [node name="WallE" type="Sprite" parent="Graphics"]
 visible = false
+material = ExtResource( 10 )
 position = Vector2( 64, 64 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
@@ -61,6 +64,7 @@ occluder = SubResource( 3 )
 
 [node name="WallETall" type="Sprite" parent="Graphics"]
 visible = false
+material = ExtResource( 10 )
 position = Vector2( 64, 20 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
@@ -70,6 +74,7 @@ occluder = SubResource( 8 )
 
 [node name="WallS" type="Sprite" parent="Graphics"]
 visible = false
+material = ExtResource( 10 )
 position = Vector2( 64, 20.5 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
@@ -81,6 +86,7 @@ occluder = SubResource( 2 )
 
 [node name="WallW" type="Sprite" parent="Graphics"]
 visible = false
+material = ExtResource( 10 )
 position = Vector2( 64, 64 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 8 )
@@ -90,6 +96,7 @@ occluder = SubResource( 9 )
 
 [node name="WallWTall" type="Sprite" parent="Graphics"]
 visible = false
+material = ExtResource( 10 )
 position = Vector2( 0, -87 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 9 )
@@ -100,6 +107,7 @@ occluder = SubResource( 4 )
 
 [node name="WallSETall" type="Sprite" parent="Graphics"]
 visible = false
+material = ExtResource( 10 )
 position = Vector2( 0, -87 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 6 )
@@ -110,6 +118,7 @@ occluder = SubResource( 7 )
 
 [node name="WallSWTall" type="Sprite" parent="Graphics"]
 visible = false
+material = ExtResource( 10 )
 position = Vector2( 0, -87 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 7 )
