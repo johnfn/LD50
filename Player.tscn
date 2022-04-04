@@ -50,6 +50,7 @@ tracks/0/keys = {
 }
 
 [node name="Player" type="KinematicBody2D"]
+position = Vector2( 2, -1 )
 collision_layer = 2
 collision_mask = 508
 script = ExtResource( 2 )
@@ -71,6 +72,7 @@ centered = false
 
 [node name="LightSource" type="Light2D" parent="Graphics"]
 visible = false
+light_mask = 3
 position = Vector2( 65, 65 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 3 )
