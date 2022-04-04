@@ -11,10 +11,10 @@
 [ext_resource path="res://assets/Wall_W_Tall copy.png" type="Texture" id=9]
 
 [sub_resource type="OccluderPolygon2D" id=2]
-polygon = PoolVector2Array( 0, -89, 0, 128, 128, 128, 128, -90 )
+polygon = PoolVector2Array( 0, -87, 0, -90, 128, -90, 128, -87 )
 
 [sub_resource type="OccluderPolygon2D" id=3]
-polygon = PoolVector2Array( -64, -64, -64, 64, 67, 66, 66, -65 )
+polygon = PoolVector2Array( -49, -64, -49, 64, -40, 64, -40, -64 )
 
 [sub_resource type="OccluderPolygon2D" id=8]
 polygon = PoolVector2Array( -126, 214, -92, 216, -94, -218, -130, -216 )
@@ -36,6 +36,7 @@ extents = Vector2( 64, 64 )
 
 [node name="Wall" type="Node2D"]
 script = ExtResource( 2 )
+facing = 2
 
 [node name="Graphics" type="Node2D" parent="."]
 
@@ -77,7 +78,7 @@ texture = ExtResource( 5 )
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Graphics/WallS"]
 position = Vector2( -128, -41 )
 scale = Vector2( 2, 2 )
-occluder = SubResource( 2 )
+occluder = SubResource( 10 )
 
 [node name="WallW" type="Sprite" parent="Graphics"]
 visible = false

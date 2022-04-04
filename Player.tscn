@@ -75,7 +75,7 @@ light_mask = 3
 position = Vector2( 65, 65 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 3 )
-color = Color( 0.921569, 0.92549, 0.607843, 1 )
+texture_scale = 10.0
 shadow_enabled = true
 
 [node name="Shape" type="CollisionShape2D" parent="."]

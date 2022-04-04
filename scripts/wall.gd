@@ -26,22 +26,23 @@ func _ready():
     # show_proper_light_occluder()
 
 func show_proper_light_occluder():
-  if facing == Facing.North:
-    $Graphics/WallN/LightOccluder2D.queue_free()
-  if facing == Facing.East:
-    $Graphics/WallE/LightOccluder2D.queue_free()
-  if facing == Facing.South:
-    $Graphics/WallS/LightOccluder2D.queue_free()
-  if facing == Facing.West:
-    $Graphics/WallW/LightOccluder2D.queue_free()
-  if facing == Facing.EastTall:
-    $Graphics/WallETall/LightOccluder2D.queue_free()
-  if facing == Facing.WestTall:
-    $Graphics/WallWTall/LightOccluder2D.queue_free()
-  if facing == Facing.SouthWestTall:
-    $Graphics/WallSWTall/LightOccluder2D.queue_free()
-  if facing == Facing.SouthEastTall:
-    $Graphics/WallSETall/LightOccluder2D.queue_free()
+  pass
+#  if facing == Facing.North:
+#    $Graphics/WallN/LightOccluder2D.queue_free()
+#  if facing == Facing.East:
+#    $Graphics/WallE/LightOccluder2D.queue_free()
+#  if facing == Facing.South:
+#    $Graphics/WallS/LightOccluder2D.queue_free()
+#  if facing == Facing.West:
+#    $Graphics/WallW/LightOccluder2D.queue_free()
+#  if facing == Facing.EastTall:
+#    $Graphics/WallETall/LightOccluder2D.queue_free()
+#  if facing == Facing.WestTall:
+#    $Graphics/WallWTall/LightOccluder2D.queue_free()
+#  if facing == Facing.SouthWestTall:
+#    $Graphics/WallSWTall/LightOccluder2D.queue_free()
+#  if facing == Facing.SouthEastTall:
+#    $Graphics/WallSETall/LightOccluder2D.queue_free()
 
 func set_wall_vis():
   for child in $Graphics.get_children():
