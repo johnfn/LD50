@@ -227,6 +227,9 @@ func push_block(block, direction):
   block.get_pushed(direction)
 
 func start_dialog_co(dialog_name: String):
+  if dialog_name == "OpenChestLantern":
+    yield(dialog.show_dialog_co("Hey, I found a lantern!"), "completed")
+  
   if dialog_name == "WhereAmI":
     yield(dialog.show_dialog_co("Whoa, so THIS is what the Underground Archives look like.", "Test"), "completed")
     yield(dialog.show_dialog_co("What was it the Curator wanted me to go grab again..."), "completed")

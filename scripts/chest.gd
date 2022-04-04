@@ -15,6 +15,8 @@ func _unhandled_input(event):
       is_open = true
       $Open.visible = true
       $Closed.visible = false
+      
+      yield(Globals.Player.start_dialog_co("OpenChestLantern"), "completed")
 
 func reset():
   is_open = false

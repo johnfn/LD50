@@ -26,6 +26,8 @@ func _unhandled_input(event):
     # == null accomodates for the period when the interactor does not exist
     
     if $Interactor == null or $Interactor.can_interact():
+      # Pick up the torch
+      
       if $Interactor != null:
         $Interactor.interact()
       
