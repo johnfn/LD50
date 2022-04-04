@@ -82,7 +82,7 @@ shader_param/inside = false
 shader_param/add_margins = true
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 64, 64 )
+extents = Vector2( 40, 38 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 192, 192 )
