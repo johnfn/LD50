@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Level1.tscn" type="PackedScene" id=2]
@@ -11,11 +11,10 @@
 [ext_resource path="res://Level4.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Dialog.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Level5.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/tile_floor.png" type="Texture" id=12]
+[ext_resource path="res://assets/Background.png" type="Texture" id=12]
 [ext_resource path="res://scripts/fov.gd" type="Script" id=13]
 [ext_resource path="res://Level6.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Level7.tscn" type="PackedScene" id=15]
-[ext_resource path="res://assets/screened.material" type="Material" id=16]
 
 [node name="Root" type="Node2D"]
 
@@ -24,22 +23,14 @@ script = ExtResource( 13 )
 
 [node name="Background" type="Sprite" parent="."]
 light_mask = 3
-material = ExtResource( 16 )
-position = Vector2( -329.5, 1470 )
-scale = Vector2( 213.285, 103.578 )
-z_index = -2
+position = Vector2( 766, -256 )
+scale = Vector2( 20, 20 )
 texture = ExtResource( 12 )
 
 [node name="ShadowChecker" type="Node2D" parent="." groups=["shadow_checker"]]
 script = ExtResource( 7 )
 
 [node name="AllGameObjects" type="YSort" parent="."]
-
-[node name="Player" parent="AllGameObjects" instance=ExtResource( 1 )]
-position = Vector2( 6720, -3072 )
-torch_parent = NodePath("../../Torches")
-
-[node name="Dialog" parent="AllGameObjects/Player" instance=ExtResource( 10 )]
 
 [node name="Levels" type="YSort" parent="AllGameObjects"]
 
