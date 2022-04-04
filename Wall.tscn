@@ -12,10 +12,10 @@
 [ext_resource path="res://assets/screened.material" type="Material" id=10]
 
 [sub_resource type="OccluderPolygon2D" id=2]
-polygon = PoolVector2Array( 0, -89, 0, 128, 128, 128, 128, -90 )
+polygon = PoolVector2Array( 0, -90, 0, -70, 128, -70, 128, -90 )
 
 [sub_resource type="OccluderPolygon2D" id=3]
-polygon = PoolVector2Array( -64, -64, -64, 64, 67, 66, 66, -65 )
+polygon = PoolVector2Array( -64, -64, -64, 64, -50, 64, -50, -64 )
 
 [sub_resource type="OccluderPolygon2D" id=8]
 polygon = PoolVector2Array( -126, 214, -92, 216, -94, -218, -130, -216 )
@@ -37,10 +37,12 @@ extents = Vector2( 64, 64 )
 
 [node name="Wall" type="Node2D"]
 script = ExtResource( 2 )
+facing = 1
 
 [node name="Graphics" type="Node2D" parent="."]
 
 [node name="WallN" type="Sprite" parent="Graphics"]
+visible = false
 material = ExtResource( 10 )
 position = Vector2( 64, 20.5 )
 scale = Vector2( 0.5, 0.5 )
@@ -52,7 +54,6 @@ scale = Vector2( 2, 2 )
 occluder = SubResource( 2 )
 
 [node name="WallE" type="Sprite" parent="Graphics"]
-visible = false
 material = ExtResource( 10 )
 position = Vector2( 64, 64 )
 scale = Vector2( 0.5, 0.5 )
