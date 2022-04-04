@@ -7,6 +7,10 @@ onready var Step1 = preload("res://audio/sfx/step1.mp3")
 onready var Step2 = preload("res://audio/sfx/step2.mp3")
 onready var Step3 = preload("res://audio/sfx/step3.mp3")
 
+onready var Switch = preload("res://audio/sfx/switch.mp3")
+
+onready var Blob1 = preload("res://audio/sfx/blob1.mp3")
+
 onready var StatueSlide = preload("res://audio/sfx/statue slide.mp3")
 
 onready var MenuMusic = preload("res://audio/bgm/menu_music.mp3")
@@ -19,6 +23,8 @@ onready var BgmPlayer: AudioStreamPlayer = $"/root/Root/Audio/BgmPlayer"
 
 var curr_song = ""
 func play_song(song):
+  if Globals.DEBUG_NO_MUSIC:
+    return
   if song == curr_song:
     return
   if song == 'menu':

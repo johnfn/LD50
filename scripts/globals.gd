@@ -6,6 +6,7 @@ var IS_GRANT = OS.has_environment("USER") and (OS.get_environment("USER") in ['a
 
 var IS_DEBUG = false
 var DEBUG_NO_SHADOWS = IS_DEBUG
+var DEBUG_NO_MUSIC = IS_DEBUG
 
 var is_showing_dialog = false
 var grid_size = 128
