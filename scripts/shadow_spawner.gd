@@ -25,33 +25,33 @@ func reset():
     shadow.queue_free()
   boundary_shadows = []
   
-func spawn_shadow(spawn_position: Vector2):
+func spawn_shadow(spawn_position: Vector2, is_first = false):
   var shadow = Shadow.instance()
   shadow.position = spawn_position
   add_child(shadow)
 
+  if is_first:
+    # Check we're actually on screen. if not, dont spawn. 
+    var ss = get_world_2d().direct_space_state
+    var results = ss.intersect_point(
+      shadow.global_position,
+      32,
+      [],
+      0b11111,
+      true,
+      true
+    )
+    
+    var in_bounds = false
+    
+    for r in results:
+      if r.collider.name == "CameraBounds":
+        in_bounds = true
   
-  # Check we're actually in bounds!
-  var ss = get_world_2d().direct_space_state
-  var results = ss.intersect_point(
-    shadow.global_position,
-    32,
-    [],
-    0b11111,
-    true,
-    true
-  )
-  
-  var in_bounds = false
-  
-  for r in results:
-    if r.collider.name == "CameraBounds":
-      in_bounds = true
-  
-  if not in_bounds:
-    # offscreen
-    shadow.queue_free()
-    return
+    if not in_bounds:
+      # offscreen
+      shadow.queue_free()
+      return
 
   
   boundary_shadows.append(shadow)
@@ -71,6 +71,7 @@ func _physics_process(delta):
       Sfx.play_sound(Sfx.Blob1)
       
       var shadow_center = shadow.position + Vector2(grid_size / 2, grid_size / 2)
+      
       shadow.modulate = Color(1, 1, 1, 1)
       var blocked = 0
       for spawn_offset in spawn_offsets:
@@ -82,7 +83,7 @@ func _physics_process(delta):
           
           if raycast_results.collider == Globals.Player:
             Globals.Player.start_dying_co()
-          
+
         else:
           raycast_results = space.intersect_ray(shadow_center, shadow_center + spawn_offset, [shadow], movable_raycast_mask)
           if len(raycast_results) == 0:
@@ -93,11 +94,11 @@ func _physics_process(delta):
               var ydiff = abs(torch.global_position.y - shadow.global_position.y)
               if (xdiff + ydiff) <= torch_buffer * Globals.grid_size:
                 torch_blocked = true 
-            
+
             if not torch_blocked:
               spawn_shadow(shadow.global_position + spawn_offset)
               blocked += 1
-      
+
       if blocked == len(spawn_offsets):
         to_remove.append(i)
 #    else:

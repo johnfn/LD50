@@ -85,7 +85,7 @@ func check_shadows():
           is_not_walled = true
           break
       if is_not_walled:
-        shadow_spawner.spawn_shadow(location - half_step)
+        shadow_spawner.spawn_shadow(location - half_step, true)
         
   if _debug:
     update() 

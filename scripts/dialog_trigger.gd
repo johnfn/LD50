@@ -11,4 +11,3 @@ func _on_DialogTrigger_body_entered(body):
 
 func reset():
   pass
-  # triggered_dialogs = {}
