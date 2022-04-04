@@ -17,14 +17,14 @@ polygon = PoolVector2Array( 0, -90, 0, -70, 128, -70, 128, -90 )
 [sub_resource type="OccluderPolygon2D" id=3]
 polygon = PoolVector2Array( -64, -64, -64, 64, -50, 64, -50, -64 )
 
-[sub_resource type="OccluderPolygon2D" id=8]
-polygon = PoolVector2Array( -126, 214, -92, 216, -94, -218, -130, -216 )
+[sub_resource type="OccluderPolygon2D" id=10]
+polygon = PoolVector2Array( -126, 214, -92, 214, -92, -214, -126, -214 )
 
-[sub_resource type="OccluderPolygon2D" id=9]
-polygon = PoolVector2Array( 96, 132, 128, 132, 130, -126, 100, -128 )
+[sub_resource type="OccluderPolygon2D" id=11]
+polygon = PoolVector2Array( 230, 264, 260, 264, 260, 0, 230, 0 )
 
-[sub_resource type="OccluderPolygon2D" id=4]
-polygon = PoolVector2Array( 228, 434, 258, 432, 258, 0, 224, 0 )
+[sub_resource type="OccluderPolygon2D" id=12]
+polygon = PoolVector2Array( 230, 428, 260, 428, 260, 0, 230, 0 )
 
 [sub_resource type="OccluderPolygon2D" id=7]
 polygon = PoolVector2Array( 4, 430, 28, 430, 34, -2, -2, 0 )
@@ -37,7 +37,6 @@ extents = Vector2( 64, 64 )
 
 [node name="Wall" type="Node2D"]
 script = ExtResource( 2 )
-facing = 3
 
 [node name="Graphics" type="Node2D" parent="."]
 
@@ -73,7 +72,8 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Graphics/WallETall"]
-occluder = SubResource( 8 )
+position = Vector2( 30, 0 )
+occluder = SubResource( 10 )
 
 [node name="WallS" type="Sprite" parent="Graphics"]
 visible = false
@@ -88,17 +88,16 @@ scale = Vector2( 2, 2 )
 occluder = SubResource( 2 )
 
 [node name="WallW" type="Sprite" parent="Graphics"]
+visible = false
 material = ExtResource( 10 )
-position = Vector2( 64, 64 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 8 )
+centered = false
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Graphics/WallW"]
-position = Vector2( -34, 0 )
-occluder = SubResource( 9 )
+occluder = SubResource( 11 )
 
 [node name="WallWTall" type="Sprite" parent="Graphics"]
-visible = false
 material = ExtResource( 10 )
 position = Vector2( 0, -87 )
 scale = Vector2( 0.5, 0.5 )
@@ -106,7 +105,7 @@ texture = ExtResource( 9 )
 centered = false
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Graphics/WallWTall"]
-occluder = SubResource( 4 )
+occluder = SubResource( 12 )
 
 [node name="WallSETall" type="Sprite" parent="Graphics"]
 visible = false
