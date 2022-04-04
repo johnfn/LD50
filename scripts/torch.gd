@@ -27,7 +27,7 @@ func initially_hide_interactor():
 func _unhandled_input(event):
   if Input.is_action_just_pressed("interact"):
     # == null accomodates for the period when the interactor does not exist
-    
+
     if $Interactor == null or $Interactor.can_interact():
       # Pick up the torch
       

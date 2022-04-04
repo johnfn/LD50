@@ -11,5 +11,5 @@ dest_files=[ "res://.import/pop-dialog-end.mp3-d7c782369b64ac044b18ae39f7c0c592.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

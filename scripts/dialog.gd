@@ -36,11 +36,16 @@ func show_dialog_co(text_to_show: String):
     
     resize_img()
     
+    if text_len % 5 == 0:
+      Sfx.play_sound(Sfx.VoiceClara)
+    
     for x in range(text_speed):
       yield(get_tree(), "idle_frame")
     
       if Input.is_action_just_pressed("interact"):
+        Sfx.play_sound(Sfx.PopDialogEnd)
         skip = true
+        
         break
     
     if skip:
@@ -55,6 +60,7 @@ func show_dialog_co(text_to_show: String):
     yield(get_tree(), "idle_frame")
     
     if Input.is_action_just_pressed("interact"):
+      Sfx.play_sound(Sfx.PopDialogEnd)
       break
     
   self.visible = false

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/voice-clara.mp3-55ee45a434f0aecac0b60f9b50d14674.mp3
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
