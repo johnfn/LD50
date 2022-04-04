@@ -2,10 +2,12 @@ extends Area2D
 onready var shadow_checker = get_node("/root/Root/ShadowChecker")
 
 var triggered = false
+export var once_only = false
 
 func _on_EvilShadowTrigger_body_entered(body):
   if not triggered and body == Globals.Player:
-    #triggered = true
+    if once_only:
+      triggered = true
     # trying re-entrant triggers, i think itll work better
     print(self.name)
     player_trigger_evil_shadow()
@@ -19,7 +21,6 @@ func player_trigger_evil_shadow():
     for x in range(3):
       Sfx.play_sound(Sfx.Tick1, true)
       yield(get_tree().create_timer(1), "timeout")
-    
     Sfx.play_sound(Sfx.Tick2, true)
     shadow_checker.check_shadows()
 

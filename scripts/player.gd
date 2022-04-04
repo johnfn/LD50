@@ -33,6 +33,9 @@ func move_to_level_start():
   start_location.visible = false
   
   self.global_position = start_location.global_position
+  
+  # leave this here >:(
+  trigger_level_start_shadows()
 
 func trigger_level_start_shadows():
   if not Globals.DEBUG_NO_SHADOWS:
@@ -49,8 +52,8 @@ func _ready():
   dialog.visible = false
   if not Globals.IS_DEBUG:
     move_to_level_start()
-  
-  trigger_level_start_shadows()
+  else:
+    trigger_level_start_shadows()
     
   round_position(self)
   StateManager.checkpoint(global_position)

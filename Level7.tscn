@@ -8,7 +8,7 @@
 [ext_resource path="res://EvilShadowTrigger.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 704, 512 )
+extents = Vector2( 192, 544 )
 
 [node name="Level7" type="YSort"]
 
@@ -403,8 +403,7 @@ initial_delay = 0
 position = Vector2( 1664, 1536 )
 
 [node name="Bounds" parent="Areas/EvilShadowTrigger2" index="0"]
-visible = false
-position = Vector2( 1024, -1088 )
+position = Vector2( 1600, -1120 )
 shape = SubResource( 1 )
 
 [node name="Wall" parent="." instance=ExtResource( 5 )]
