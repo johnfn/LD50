@@ -98,7 +98,7 @@ shape = SubResource( 2 )
 
 [node name="TextUpscaler" type="Node2D" parent="InteractionHint"]
 scale = Vector2( 2, 2 )
-z_index = 999
+z_index = 10
 
 [node name="Rect" type="NinePatchRect" parent="InteractionHint/TextUpscaler"]
 margin_left = -71.0

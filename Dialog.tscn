@@ -9,6 +9,7 @@ script = ExtResource( 3 )
 
 [node name="DialogUpscaler" type="Node2D" parent="."]
 scale = Vector2( 2, 2 )
+z_index = 20
 
 [node name="Rect" type="NinePatchRect" parent="DialogUpscaler"]
 margin_left = -23.5
