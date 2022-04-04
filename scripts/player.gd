@@ -61,10 +61,10 @@ func trigger_level_start_shadows():
 func _ready():
   if Globals.started:
     Sfx.play_song("level")
-  if not Globals.IS_DEBUG:
-    $Graphics/LightSource.visible = true
-  else:
-    $Graphics/LightSource.shadow_enabled = false
+#  if not Globals.IS_DEBUG:
+#    $Graphics/LightSource.visible = true
+#  else:
+#    $Graphics/LightSource.shadow_enabled = false
 
   dialog.visible = false
   if not Globals.IS_DEBUG:
@@ -165,7 +165,7 @@ func _physics_process(delta):
     return
   
   tick += delta
-  var can_move = tick >= ticks_to_move
+  var can_move = tick >= ( 0.05 if Input.is_key_pressed(KEY_SHIFT) else ticks_to_move )
   
   if can_move and len(poss_move_dirs) > 0:
     var target_pos = null
@@ -243,7 +243,7 @@ func start_dialog_co(dialog_name: String):
       yield(dialog.show_dialog_co("I got a lantern."), "completed")
   
   if dialog_name == "WhereAmI":
-    yield(dialog.show_dialog_co("Whoa, so THIS is what the Underground Archives look like.", "Test"), "completed")
+    yield(dialog.show_dialog_co("Whoa, so THIS is what the Underground Archives look like."), "completed")
     yield(dialog.show_dialog_co("What was it the Curator wanted me to go grab again..."), "completed")
     yield(dialog.show_dialog_co("Oh right! The Unholy Grail!"), "completed")
     yield(dialog.show_dialog_co("He said it was in the eighth floor of the basement, so I'd better get going."), "completed")

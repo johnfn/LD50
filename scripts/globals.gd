@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var Player = $"/root/Root/AllGameObjects/Player"
+onready var UI = $"/root/Root/UI"
 
 var IS_GRANT = OS.has_environment("USER") and (OS.get_environment("USER") in ['arch1', "grant"])
 
