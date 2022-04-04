@@ -7,18 +7,24 @@ onready var og_is_door_open = is_door_open
 onready var tile_door_open = $TileDoorOpen 
 onready var tile_door_closed = $TileDoor
 
+var initial_material = preload("res://assets/screened.material")
+
+var glowing = false
+
 func _ready():
   if is_door_open:
     is_door_open = false
     toggle_open()
   
   update_door_sprites()
-  
 
 func update_door_sprites():
   tile_door_open.visible = is_door_open
   tile_door_closed.visible = not is_door_open
-
+  
+  tile_door_open.material = null if glowing else initial_material
+  tile_door_closed.material = null if glowing else initial_material
+  
 func toggle_open():
   if is_door_open:
     is_door_open = false
@@ -36,3 +42,13 @@ func toggle_open():
 func reset():
   if og_is_door_open != is_door_open:
     toggle_open()
+
+
+func glow():
+  glowing = true
+  update_door_sprites()
+
+func glow_stop():
+  glowing = false
+  update_door_sprites()
+

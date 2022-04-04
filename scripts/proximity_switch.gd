@@ -28,3 +28,12 @@ func update_gfx():
 func reset():
   is_on = og_is_on
   update_gfx()
+
+func _on_NearbyArea_body_entered(body):
+  print("Enter")
+  for door in linked_door_nodes:
+    door.glow()
+
+func _on_NearbyArea_body_exited(body):
+  for door in linked_door_nodes:
+    door.glow_stop()

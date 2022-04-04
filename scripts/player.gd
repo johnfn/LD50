@@ -60,7 +60,11 @@ func trigger_level_start_shadows():
 
 func _ready():
   Sfx.play_song("level")
-  $Graphics/LightSource.visible = true
+  if not Globals.IS_DEBUG:
+    $Graphics/LightSource.visible = true
+  else:
+    $Graphics/LightSource.shadow_enabled = false
+
   dialog.visible = false
   if not Globals.IS_DEBUG:
     move_to_level_start()
