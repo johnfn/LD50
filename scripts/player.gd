@@ -17,6 +17,7 @@ var move_raycast_mask = 0b1111100
 
 func respawn(spawn_point: Vector2):
   self.global_position = spawn_point
+  shadow_checker.update_flood_fill_based_on_player_location()
 
 func round_position(target):
   target.position.x = round(target.position.x / size) * size

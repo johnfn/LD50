@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://StartLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Stairs.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Chest.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Hole.tscn" type="PackedScene" id=9]
+[ext_resource path="res://CheckpointZone.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640, 320 )
@@ -16,9 +17,9 @@ extents = Vector2( 640, 320 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 704, 256 )
 
-[node name="Level3" type="Node2D"]
+[node name="Level3" type="YSort"]
 
-[node name="Walls" type="Node2D" parent="."]
+[node name="Walls" type="YSort" parent="."]
 
 [node name="Wall" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( -256, 384 )
@@ -138,6 +139,9 @@ facing = 7
 
 [node name="Wall215" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 256, -2944 )
+
+[node name="Checkpoint" parent="Walls/Wall215" instance=ExtResource( 10 )]
+position = Vector2( 384, 384 )
 
 [node name="Wall216" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 128, -2944 )
@@ -527,7 +531,7 @@ position = Vector2( -256, -1024 )
 [node name="Wall86" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( -256, -1152 )
 
-[node name="Objects" type="Node2D" parent="."]
+[node name="Objects" type="YSort" parent="."]
 
 [node name="StartLocation" parent="Objects" instance=ExtResource( 1 )]
 position = Vector2( 384, 1152 )
@@ -594,7 +598,7 @@ position = Vector2( 256, -512 )
 [node name="Hole3" parent="Objects" instance=ExtResource( 9 )]
 position = Vector2( 768, -512 )
 
-[node name="Areas" type="Node2D" parent="."]
+[node name="Areas" type="YSort" parent="."]
 
 [node name="EvilShadowTrigger2" parent="Areas" instance=ExtResource( 6 )]
 position = Vector2( -1280, -512 )
