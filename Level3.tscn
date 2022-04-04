@@ -15,7 +15,7 @@
 extents = Vector2( 640, 320 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 704, 192 )
+extents = Vector2( 704, 256 )
 
 [node name="Level3" type="YSort"]
 
@@ -173,7 +173,7 @@ position = Vector2( 384, -2944 )
 position = Vector2( 512, -2944 )
 
 [node name="Wall224" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 768, -2304 )
+position = Vector2( 640, -1920 )
 facing = 1
 
 [node name="Wall226" parent="Walls" instance=ExtResource( 5 )]
@@ -518,19 +518,19 @@ position = Vector2( 640, -1792 )
 facing = 4
 
 [node name="Wall102" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 640, -1920 )
+position = Vector2( 640, -2048 )
 facing = 2
 
 [node name="Wall117" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 768, -2048 )
+position = Vector2( 768, -2176 )
 facing = 1
 
 [node name="Wall122" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 768, -1920 )
+position = Vector2( 768, -2048 )
 facing = 6
 
 [node name="Wall118" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 768, -2176 )
+position = Vector2( 768, -2304 )
 facing = 1
 
 [node name="Wall119" parent="Walls" instance=ExtResource( 5 )]
@@ -538,15 +538,15 @@ position = Vector2( 256, -2176 )
 facing = 3
 
 [node name="Wall120" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 256, -2048 )
+position = Vector2( 384, -1920 )
 facing = 3
 
 [node name="Wall121" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 256, -1920 )
+position = Vector2( 256, -2048 )
 facing = 7
 
 [node name="Wall103" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 384, -1920 )
+position = Vector2( 384, -2048 )
 facing = 2
 
 [node name="Wall104" parent="Walls" instance=ExtResource( 5 )]
@@ -635,10 +635,10 @@ position = Vector2( 896, -1536 )
 linked_doors = [ NodePath("../Door"), NodePath("../Door2") ]
 
 [node name="Door" parent="Objects/SwitchAndDoors4" instance=ExtResource( 2 )]
-position = Vector2( 512, -1664 )
+position = Vector2( 512, -1792 )
 
 [node name="Door2" parent="Objects/SwitchAndDoors4" instance=ExtResource( 2 )]
-position = Vector2( 512, -1920 )
+position = Vector2( 512, -2048 )
 is_door_open = true
 
 [node name="Chest" parent="Objects" instance=ExtResource( 8 )]
@@ -675,7 +675,7 @@ shape = SubResource( 1 )
 position = Vector2( -1280, -512 )
 
 [node name="Bounds" parent="Areas/EvilShadowTrigger3" index="0"]
-position = Vector2( 1856, -832 )
+position = Vector2( 1856, -896 )
 shape = SubResource( 2 )
 
 [editable path="Areas/EvilShadowTrigger2"]
