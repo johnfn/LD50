@@ -429,7 +429,7 @@ position = Vector2( 0, -384 )
 position = Vector2( 128, -384 )
 
 [node name="Statue" parent="Walls" instance=ExtResource( 3 )]
-position = Vector2( 128, 2944 )
+position = Vector2( 128, 2688 )
 
 [node name="Statue3" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( -128, -256 )
@@ -459,7 +459,7 @@ position = Vector2( -128, 768 )
 position = Vector2( 1024, 768 )
 
 [node name="Statue2" parent="Walls" instance=ExtResource( 3 )]
-position = Vector2( 768, 2944 )
+position = Vector2( 768, 2688 )
 
 [node name="Wall77" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 384, -1152 )
@@ -897,7 +897,7 @@ position = Vector2( 128, 2048 )
 [node name="Objects" type="YSort" parent="."]
 
 [node name="StartLocation" parent="Objects" instance=ExtResource( 1 )]
-position = Vector2( 512, 2944 )
+position = Vector2( 512, 3072 )
 
 [node name="SwitchAndDoors" type="Node2D" parent="Objects"]
 
@@ -979,7 +979,7 @@ position = Vector2( 768, -768 )
 position = Vector2( -1280, -512 )
 
 [node name="Bounds" parent="Areas/EvilShadowTrigger2" index="0"]
-position = Vector2( 1792, 3072 )
+position = Vector2( 1792, 3328 )
 shape = SubResource( 1 )
 
 [node name="EvilShadowTrigger3" parent="Areas" instance=ExtResource( 6 )]
