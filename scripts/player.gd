@@ -265,7 +265,13 @@ func start_dialog_co(dialog_name: String):
       is_first_lantern = false
       yield(dialog.show_dialog_co("Hey, what's that ticking sound?"), "completed")
     else:
-      yield(dialog.show_dialog_co("Oh no, it's happening again!"), "completed")
+      yield(dialog.show_dialog_co("Oh no, the shadows are coming back!"), "completed")
+
+  if dialog_name == "YouWinKinda":
+    yield(dialog.show_dialog_co("YES! Finally!!"), "completed")
+    yield(dialog.show_dialog_co("The Unholy Grail! I'm so glad it's actually here. The Curator is going to be so happy with me!"), "completed")
+    yield(dialog.show_dialog_co("But wait..."), "completed")
+    yield(dialog.show_dialog_co("...how do I get back up?"), "completed")
       
         
 
