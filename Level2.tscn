@@ -977,6 +977,7 @@ initial_delay = 3
 
 [node name="EvilShadowTrigger3" parent="Areas" instance=ExtResource( 6 )]
 position = Vector2( 256, 896 )
+once_only = true
 
 [node name="Bounds" parent="Areas/EvilShadowTrigger3" index="0"]
 position = Vector2( -1088, 832 )
@@ -992,6 +993,7 @@ shape = SubResource( 5 )
 
 [node name="EvilShadowTrigger5" parent="Areas" instance=ExtResource( 6 )]
 position = Vector2( 256, 896 )
+once_only = true
 
 [node name="Bounds" parent="Areas/EvilShadowTrigger5" index="0"]
 position = Vector2( -640, 1920 )
