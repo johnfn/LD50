@@ -164,7 +164,7 @@ func _physics_process(delta):
     return
   
   tick += delta
-  var can_move = tick >= ticks_to_move
+  var can_move = tick >= ( 0.05 if Input.is_key_pressed(KEY_SHIFT) else ticks_to_move )
   
   if can_move and len(poss_move_dirs) > 0:
     var target_pos = null

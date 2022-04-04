@@ -5,9 +5,14 @@ var triggered = false
 export var once_only = false
 
 func _on_EvilShadowTrigger_body_entered(body):
+  # Probably bad but it prevents things from getting confusing AF
+  if Globals.UI.EssTimeLeft.visible:
+    return
+  
   if not triggered and body == Globals.Player:
     if once_only:
       triggered = true
+    
     # trying re-entrant triggers, i think itll work better
     player_trigger_evil_shadow()
 
