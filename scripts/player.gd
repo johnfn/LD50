@@ -143,6 +143,8 @@ func _physics_process(delta):
 func move_in_direction(move_dir):
   var old_global_position = $Graphics.global_position
   
+  Sfx.step()
+  
   # We want to move them to the next square immediately, but
   # then play the animation in the next 0.2 sec
   

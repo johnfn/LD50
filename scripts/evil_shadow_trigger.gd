@@ -17,10 +17,10 @@ func player_trigger_evil_shadow():
   if not Globals.DEBUG_NO_SHADOWS:
     
     for x in range(3):
-      Sfx.play_sound(Sfx.Tick1)
+      Sfx.play_sound(Sfx.Tick1, true)
       yield(get_tree().create_timer(1), "timeout")
     
-    Sfx.play_sound(Sfx.Tick2)
+    Sfx.play_sound(Sfx.Tick2, true)
     shadow_checker.check_shadows()
 
 func reset():

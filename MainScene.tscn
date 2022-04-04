@@ -73,4 +73,8 @@ script = ExtResource( 3 )
 
 [node name="UI" parent="." instance=ExtResource( 6 )]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+
+[node name="AudioStreamPlayerHighPri" type="AudioStreamPlayer" parent="Audio"]
