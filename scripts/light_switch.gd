@@ -50,8 +50,10 @@ func _physics_process(delta):
     if not is_lit:
       Sfx.play_sound(Sfx.DoorClose, true)
     
-    $LightSwitchOff.visible = not is_lit
-    $Sprite.visible = is_lit
+    
+    print(is_on)
+    $LightSwitchOff.visible = not is_on
+    $Sprite.visible = is_on
 
 
 func reset():
