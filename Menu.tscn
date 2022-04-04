@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/crayon kids ui.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/menulight.png" type="Texture" id=2]
+[ext_resource path="res://Menu.gd" type="Script" id=3]
+[ext_resource path="res://assets/cara_S_idle.png" type="Texture" id=4]
+[ext_resource path="res://audio/bgm/menu_music.mp3" type="AudioStream" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 98
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 53
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[node name="Menu" type="CanvasLayer"]
+
+[node name="Menu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="Menu"]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="TextureRect2" type="TextureRect" parent="Menu"]
+margin_left = -37.0
+margin_top = 199.0
+margin_right = 563.0
+margin_bottom = 799.0
+rect_scale = Vector2( 1.3, 0.487 )
+rect_pivot_offset = Vector2( 300, 300 )
+texture = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="Menu"]
+margin_left = 142.0
+margin_top = 201.0
+margin_right = 398.0
+margin_bottom = 575.0
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="Menu"]
+margin_left = 63.0
+margin_top = 47.0
+margin_right = 195.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 1 )
+text = "Light at the Museum"
+
+[node name="Label2" type="Label" parent="Menu"]
+margin_left = 598.0
+margin_top = 215.0
+margin_right = 1009.0
+margin_bottom = 518.0
+custom_fonts/font = SubResource( 2 )
+text = "Click to Start"
+align = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Menu"]
+stream = ExtResource( 5 )
+autoplay = true

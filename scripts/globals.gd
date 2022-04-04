@@ -8,6 +8,7 @@ var IS_DEBUG = false
 var DEBUG_NO_SHADOWS = IS_DEBUG
 var DEBUG_NO_MUSIC = IS_DEBUG
 
+var started = false
 var is_showing_dialog = false
 var grid_size = 128
 var num_torches = 0
@@ -28,5 +29,8 @@ func get_level(which_level):
 func game_mode():
   if is_showing_dialog:
     return "dialog"
+    
+  if not started:
+    return "menu"
 
   return "normal"

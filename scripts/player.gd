@@ -35,7 +35,7 @@ func move_to_level_start():
   if Globals.current_level == 0 :
     return
     
-  if Globals.current_level == 8 :
+  if Globals.current_level == 6 :
     Sfx.play_song("end")
 
   var level = Globals.get_level(Globals.current_level)
@@ -59,7 +59,8 @@ func trigger_level_start_shadows():
       shadow_source.activate()
 
 func _ready():
-  Sfx.play_song("level")
+  if Globals.started:
+    Sfx.play_song("level")
   if not Globals.IS_DEBUG:
     $Graphics/LightSource.visible = true
   else:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Level1.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Level6.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Level7.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/screened.material" type="Material" id=16]
+[ext_resource path="res://Menu.tscn" type="PackedScene" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1026.5, 607 )
@@ -85,6 +86,8 @@ shape = SubResource( 1 )
 [node name="Torches" type="Node2D" parent="."]
 
 [node name="UI" parent="." instance=ExtResource( 6 )]
+
+[node name="Menu" parent="." instance=ExtResource( 17 )]
 
 [node name="Audio" type="Node2D" parent="."]
 
