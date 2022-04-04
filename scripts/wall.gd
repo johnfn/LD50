@@ -6,26 +6,22 @@ enum Facing {
   East,
   South,
   West,
+  
+  EastTall,
+  WestTall,
+  
   # NorthEast,
-  SouthEast,
+  SouthEastTall,
   # NorthWest,
-  SouthWest,
+  SouthWestTall,
 }
 
 export(Facing) var facing = Facing.North
 
 func _ready():
-  var grid_size = 128
-  var space = get_world_2d().get_direct_space_state()
-  var center = global_position + Vector2(grid_size / 2, grid_size / 2)
-  var is_wall = not space.intersect_point(center - Vector2(grid_size, 0), 1, [self], 0b10000).empty()
+  set_wall_vis()
 
-  print(is_wall)
-
-func _process(d: float):
-  if not Engine.editor_hint:
-    return
-  
+func set_wall_vis():
   for child in $Graphics.get_children():
     child.visible = false
   
@@ -37,3 +33,23 @@ func _process(d: float):
     $Graphics/WallS.visible = true
   if facing == Facing.West:
     $Graphics/WallW.visible = true
+    
+  if facing == Facing.EastTall:
+    $Graphics/WallETall.visible = true
+    
+  if facing == Facing.WestTall:
+    $Graphics/WallWTall.visible = true
+    
+  if facing == Facing.SouthWestTall:
+    $Graphics/WallSWTall.visible = true
+  
+  if facing == Facing.SouthEastTall:
+    $Graphics/WallSETall.visible = true
+
+
+func _process(d: float):
+  if not Engine.editor_hint:
+    return
+  
+  set_wall_vis()
+  
