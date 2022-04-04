@@ -4,7 +4,7 @@ onready var Player = $"/root/Root/AllGameObjects/Player"
 
 var IS_GRANT = OS.has_environment("USER") and (OS.get_environment("USER") == "grant")
 
-var IS_DEBUG = IS_GRANT && false
+var IS_DEBUG = IS_GRANT
 var DEBUG_NO_SHADOWS = IS_DEBUG
 
 var is_showing_dialog = false

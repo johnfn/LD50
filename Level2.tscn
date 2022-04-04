@@ -119,10 +119,6 @@ facing = 1
 position = Vector2( 1280, 384 )
 facing = 1
 
-[node name="Wall27" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 1280, 512 )
-facing = 1
-
 [node name="Wall53" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( -640, 1025 )
 facing = 4
@@ -132,17 +128,21 @@ position = Vector2( -640, 1153 )
 facing = 1
 
 [node name="Wall28" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 1280, 640 )
+position = Vector2( 1280, 511 )
 facing = 1
 
 [node name="Wall29" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 1280, 768 )
+position = Vector2( 1280, 640 )
 
 [node name="Wall30" parent="Walls" instance=ExtResource( 5 )]
-position = Vector2( 1408, 768 )
+position = Vector2( 1408, 640 )
 
 [node name="Wall46" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1536, 768 )
+facing = 4
+
+[node name="Wall91" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 1536, 640 )
 facing = 4
 
 [node name="Wall47" parent="Walls" instance=ExtResource( 5 )]
@@ -965,7 +965,7 @@ linked_doors = [ NodePath("../Door") ]
 position = Vector2( 768, 2304 )
 
 [node name="Chest" parent="Objects" instance=ExtResource( 8 )]
-position = Vector2( 1408, 896 )
+position = Vector2( 1408, 768 )
 
 [node name="Chest2" parent="Objects" instance=ExtResource( 8 )]
 position = Vector2( 640, 1792 )
