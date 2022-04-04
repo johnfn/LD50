@@ -37,12 +37,10 @@ extents = Vector2( 64, 64 )
 
 [node name="Wall" type="Node2D"]
 script = ExtResource( 2 )
-facing = 1
 
 [node name="Graphics" type="Node2D" parent="."]
 
 [node name="WallN" type="Sprite" parent="Graphics"]
-visible = false
 material = ExtResource( 10 )
 position = Vector2( 64, 20.5 )
 scale = Vector2( 0.5, 0.5 )
@@ -54,12 +52,14 @@ scale = Vector2( 2, 2 )
 occluder = SubResource( 2 )
 
 [node name="WallE" type="Sprite" parent="Graphics"]
+visible = false
 material = ExtResource( 10 )
 position = Vector2( 64, 64 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Graphics/WallE"]
+position = Vector2( 30, 0 )
 scale = Vector2( 2, 2 )
 occluder = SubResource( 3 )
 
