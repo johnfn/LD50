@@ -830,6 +830,7 @@ position = Vector2( 0, -1024 )
 facing = 3
 
 [node name="Objects" type="YSort" parent="."]
+visible = false
 
 [node name="SwitchAndDoors" type="YSort" parent="Objects"]
 
