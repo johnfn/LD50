@@ -50,7 +50,11 @@ func trigger_level_start_shadows():
       shadow_source.activate()
 
 func _ready():
-  $Graphics/LightSource.visible = true
+  if not Globals.IS_DEBUG:
+    $Graphics/LightSource.visible = true
+  else:
+    $Graphics/LightSource.shadow_enabled = false
+
   dialog.visible = false
   if not Globals.IS_DEBUG:
     move_to_level_start()

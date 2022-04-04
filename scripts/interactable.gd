@@ -10,9 +10,9 @@ var margin = Vector2(32, 16)
 var interacted = false
 
 func _ready():
-  reset()
+  clear_out()
 
-func reset():
+func clear_out():
   visible = false
   animation.play("Default")
 
@@ -68,3 +68,8 @@ func _on_Area_body_exited(body):
   
   $"../Animation".play("RESET")
   visible = false
+
+
+func reset():
+  interacted = false
+  clear_out()

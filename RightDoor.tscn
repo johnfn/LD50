@@ -40,6 +40,13 @@ scale = Vector2( 0.0703125, 0.595349 )
 texture = ExtResource( 2 )
 centered = false
 
+[node name="TileDoorUnshaded" type="Sprite" parent="."]
+position = Vector2( -304, -141 )
+scale = Vector2( 0.5, 0.595349 )
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( 608, 21.8358 )
+
 [node name="StaticBody" type="StaticBody2D" parent="."]
 visible = false
 collision_layer = 64

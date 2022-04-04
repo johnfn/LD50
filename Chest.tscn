@@ -278,7 +278,7 @@ region_rect = Rect2( 0, 0, 128, 128 )
 position = Vector2( 68, 72 )
 shape = SubResource( 1 )
 
-[node name="Interactor" type="Node2D" parent="."]
+[node name="Interactor" type="Node2D" parent="." groups=["resettable"]]
 script = ExtResource( 4 )
 interaction_name = "Open Chest"
 
