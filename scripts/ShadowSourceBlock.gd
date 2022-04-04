@@ -3,10 +3,6 @@ extends Node2D
 export var initial_delay = 1
 
 var shadow_spawner : Node2D
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-  activate()
   
 func reset():
   # empty, let me just have an empty function damnit
