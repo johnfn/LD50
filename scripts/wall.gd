@@ -50,6 +50,5 @@ func set_wall_vis():
 func _process(d: float):
   if not Engine.editor_hint:
     return
-  
   set_wall_vis()
   

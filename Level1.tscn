@@ -8,12 +8,11 @@
 [ext_resource path="res://ProximitySwitch.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Stairs.tscn" type="PackedScene" id=7]
 [ext_resource path="res://DialogTrigger.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Hole.tscn" type="PackedScene" id=9]
 [ext_resource path="res://NorthWall.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ShadowSourceBlock.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 576, 576 )
+extents = Vector2( 576, 448 )
 
 [node name="Level1" type="YSort"]
 
