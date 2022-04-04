@@ -242,7 +242,7 @@ func start_dialog_co(dialog_name: String):
       yield(dialog.show_dialog_co("I got a lantern."), "completed")
   
   if dialog_name == "WhereAmI":
-    yield(dialog.show_dialog_co("Whoa, so THIS is what the Underground Archives look like.", "Test"), "completed")
+    yield(dialog.show_dialog_co("Whoa, so THIS is what the Underground Archives look like."), "completed")
     yield(dialog.show_dialog_co("What was it the Curator wanted me to go grab again..."), "completed")
     yield(dialog.show_dialog_co("Oh right! The Unholy Grail!"), "completed")
     yield(dialog.show_dialog_co("He said it was in the eighth floor of the basement, so I'd better get going."), "completed")

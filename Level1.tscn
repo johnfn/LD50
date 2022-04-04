@@ -14,7 +14,7 @@
 [ext_resource path="res://PushableStatue.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 512, 565.592 )
+extents = Vector2( 512, 576 )
 
 [node name="Level1" type="YSort"]
 
