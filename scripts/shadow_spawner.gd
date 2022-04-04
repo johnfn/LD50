@@ -38,10 +38,14 @@ func _physics_process(delta):
   
   var space = get_world_2d().get_direct_space_state()
   var to_remove = []
+
   
   for i in range(len(boundary_shadows)):
     var shadow : Shadow = boundary_shadows[i]
     if shadow.time_since_spawn > shadow_propogation_time:
+       
+      Sfx.play_sound(Sfx.Blob1)
+      
       var shadow_center = shadow.position + Vector2(grid_size / 2, grid_size / 2)
       shadow.modulate = Color(1, 1, 1, 1)
       var blocked = 0
