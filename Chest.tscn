@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/Chest Open.png" type="Texture" id=1]
 [ext_resource path="res://scripts/chest.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/crayon kids.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/RoundedRect.png" type="Texture" id=6]
 [ext_resource path="res://assets/PlayerLightCircle.png" type="Texture" id=7]
+[ext_resource path="res://scripts/four_way_occluder.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Shader" id=6]
 code = "shader_type canvas_item;
@@ -253,6 +254,8 @@ tracks/3/keys = {
 collision_layer = 8
 collision_mask = 0
 script = ExtResource( 2 )
+
+[node name="FourWayOccluder" parent="." instance=ExtResource( 8 )]
 
 [node name="Open" type="Sprite" parent="."]
 visible = false

@@ -18,6 +18,8 @@ void fragment() {
     1.0 - (1.0 - before.b) * (1.0 - torch_color.b),
     blend.a
   );
+  COLOR = blend;
+  COLOR.a *= 0.20;
 }"
 
 [sub_resource type="ShaderMaterial" id=2]

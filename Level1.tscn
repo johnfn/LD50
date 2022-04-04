@@ -841,9 +841,6 @@ position = Vector2( 768, -1152 )
 
 [node name="Door2" parent="Objects/SwitchAndDoors" instance=ExtResource( 10 )]
 
-[node name="Door3" parent="Objects/SwitchAndDoors" instance=ExtResource( 10 )]
-position = Vector2( 791, -502 )
-
 [node name="SwitchAndDoors2" type="YSort" parent="Objects"]
 position = Vector2( -256, -1024 )
 
