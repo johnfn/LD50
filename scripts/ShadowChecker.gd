@@ -64,6 +64,7 @@ func _on_Button_pressed():
 # TODO should the placed lights be able to spawn ESS?
 # If not only check is_not_walled from the player position
 func check_shadows():
+  print("Checking shadows")
   var light_sources = _get_light_sources()
   _debug_lines.clear()
   var half_step = Vector2(Globals.grid_size / 2, Globals.grid_size / 2)
@@ -94,6 +95,7 @@ func check_shadows():
     update() 
 
 func _update_flood_fill(origin : Vector2):  
+  print("Running flood-fill")
   var immovable_mask = 0b11000
   var space = get_world_2d().get_direct_space_state()
   var to_propogate = []

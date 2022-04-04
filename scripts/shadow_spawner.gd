@@ -24,10 +24,6 @@ func reset():
     remove_child(shadow)
     shadow.queue_free()
   boundary_shadows = []
-
-func _ready():
-  if not Globals.DEBUG_NO_SHADOWS:
-    spawn_shadow(grid_offset)
   
 func spawn_shadow(spawn_position: Vector2):
   var shadow = Shadow.instance()

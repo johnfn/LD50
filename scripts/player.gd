@@ -28,11 +28,15 @@ func move_to_level_start():
 
   var level = Globals.get_level(Globals.current_level)
   var start_location = level.get_node("Objects/StartLocation")
+  var shadow_source = level.get_node("Objects/ShadowSourceBlock")
 
   start_location.visible = false
   
   self.global_position = start_location.global_position
   shadow_checker.update_flood_fill_based_on_player_location()
+  
+  if shadow_source:
+    shadow_source.activate()
 
 func _ready():
   $Graphics/LightSource.visible = true
@@ -182,7 +186,7 @@ func start_dying_co():
   StateManager.return_to_checkpoint()
   
 
-func enter_stairs():
-  Globals.current_level += 1
+func enter_stairs(var from_level):
+  Globals.current_level = from_level + 1
   
   move_to_level_start()
