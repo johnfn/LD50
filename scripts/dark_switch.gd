@@ -15,7 +15,7 @@ func _physics_process(delta):
   if not has_been_triggered:
     var space = get_world_2d().get_direct_space_state()
     var half_step = Vector2(Globals.grid_size / 2, Globals.grid_size / 2)
-    var pointcast_result = space.intersect_point(position + half_step, 1, [], 0b100)
+    var pointcast_result = space.intersect_point(global_position + half_step, 1, [], 0b100)
     if len(pointcast_result) > 0:
       has_been_triggered = true
       for door in linked_door_nodes:

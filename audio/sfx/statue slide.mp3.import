@@ -11,5 +11,5 @@ dest_files=[ "res://.import/statue slide.mp3-8594e6d93f1067d73d90de09968de315.mp
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

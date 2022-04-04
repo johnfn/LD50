@@ -5,6 +5,11 @@ var size = Globals.grid_size
 var tick = 0
 onready var shadow_checker = get_node("/root/Root/ShadowChecker")
 
+export var screen_wipe_time = 1
+var wipe_time = 0
+var enclose_time = 0
+var is_dead = false
+
 # var ticks_to_move = 0.25
 var ticks_to_move = 0.25
 onready var dialog = $Dialog
@@ -17,6 +22,10 @@ var move_raycast_mask = 0b1111100
 
 func respawn(spawn_point: Vector2):
   self.global_position = spawn_point
+  shadow_checker.update_flood_fill_based_on_player_location()
+  if Globals.current_level == 1:
+    trigger_level_start_shadows()
+  is_dead = false
 
 func round_position(target):
   target.position.x = round(target.position.x / size) * size
@@ -28,21 +37,32 @@ func move_to_level_start():
 
   var level = Globals.get_level(Globals.current_level)
   var start_location = level.get_node("Objects/StartLocation")
-  var shadow_source = level.get_node("Objects/ShadowSourceBlock")
 
   start_location.visible = false
   
   self.global_position = start_location.global_position
-  shadow_checker.update_flood_fill_based_on_player_location()
   
-  if shadow_source:
-    shadow_source.activate()
+  # leave this here >:(
+  trigger_level_start_shadows()
+
+func trigger_level_start_shadows():
+  if not Globals.DEBUG_NO_SHADOWS:
+    var level = Globals.get_level(Globals.current_level)
+    var shadow_source = level.get_node("Objects/ShadowSourceBlock")
+    
+    shadow_checker.update_flood_fill_based_on_player_location()
+    
+    if shadow_source:
+      shadow_source.activate()
 
 func _ready():
   $Graphics/LightSource.visible = true
   dialog.visible = false
   if not Globals.IS_DEBUG:
     move_to_level_start()
+  else:
+    trigger_level_start_shadows()
+    
   round_position(self)
   StateManager.checkpoint(global_position)
 
@@ -62,7 +82,8 @@ func _unhandled_input(event):
       new_torch.global_position = global_position
     
   if Input.is_action_just_pressed("respawn"):
-    StateManager.return_to_checkpoint()
+    wipe_time = 0.001
+    is_dead = true
   
   var new_press_order = []
   for action_name in press_order:
@@ -108,6 +129,31 @@ func _physics_process(delta):
   if Globals.game_mode() != "normal":
     return
   
+  if wipe_time > 0:
+    wipe_time += delta
+  if enclose_time > 0:
+    enclose_time += delta
+  var wipe_perc = wipe_time / screen_wipe_time
+  var enclose_perc = enclose_time / screen_wipe_time
+  if wipe_perc > 0.5 and wipe_perc - delta / screen_wipe_time <= 0.5:
+    if is_dead:
+      StateManager.return_to_checkpoint()
+    else:
+      move_to_level_start()
+  if enclose_perc > 0.5 and enclose_perc - delta / screen_wipe_time <= 0.5:
+    if is_dead:
+      StateManager.return_to_checkpoint()
+  var overlay = $CanvasLayer/Overlay
+  overlay.material.set_shader_param("wipe_percent", wipe_perc)
+  overlay.material.set_shader_param("enclose_percent", enclose_perc)
+  if wipe_time > screen_wipe_time:
+    wipe_time = 0
+  if enclose_time > screen_wipe_time:
+    enclose_time = 0
+  
+  if is_dead or wipe_time > 0:
+    return
+  
   tick += delta
   var can_move = tick >= ticks_to_move
   
@@ -133,6 +179,8 @@ func _physics_process(delta):
 # let's actually do it!
 func move_in_direction(move_dir):
   var old_global_position = $Graphics.global_position
+  
+  Sfx.step()
   
   # We want to move them to the next square immediately, but
   # then play the animation in the next 0.2 sec
@@ -167,6 +215,7 @@ func move_in_direction(move_dir):
   tick = 0.0
   
 func push_block(block, direction):
+  Sfx.play_sound(Sfx.StatueSlide)
   block.get_pushed(direction)
 
 func start_dialog_co(dialog_name: String):
@@ -181,12 +230,11 @@ func start_dying_co():
   
   print("YOU HAVE DIED")
   
-  # TODO: Death cinematic
-  
-  StateManager.return_to_checkpoint()
+  enclose_time = 0.001
+  is_dead = true
   
 
 func enter_stairs(var from_level):
   Globals.current_level = from_level + 1
   
-  move_to_level_start()
+  wipe_time = 0.001

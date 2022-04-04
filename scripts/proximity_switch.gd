@@ -27,3 +27,4 @@ func update_gfx():
 
 func reset():
   is_on = og_is_on
+  update_gfx()

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/light torch.mp3-8dcdd5d99fd341d77c232d38eba1a151.mp3
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -10,6 +10,9 @@ var margin = Vector2(32, 16)
 var interacted = false
 
 func _ready():
+  reset()
+
+func reset():
   visible = false
   animation.play("Default")
 

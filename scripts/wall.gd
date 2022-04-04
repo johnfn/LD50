@@ -22,36 +22,36 @@ func _ready():
   set_wall_vis()
   
   if not Engine.editor_hint:
-    show_proper_light_occluder()
+    pass
+    # show_proper_light_occluder()
 
 func show_proper_light_occluder():
-  if facing == Facing.North:
-    $Graphics/WallN/LightOccluder2D.queue_free()
-  if facing == Facing.East:
-    $Graphics/WallE/LightOccluder2D.queue_free()
-  if facing == Facing.South:
-    $Graphics/WallS/LightOccluder2D.queue_free()
-  if facing == Facing.West:
-    $Graphics/WallW/LightOccluder2D.queue_free()
-  if facing == Facing.EastTall:
-    $Graphics/WallETall/LightOccluder2D.queue_free()
-  if facing == Facing.WestTall:
-    $Graphics/WallWTall/LightOccluder2D.queue_free()
-  if facing == Facing.SouthWestTall:
-    $Graphics/WallSWTall/LightOccluder2D.queue_free()
-  if facing == Facing.SouthEastTall:
-    $Graphics/WallSETall/LightOccluder2D.queue_free()
+  pass
+#  if facing == Facing.North:
+#    $Graphics/WallN/LightOccluder2D.queue_free()
+#  if facing == Facing.East:
+#    $Graphics/WallE/LightOccluder2D.queue_free()
+#  if facing == Facing.South:
+#    $Graphics/WallS/LightOccluder2D.queue_free()
+#  if facing == Facing.West:
+#    $Graphics/WallW/LightOccluder2D.queue_free()
+#  if facing == Facing.EastTall:
+#    $Graphics/WallETall/LightOccluder2D.queue_free()
+#  if facing == Facing.WestTall:
+#    $Graphics/WallWTall/LightOccluder2D.queue_free()
+#  if facing == Facing.SouthWestTall:
+#    $Graphics/WallSWTall/LightOccluder2D.queue_free()
+#  if facing == Facing.SouthEastTall:
+#    $Graphics/WallSETall/LightOccluder2D.queue_free()
 
 func set_wall_vis():
   for child in $Graphics.get_children():
     child.visible = false
   
-  if facing == Facing.North:
+  if facing == Facing.North or facing == Facing.South:
     $Graphics/WallN.visible = true
   if facing == Facing.East:
     $Graphics/WallE.visible = true
-  if facing == Facing.South:
-    $Graphics/WallS.visible = true
   if facing == Facing.West:
     $Graphics/WallW.visible = true
   if facing == Facing.EastTall:
@@ -65,7 +65,4 @@ func set_wall_vis():
 
 
 func _process(d: float):
-  if not Engine.editor_hint:
-    return
   set_wall_vis()
-  

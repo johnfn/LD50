@@ -1,13 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/statue_1.png" type="Texture" id=1]
 [ext_resource path="res://scripts/pushable_statue.gd" type="Script" id=2]
+[ext_resource path="res://scripts/four_way_occluder.tscn" type="PackedScene" id=3]
 
 [sub_resource type="OccluderPolygon2D" id=2]
 polygon = PoolVector2Array( 0, 0, 0, 128, 128, 128, 128, 0 )
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 60, 60 )
+extents = Vector2( 58.5, 59 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "Jump"
@@ -39,10 +40,13 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Graphics"]
+visible = false
 occluder = SubResource( 2 )
 
+[node name="FourWayOccluder" parent="Graphics" instance=ExtResource( 3 )]
+
 [node name="Shape" type="CollisionShape2D" parent="."]
-position = Vector2( 64, 64 )
+position = Vector2( 64.5, 64 )
 shape = SubResource( 1 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]

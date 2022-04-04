@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tileset.png-8357b5d8a5c4813438aa7187a7fecf4c.stex"
+path="res://.import/TorchLightCircle.png-780c85f847c78d9da48461bb151f870f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tileset.png"
-dest_files=[ "res://.import/Tileset.png-8357b5d8a5c4813438aa7187a7fecf4c.stex" ]
+source_file="res://assets/TorchLightCircle.png"
+dest_files=[ "res://.import/TorchLightCircle.png-780c85f847c78d9da48461bb151f870f.stex" ]
 
 [params]
 
