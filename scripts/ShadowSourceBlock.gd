@@ -5,8 +5,7 @@ export var initial_delay = 1
 var shadow_spawner : Node2D
   
 func reset():
-  # empty, let me just have an empty function damnit
-  var a = 5
+  activate()
 
 func activate():  
   yield(get_tree().create_timer(initial_delay), "timeout")

@@ -21,6 +21,7 @@ func play_sound(sound, high_priority = false):
     Player.play()
 
 func step():
+  print('stepping')
   var steps = [Step1, Step2, Step3]
   var step = steps[randi() % steps.size()]
   

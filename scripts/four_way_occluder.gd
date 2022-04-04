@@ -15,10 +15,12 @@ func _ready():
   $LightOccluderW.scale.y = height / 128
   $LightOccluderN.scale.y = width / 128
   $LightOccluderS.scale.y = width / 128
+  if not e_occlude:
+    $LightOccluderE.queue_free()
+  if not s_occlude:
+    $LightOccluderS.queue_free()
+  if not n_occlude:
+    $LightOccluderN.queue_free()
+  if not w_occlude:
+    $LightOccluderW.queue_free()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-  $LightOccluderE.visible = e_occlude and Globals.Player.global_position.x < global_position.x + width
-  $LightOccluderW.visible = w_occlude and Globals.Player.global_position.x > global_position.x
-  $LightOccluderN.visible = n_occlude and Globals.Player.global_position.y > global_position.y
-  $LightOccluderS.visible = s_occlude and Globals.Player.global_position.y < global_position.y + height

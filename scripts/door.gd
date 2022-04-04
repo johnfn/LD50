@@ -24,12 +24,12 @@ func toggle_open():
     is_door_open = false
     get_node("StaticBody/CollisionShape").set_deferred("disabled", false)
     get_node("FourWayOccluder").visible = true
-    get_node("TileDoor").modulate.a = 1.0
+#    get_node("TileDoor").modulate.a = 1.0
   else:
     is_door_open = true
     get_node("StaticBody/CollisionShape").set_deferred("disabled", true)
     get_node("FourWayOccluder").visible = false
-    get_node("TileDoor").modulate.a = 0.5  
+#    get_node("TileDoor").modulate.a = 0.5  
   
   update_door_sprites()
 

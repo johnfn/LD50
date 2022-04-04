@@ -18,3 +18,4 @@ func reset():
   is_open = false
   $Open.visible = false
   $Closed.visible = true
+  $Interactor.reset()
