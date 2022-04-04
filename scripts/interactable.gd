@@ -5,6 +5,7 @@ onready var rect = $InteractionHint/TextUpscaler/Rect
 onready var animation = $InteractionHint/Animation
 
 export var interaction_name: String = "hello"
+onready var parent_animation = $"../Animation"
 
 var margin = Vector2(32, 16)
 var interacted = false
@@ -39,7 +40,8 @@ func _on_Area2D_body_entered(body):
   
   visible = true
   
-  $"../Animation".play("Glow")
+  if parent_animation != null:
+    parent_animation.play("Glow")
   show_text_co(interaction_name)
 
 func show_text_co(text: String):  
@@ -66,9 +68,9 @@ func _on_Area_body_exited(body):
   animation.play("Fade")
   yield(animation, "animation_finished")
   
-  $"../Animation".play("RESET")
+  if parent_animation != null:
+    parent_animation.play("RESET")
   visible = false
-
 
 func reset():
   interacted = false
