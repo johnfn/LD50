@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/screened.material" type="Material" id=3]
 
 [sub_resource type="OccluderPolygon2D" id=2]
-polygon = PoolVector2Array( 0, -128, 0, 128, 128, 128, 128, -128 )
+polygon = PoolVector2Array( 0, 0, 0, 128, 128, 128, 128, 0 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 64 )

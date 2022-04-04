@@ -27,6 +27,7 @@ light_mask = 3
 material = ExtResource( 16 )
 position = Vector2( 4696, 1965 )
 scale = Vector2( 100, 80 )
+z_index = -2
 texture = ExtResource( 12 )
 
 [node name="ShadowChecker" type="Node2D" parent="." groups=["shadow_checker"]]
