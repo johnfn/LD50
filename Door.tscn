@@ -27,6 +27,7 @@ centered = false
 offset = Vector2( 608, 21.8358 )
 
 [node name="TileDoorOpen" type="Sprite" parent="."]
+material = ExtResource( 3 )
 position = Vector2( 0, -128 )
 scale = Vector2( 0.0703125, 0.595349 )
 texture = ExtResource( 1 )

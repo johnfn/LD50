@@ -199,7 +199,8 @@ func start_dying_co():
   # TODO: Death cinematic
   
   StateManager.return_to_checkpoint()
-  trigger_level_start_shadows()
+  if Globals.current_level == 1:
+    trigger_level_start_shadows()
   
 
 func enter_stairs(var from_level):

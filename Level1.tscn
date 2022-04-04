@@ -860,12 +860,12 @@ position = Vector2( -256, -1024 )
 
 [node name="Switch" parent="Objects/SwitchAndDoors3" instance=ExtResource( 6 )]
 position = Vector2( 0, -3840 )
-linked_doors = [ NodePath("../Door"), NodePath("../Door2") ]
+linked_doors = [ NodePath("../Door"), NodePath("../DoorRight") ]
 
 [node name="Door" parent="Objects/SwitchAndDoors3" instance=ExtResource( 4 )]
 position = Vector2( 1024, -4480 )
 
-[node name="Door2" parent="Objects/SwitchAndDoors3" instance=ExtResource( 4 )]
+[node name="DoorRight" parent="Objects/SwitchAndDoors3" instance=ExtResource( 10 )]
 position = Vector2( 1152, -4480 )
 
 [node name="SwitchAndDoors4" type="YSort" parent="Objects"]
@@ -873,12 +873,12 @@ position = Vector2( -256, -1024 )
 
 [node name="Switch" parent="Objects/SwitchAndDoors4" instance=ExtResource( 6 )]
 position = Vector2( 2176, -3968 )
-linked_doors = [ NodePath("../Door"), NodePath("../Door2") ]
+linked_doors = [ NodePath("../Door"), NodePath("../DoorRight") ]
 
 [node name="Door" parent="Objects/SwitchAndDoors4" instance=ExtResource( 4 )]
 position = Vector2( 1024, -4736 )
 
-[node name="Door2" parent="Objects/SwitchAndDoors4" instance=ExtResource( 4 )]
+[node name="DoorRight" parent="Objects/SwitchAndDoors4" instance=ExtResource( 10 )]
 position = Vector2( 1152, -4736 )
 
 [node name="Statue" parent="Objects" instance=ExtResource( 1 )]
