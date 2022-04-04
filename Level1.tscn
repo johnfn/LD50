@@ -929,12 +929,11 @@ position = Vector2( 0, -1024 )
 facing = 3
 
 [node name="Objects" type="YSort" parent="."]
-visible = false
 
 [node name="SwitchAndDoors" type="YSort" parent="Objects"]
 
 [node name="Switch" parent="Objects/SwitchAndDoors" instance=ExtResource( 6 )]
-position = Vector2( 256, -768 )
+position = Vector2( 256, -896 )
 linked_doors = [ NodePath("../Door"), NodePath("../Door2") ]
 
 [node name="Door" parent="Objects/SwitchAndDoors" instance=ExtResource( 4 )]
@@ -1021,7 +1020,7 @@ position = Vector2( 768, -6912 )
 position = Vector2( 256, -128 )
 
 [node name="StartLocation" parent="Objects" instance=ExtResource( 2 )]
-position = Vector2( 640, -256 )
+position = Vector2( 640, 1152 )
 
 [node name="Areas" type="Node2D" parent="."]
 
