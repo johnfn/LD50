@@ -18,6 +18,8 @@ var move_raycast_mask = 0b1111100
 func respawn(spawn_point: Vector2):
   self.global_position = spawn_point
   shadow_checker.update_flood_fill_based_on_player_location()
+  if Globals.current_level == 1:
+    trigger_level_start_shadows()
 
 func round_position(target):
   target.position.x = round(target.position.x / size) * size
@@ -199,8 +201,6 @@ func start_dying_co():
   # TODO: Death cinematic
   
   StateManager.return_to_checkpoint()
-  if Globals.current_level == 1:
-    trigger_level_start_shadows()
   
 
 func enter_stairs(var from_level):
