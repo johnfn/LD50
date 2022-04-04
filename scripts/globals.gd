@@ -13,7 +13,7 @@ var num_torches = 0
 var encountered_torches = false
 
 # 0 is a special value that means to not load in any level.
-var current_level = 1
+var current_level = 5
 
 func get_level(which_level):
   var levels = $"/root/Root/AllGameObjects/Levels".get_children()

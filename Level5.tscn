@@ -547,7 +547,7 @@ position = Vector2( 1408, -256 )
 position = Vector2( 1920, -256 )
 
 [node name="Statue3" parent="Walls" instance=ExtResource( 3 )]
-position = Vector2( 2304, 768 )
+position = Vector2( 2304, 896 )
 
 [node name="Wall69" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 2688, -640 )
@@ -624,19 +624,19 @@ position = Vector2( 2432, -384 )
 [node name="SwitchAndDoors5" type="Node2D" parent="Objects"]
 
 [node name="LightSwitch" parent="Objects/SwitchAndDoors5" instance=ExtResource( 10 )]
-position = Vector2( 2304, 384 )
+position = Vector2( 2560, 640 )
 linked_doors = [ NodePath("../Door5"), NodePath("../Door4") ]
 
 [node name="Door4" parent="Objects/SwitchAndDoors5" instance=ExtResource( 2 )]
-position = Vector2( 1664, 384 )
+position = Vector2( 1792, 384 )
 
 [node name="Door5" parent="Objects/SwitchAndDoors5" instance=ExtResource( 2 )]
-position = Vector2( 1664, 512 )
+position = Vector2( 1792, 512 )
 
 [node name="SwitchAndDoors6" type="Node2D" parent="Objects"]
 
 [node name="LightSwitch" parent="Objects/SwitchAndDoors6" instance=ExtResource( 10 )]
-position = Vector2( 2048, 768 )
+position = Vector2( 2048, 640 )
 linked_doors = [ NodePath("../Door4"), NodePath("../Door5") ]
 
 [node name="Door4" parent="Objects/SwitchAndDoors6" instance=ExtResource( 2 )]
@@ -655,6 +655,7 @@ position = Vector2( 2048, -640 )
 
 [node name="ShadowSourceBlock" parent="Objects" instance=ExtResource( 8 )]
 position = Vector2( 256, -512 )
+initial_delay = 3
 
 [node name="Chest" parent="Objects" instance=ExtResource( 13 )]
 position = Vector2( 1152, -640 )

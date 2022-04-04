@@ -12,11 +12,11 @@
 [ext_resource path="res://ShadowSourceBlock.tscn" type="PackedScene" id=10]
 [ext_resource path="res://RightDoor.tscn" type="PackedScene" id=11]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 704, 256 )
-
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 768, 192 )
+extents = Vector2( 448, 192 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 832, 160 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 640, 256 )
@@ -954,19 +954,19 @@ initial_delay = 3
 
 [node name="Areas" type="Node2D" parent="."]
 
-[node name="EvilShadowTrigger2" parent="Areas" instance=ExtResource( 6 )]
-position = Vector2( 512, 384 )
-
-[node name="Bounds" parent="Areas/EvilShadowTrigger2" index="0"]
-position = Vector2( 64, 512 )
-shape = SubResource( 1 )
-
 [node name="EvilShadowTrigger3" parent="Areas" instance=ExtResource( 6 )]
 position = Vector2( 256, 896 )
 
 [node name="Bounds" parent="Areas/EvilShadowTrigger3" index="0"]
-position = Vector2( -768, 832 )
+position = Vector2( -1088, 832 )
 shape = SubResource( 2 )
+
+[node name="EvilShadowTrigger6" parent="Areas" instance=ExtResource( 6 )]
+position = Vector2( 256, 896 )
+
+[node name="Bounds" parent="Areas/EvilShadowTrigger6" index="0"]
+position = Vector2( 448, 32 )
+shape = SubResource( 5 )
 
 [node name="EvilShadowTrigger5" parent="Areas" instance=ExtResource( 6 )]
 position = Vector2( 256, 896 )
@@ -985,7 +985,7 @@ shape = SubResource( 3 )
 [node name="Checkpoint" parent="Areas" instance=ExtResource( 9 )]
 position = Vector2( 2688, 1664 )
 
-[editable path="Areas/EvilShadowTrigger2"]
 [editable path="Areas/EvilShadowTrigger3"]
+[editable path="Areas/EvilShadowTrigger6"]
 [editable path="Areas/EvilShadowTrigger5"]
 [editable path="Areas/EvilShadowTrigger4"]

@@ -12,7 +12,7 @@
 [ext_resource path="res://LightSwitch.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Hole.tscn" type="PackedScene" id=11]
 [ext_resource path="res://PushableStatue.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Shadow.tscn" type="PackedScene" id=13]
+[ext_resource path="res://ShadowSourceBlock.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 192, 384 )
@@ -731,7 +731,7 @@ position = Vector2( 2176, 0 )
 [node name="PushableStatue4" parent="Objects" instance=ExtResource( 12 )]
 position = Vector2( 1920, 640 )
 
-[node name="Shadow" parent="Objects" instance=ExtResource( 13 )]
+[node name="ShadowSourceBlock" parent="Objects" instance=ExtResource( 13 )]
 position = Vector2( 256, 128 )
 
 [node name="Areas" type="YSort" parent="."]
