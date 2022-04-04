@@ -228,10 +228,32 @@ func push_block(block, direction):
 
 func start_dialog_co(dialog_name: String):
   if dialog_name == "WhereAmI":
-    yield(dialog.show_dialog_co("Hey you triggered the dialog!"), "completed")
+    yield(dialog.show_dialog_co("Whoa, so THIS is what the Underground Archives look like.", "Test"), "completed")
+    yield(dialog.show_dialog_co("What was it the Curator wanted me to go grab again..."), "completed")
+    yield(dialog.show_dialog_co("Oh right! The Unholy Grail!"), "completed")
+    yield(dialog.show_dialog_co("He said it was in the eighth floor of the basement, so I'd better get going."), "completed")
+    yield(dialog.show_dialog_co("And he also said to beware the dark...?"), "completed")
+    yield(dialog.show_dialog_co("But that's so silly. I'm an adult!"), "completed")
+    yield(dialog.show_dialog_co("Now, where might those steps to the second floor be?"), "completed")
   
+  if dialog_name == "FirstDoor":
+    yield(dialog.show_dialog_co("Huh? A door? But the Curator never gave me a key..."), "completed")
+    yield(dialog.show_dialog_co("Maybe there's another way to open it."), "completed")
+    
+  if dialog_name == "FirstShadows":
+    yield(dialog.show_dialog_co("Hey, what's that ticking sound?"), "completed")
+    
+  if dialog_name == "UnfirstShadows":
+    yield(dialog.show_dialog_co("Oh no, it's happening again!"), "completed")
+
+  if dialog_name == "FirstAtrium":
+    yield(dialog.show_dialog_co("Yikes, I've never seen shadows that could chase someone before!"), "completed")
+    yield(dialog.show_dialog_co("Maybe there's more to the Archives than meets the eye."), "completed")
+    yield(dialog.show_dialog_co("But that's not gonna stop me! Second floor, here I come!"), "completed")
+
   if dialog_name == "FirstEvilShadowTrigger":
     yield(dialog.show_dialog_co("Oh no [insert ESS trigger text here]!"), "completed")
+    yield(dialog.show_dialog_co("test!"), "completed")
 
 func start_dying_co():
   yield(get_tree(), 'idle_frame')
