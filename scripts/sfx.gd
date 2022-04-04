@@ -9,8 +9,27 @@ onready var Step3 = preload("res://audio/sfx/step3.mp3")
 
 onready var StatueSlide = preload("res://audio/sfx/statue slide.mp3")
 
+onready var MenuMusic = preload("res://audio/bgm/menu_music.mp3")
+onready var LevelMusic = preload("res://audio/bgm/level_music.mp3")
+onready var EndMusic = preload("res://audio/bgm/floor_8_music.mp3")
+
 onready var Player: AudioStreamPlayer = $"/root/Root/Audio/AudioStreamPlayer"
 onready var HighPriorityPlayer: AudioStreamPlayer = $"/root/Root/Audio/AudioStreamPlayerHighPri"
+onready var BgmPlayer: AudioStreamPlayer = $"/root/Root/Audio/BgmPlayer"
+
+var curr_song = ""
+func play_song(song):
+  if song == curr_song:
+    return
+  if song == 'menu':
+    BgmPlayer.stream = MenuMusic
+    BgmPlayer.play()
+  if song == 'end':
+    BgmPlayer.stream = EndMusic
+    BgmPlayer.play()
+  if song == 'level':
+    BgmPlayer.stream = LevelMusic
+    BgmPlayer.play()
 
 func play_sound(sound, high_priority = false):
   if high_priority:

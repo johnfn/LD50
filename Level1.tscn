@@ -939,6 +939,4 @@ shape = SubResource( 1 )
 [node name="Checkpoint" parent="Areas" instance=ExtResource( 9 )]
 position = Vector2( 896, -6784 )
 
-[node name="Occluders" type="Node2D" parent="."]
-
 [editable path="Areas/EvilShadowTrigger2F"]
