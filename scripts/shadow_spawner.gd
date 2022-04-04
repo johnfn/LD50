@@ -4,7 +4,7 @@ var Shadow = preload("res://Shadow.tscn")
 
 export var grid_offset : Vector2 = Vector2.ZERO
 export var grid_size : float = 128
-export var shadow_propogation_time : float = 1.3
+export var shadow_propogation_time : float = .75
 export var torch_buffer : int = 3
 # TODO should this include the player?
 export var raycast_mask = 0b11100

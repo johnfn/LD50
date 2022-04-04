@@ -974,7 +974,7 @@ position = Vector2( -128, 2560 )
 position = Vector2( 1152, 2560 )
 
 [node name="ShadowSourceBlock" parent="Objects" instance=ExtResource( 11 )]
-position = Vector2( 384, 1024 )
+position = Vector2( 256, 768 )
 
 [node name="Areas" type="YSort" parent="."]
 
