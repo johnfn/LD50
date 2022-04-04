@@ -10,6 +10,9 @@ enum Facing {
   EastTall,
   WestTall,
   
+  SouthWest,
+  SouthEast,
+  
   # NorthEast,
   SouthEastTall,
   # NorthWest,
@@ -62,6 +65,10 @@ func set_wall_vis():
     $Graphics/WallSWTall.visible = true
   if facing == Facing.SouthEastTall:
     $Graphics/WallSETall.visible = true
+  if facing == Facing.SouthWest:
+    $Graphics/WallSW.visible = true
+  if facing == Facing.SouthEast:
+    $Graphics/WallSE.visible = true
 
 
 func _process(d: float):
