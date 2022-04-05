@@ -31,6 +31,7 @@ onready var EndMusic = preload("res://audio/bgm/floor_8_music.mp3")
 
 onready var Player: AudioStreamPlayer = $"/root/Root/Audio/AudioStreamPlayer"
 onready var HighPriorityPlayer: AudioStreamPlayer = $"/root/Root/Audio/AudioStreamPlayerHighPri"
+onready var ICantBelieveItsNotPlayer: AudioStreamPlayer = $"/root/Root/Audio/ICantBelieveItsNotPlayer"
 onready var BgmPlayer: AudioStreamPlayer = $"/root/Root/Audio/BgmPlayer"
 
 var curr_song = ""
@@ -50,6 +51,12 @@ func play_song(song):
     BgmPlayer.play()
 
 func play_sound(sound, high_priority = false):
+  if sound == Sfx.Blob1:
+    ICantBelieveItsNotPlayer.stream = sound
+    ICantBelieveItsNotPlayer.play()
+    
+    return
+  
   if high_priority:
     HighPriorityPlayer.stream = sound
     HighPriorityPlayer.play()    

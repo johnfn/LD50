@@ -62,7 +62,7 @@ position = Vector2( 8832, 4096 )
 position = Vector2( 2304, 8832 )
 
 [node name="Player" parent="AllGameObjects" instance=ExtResource( 1 )]
-position = Vector2( -3376, 6016 )
+position = Vector2( 768, -1792 )
 torch_parent = NodePath("../../Torches")
 
 [node name="Dialog" parent="AllGameObjects/Player" instance=ExtResource( 10 )]
@@ -94,6 +94,8 @@ shape = SubResource( 1 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
 
 [node name="AudioStreamPlayerHighPri" type="AudioStreamPlayer" parent="Audio"]
+
+[node name="ICantBelieveItsNotPlayer" type="AudioStreamPlayer" parent="Audio"]
 
 [node name="BgmPlayer" type="AudioStreamPlayer" parent="Audio"]
 

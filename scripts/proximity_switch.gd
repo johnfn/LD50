@@ -24,8 +24,17 @@ func _on_Area_body_entered(body):
     
     Sfx.play_sound(Sfx.Switch)
     
+    var is_now_open = false
+    
     for door in linked_door_nodes:
       door.toggle_open()
+      is_now_open = door.is_door_open
+    
+    if is_now_open:
+      Sfx.play_sound(Sfx.DoorOpen, true)   
+    else:
+      Sfx.play_sound(Sfx.DoorClose, true)
+         
   update_gfx()
   
 func update_gfx():

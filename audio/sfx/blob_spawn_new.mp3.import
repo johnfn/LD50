@@ -11,5 +11,5 @@ dest_files=[ "res://.import/blob_spawn_new.mp3-235d78942e5b8cf69fa2aa8a5c571950.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
