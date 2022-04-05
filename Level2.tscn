@@ -983,6 +983,7 @@ position = Vector2( 512, -384 )
 initial_delay = 3
 
 [node name="Areas" type="Node2D" parent="."]
+visible = false
 
 [node name="EvilShadowTrigger3" parent="Areas" instance=ExtResource( 6 )]
 position = Vector2( 256, 896 )
@@ -1242,6 +1243,10 @@ occluder = SubResource( 6 )
 [node name="DialogTrigger" parent="." instance=ExtResource( 12 )]
 position = Vector2( 384, 128 )
 dialog_name = "L2Start"
+
+[node name="Wall2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1280, 1024 )
+facing = 1
 
 [editable path="Areas/EvilShadowTrigger3"]
 [editable path="Areas/EvilShadowTrigger6"]
