@@ -1043,7 +1043,15 @@ position = Vector2( 256, -128 )
 [node name="StartLocation" parent="Objects" instance=ExtResource( 2 )]
 position = Vector2( 640, 1152 )
 
+[node name="ColorRect" type="ColorRect" parent="Objects"]
+margin_left = 381.0
+margin_top = -2303.0
+margin_right = 1417.0
+margin_bottom = -2074.0
+color = Color( 0.486275, 0.858824, 0.898039, 0.0627451 )
+
 [node name="Areas" type="Node2D" parent="."]
+visible = false
 
 [node name="DialogTrigger" parent="Areas" instance=ExtResource( 8 )]
 position = Vector2( -256, -2048 )
