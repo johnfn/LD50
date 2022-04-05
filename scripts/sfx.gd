@@ -26,8 +26,8 @@ onready var Blob1 = preload("res://audio/sfx/blob1.mp3")
 onready var StatueSlide = preload("res://audio/sfx/statue slide.mp3")
 
 onready var MenuMusic = preload("res://audio/bgm/menu_music.mp3")
-onready var LevelMusic = preload("res://audio/bgm/level_music.mp3")
-onready var EndMusic = preload("res://audio/bgm/floor_8_music.mp3")
+onready var LevelMusic = preload("res://audio/bgm/floor_8_music.mp3")
+onready var EndMusic = preload("res://audio/bgm/level_music.mp3")
 
 onready var Player: AudioStreamPlayer = $"/root/Root/Audio/AudioStreamPlayer"
 onready var HighPriorityPlayer: AudioStreamPlayer = $"/root/Root/Audio/AudioStreamPlayerHighPri"

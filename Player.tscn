@@ -15,14 +15,14 @@ animations = [ {
 "name": "up",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "right",
-"speed": 2.0
-}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "left",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "right",
 "speed": 2.0
 }, {
 "frames": [ ExtResource( 5 ) ],

@@ -14,7 +14,7 @@ extents = Vector2( 704, 576 )
 [sub_resource type="OccluderPolygon2D" id=2]
 polygon = PoolVector2Array( 0, 0, 0, 256, 256, 256, 256, 0 )
 
-[node name="Level7" type="YSort"]
+[node name="Level6" type="YSort"]
 
 [node name="Walls" type="YSort" parent="."]
 
@@ -468,16 +468,16 @@ position = Vector2( 512, 128 )
 dialog_name = "LevelFinal"
 
 [node name="ShadowSourceBlock" parent="Objects" instance=ExtResource( 13 )]
-position = Vector2( 896, -256 )
-initial_delay = 0
+position = Vector2( 768, 512 )
 
 [node name="Areas" type="YSort" parent="."]
 
 [node name="EvilShadowTrigger2" parent="Areas" instance=ExtResource( 6 )]
 position = Vector2( 1664, 1536 )
+shadow_timer = 2
 
 [node name="Bounds" parent="Areas/EvilShadowTrigger2" index="0"]
-position = Vector2( -896, -2176 )
+position = Vector2( -768, -2176 )
 shape = SubResource( 1 )
 
 [node name="Goblet" type="Sprite" parent="."]
@@ -523,34 +523,34 @@ position = Vector2( 512, 0 )
 facing = 4
 
 [node name="Statue" parent="." instance=ExtResource( 3 )]
-position = Vector2( 384, -128 )
+position = Vector2( 512, -128 )
 
 [node name="Statue" parent="Statue" instance=ExtResource( 3 )]
-position = Vector2( 768, 0 )
+position = Vector2( 512, 0 )
 
 [node name="Statue2" parent="Statue" instance=ExtResource( 3 )]
 position = Vector2( 0, -512 )
 
 [node name="Statue3" parent="Statue" instance=ExtResource( 3 )]
-position = Vector2( 768, -512 )
-
-[node name="Statue4" parent="Statue" instance=ExtResource( 3 )]
-position = Vector2( 128, -1280 )
-
-[node name="Statue" parent="Statue/Statue4" instance=ExtResource( 3 )]
-position = Vector2( 512, 0 )
-
-[node name="Statue2" parent="Statue/Statue4" instance=ExtResource( 3 )]
-position = Vector2( 0, -512 )
-
-[node name="Statue3" parent="Statue/Statue4" instance=ExtResource( 3 )]
 position = Vector2( 512, -512 )
 
-[node name="Statue4" parent="Statue/Statue4" instance=ExtResource( 3 )]
-position = Vector2( 128, -1280 )
+[node name="Statue4" parent="Statue" instance=ExtResource( 3 )]
+position = Vector2( 0, -1152 )
 
-[node name="Statue5" parent="Statue/Statue4" instance=ExtResource( 3 )]
-position = Vector2( 384, -1280 )
+[node name="Statue5" parent="Statue" instance=ExtResource( 3 )]
+position = Vector2( 512, -1152 )
+
+[node name="Statue6" parent="Statue" instance=ExtResource( 3 )]
+position = Vector2( 0, -1664 )
+
+[node name="Statue7" parent="Statue" instance=ExtResource( 3 )]
+position = Vector2( 512, -1664 )
+
+[node name="Statue8" parent="Statue" instance=ExtResource( 3 )]
+position = Vector2( 128, -2560 )
+
+[node name="Statue9" parent="Statue" instance=ExtResource( 3 )]
+position = Vector2( 384, -2560 )
 
 [node name="Occluders" type="Node2D" parent="."]
 

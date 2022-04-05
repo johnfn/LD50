@@ -59,6 +59,8 @@ func trigger_level_start_shadows():
       shadow_source.activate()
 
 func _ready():
+  $"/root/Root/Camera/DarkBoi".visible = false
+  
   if Globals.started:
     Sfx.play_song("level")
 #  if not Globals.IS_DEBUG:
@@ -233,6 +235,8 @@ var shadows_seen = 0
 
 var is_showing_dialog = false
 
+var has_won = false
+
 func start_dialog_co(dialog_name: String):
   is_showing_dialog = true
   
@@ -290,20 +294,61 @@ func start_dialog_co(dialog_name: String):
     yield(dialog.show_dialog_co("I'm so close! Just one more floor and I'll be at the bottom!"), "completed")
 
   if dialog_name == "YouWinKinda":
+    has_won = true
+    
     yield(dialog.show_dialog_co("YES!"), "completed")
     yield(dialog.show_dialog_co("The Unholy Grail! I'm so glad it's actually here. The Curator is going to be so happy with me!"), "completed")
     yield(dialog.show_dialog_co("But wait..."), "completed")
     yield(dialog.show_dialog_co("...how do I get back up?"), "completed")
   
   is_showing_dialog = false
+
+func end_of_game():
+  $"/root/Root/Camera/DarkBoi".visible = true
+  $"/root/Root/Camera/DarkBoi".modulate = Color(1, 1, 1, 0.0)
+  
+  for x in range(50):
+    yield(get_tree(), 'idle_frame')
+    $"/root/Root/Camera/DarkBoi".modulate = Color(1, 1, 1, float(x) / float(50.0))
+  
+  $"/root/Root/Camera/DarkBoi/DarkBoiLabel".text = "Game Over"
+  
+  while true:
+    yield(get_tree(), "idle_frame")
+    if Input.is_action_just_pressed("advance_dialog"): break
+  
+  $"/root/Root/Camera/DarkBoi/DarkBoiLabel".text = "Game Over?"
+  
+  while true:
+    yield(get_tree(), "idle_frame")
+    if Input.is_action_just_pressed("advance_dialog"): break
+  
+  $"/root/Root/Camera/DarkBoi/SmallerLabel".text = "The End"
+  
+  for x in range(4):
+    while true:
+      yield(get_tree(), "idle_frame")
+      if Input.is_action_just_pressed("advance_dialog"): break
       
-      
-func start_dying_co():
+  $"/root/Root/Camera/DarkBoi/SmallerLabel".text = "That's the real end. You can stop pressing X now."
+  
+  for x in range(10):
+    while true:
+      yield(get_tree(), "idle_frame")
+      if Input.is_action_just_pressed("advance_dialog"): break
+  
+  $"/root/Root/Camera/DarkBoi/SmallerLabel".text = "P.S. EVERYONE DIED!!!!!!!!"
+    
+func start_dying_co():  
   if is_dead:
     #WTF
     return
   
   is_dead = true
+  
+  if has_won:
+    end_of_game()
+    return
   
   yield(get_tree(), 'idle_frame')
   
