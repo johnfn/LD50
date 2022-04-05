@@ -1090,7 +1090,7 @@ color = Color( 0.443137, 0.576471, 0.592157, 0.282353 )
 margin_left = -558.0
 margin_top = 231.0
 margin_right = 478.0
-margin_bottom = 460.0
+margin_bottom = 400.0
 color = Color( 0.486275, 0.858824, 0.898039, 0.0627451 )
 
 [node name="PushableStatue" parent="." instance=ExtResource( 12 )]

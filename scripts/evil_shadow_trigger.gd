@@ -30,6 +30,8 @@ func player_trigger_evil_shadow():
     Globals.UI.EssTimeLeft.visible = false
     Sfx.play_sound(Sfx.BlobSpawn, true)
     shadow_checker.check_shadows()
+    
+    $"/root/Root/Camera/Animation".play("EssHit")
 
 func reset():
   triggered = false
