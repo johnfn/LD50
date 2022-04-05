@@ -266,6 +266,14 @@ func start_dialog_co(dialog_name: String):
       yield(dialog.show_dialog_co("Hey, what's that ticking sound?"), "completed")
     else:
       yield(dialog.show_dialog_co("Oh no, the shadows are coming back!"), "completed")
+  
+  if dialog_name == "L2Start":
+    yield(dialog.show_dialog_co("Whoa, the second floor looks even wilder than the first one."), "completed")
+    yield(dialog.show_dialog_co("I gotta be careful to escape the shadows if they start coming back!"), "completed")
+    yield(dialog.show_dialog_co("Why the heck are these shadows chasing me?!"), "completed")
+    yield(dialog.show_dialog_co("...then again, why the heck is there a maze in the basement of a museum??"), "completed")
+    yield(dialog.show_dialog_co("Well, whatever. I just need to keep searching for that Unholy Grail."), "completed")
+    yield(dialog.show_dialog_co("Maybe if I could find something to help keep the shadows at bay... like a light source or something..."), "completed")
 
   if dialog_name == "YouWinKinda":
     yield(dialog.show_dialog_co("YES! Finally!!"), "completed")

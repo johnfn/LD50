@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://StartLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://goblet.png" type="Texture" id=2]
@@ -10,6 +10,9 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 704, 576 )
+
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( 0, 0, 0, 256, 256, 256, 256, 0 )
 
 [node name="Level7" type="YSort"]
 
@@ -544,6 +547,73 @@ position = Vector2( 128, -1280 )
 
 [node name="Statue5" parent="Statue/Statue4" instance=ExtResource( 3 )]
 position = Vector2( 384, -1280 )
+
+[node name="Occluders" type="Node2D" parent="."]
+
+[node name="LightOccluder2D5" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( 256, 640 )
+scale = Vector2( 4.51, -0.279 )
+occluder = SubResource( 2 )
+
+[node name="LightOccluder2D6" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( 256, -1152 )
+scale = Vector2( 0.439, 7.256 )
+occluder = SubResource( 2 )
+
+[node name="LightOccluder2D7" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( 1408, -1152 )
+rotation = 3.14159
+scale = Vector2( 0.44, -7.385 )
+occluder = SubResource( 2 )
+
+[node name="LightOccluder2D16" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( 128, -4608 )
+scale = Vector2( 7.259, 0.66 )
+occluder = SubResource( 2 )
+
+[node name="LightOccluder2D8" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( 128, -2304 )
+scale = Vector2( 1.44, 4.66 )
+occluder = SubResource( 2 )
+
+[node name="LightOccluder2D11" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( 256, -3456 )
+scale = Vector2( 1.44, 4.66 )
+occluder = SubResource( 2 )
+
+[node name="LightOccluder2D15" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( -128, -4608 )
+scale = Vector2( 1.44, 4.66 )
+occluder = SubResource( 2 )
+
+[node name="LightOccluder2D12" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( 128, -3783 )
+scale = Vector2( 2.44, 2.438 )
+occluder = SubResource( 2 )
+
+[node name="LightOccluder2D13" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( 1536, -3783 )
+rotation = 3.14159
+scale = Vector2( 2.44, -2.438 )
+occluder = SubResource( 2 )
+
+[node name="LightOccluder2D9" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( 1536, -2304 )
+rotation = 3.14159
+scale = Vector2( 1.44, -4.66 )
+occluder = SubResource( 2 )
+
+[node name="LightOccluder2D10" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( 1408, -3456 )
+rotation = 3.14159
+scale = Vector2( 1.44, -4.66 )
+occluder = SubResource( 2 )
+
+[node name="LightOccluder2D14" type="LightOccluder2D" parent="Occluders"]
+position = Vector2( 1792, -4608 )
+rotation = 3.14159
+scale = Vector2( 1.44, -4.66 )
+occluder = SubResource( 2 )
 
 [node name="DialogTrigger" parent="." instance=ExtResource( 7 )]
 position = Vector2( 593.188, -3938.04 )
