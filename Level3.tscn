@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://StartLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Chest.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Hole.tscn" type="PackedScene" id=9]
 [ext_resource path="res://CheckpointZone.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/PlayerLightCircle.png" type="Texture" id=11]
 
 [sub_resource type="Shader" id=3]
 
@@ -1000,7 +1001,6 @@ position = Vector2( 768, -640 )
 position = Vector2( 768, -768 )
 
 [node name="Areas" type="YSort" parent="."]
-visible = false
 
 [node name="EvilShadowTrigger2" parent="Areas" instance=ExtResource( 6 )]
 position = Vector2( -1280, -512 )
@@ -1015,6 +1015,54 @@ position = Vector2( -1280, -512 )
 [node name="Bounds" parent="Areas/EvilShadowTrigger3" index="0"]
 position = Vector2( 1856, -1280 )
 shape = SubResource( 2 )
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="Areas"]
+position = Vector2( 512, 2816 )
+amount = 50
+lifetime = 3.0
+randomness = 0.3
+texture = ExtResource( 11 )
+emission_shape = 2
+emission_rect_extents = Vector2( 500, 300 )
+direction = Vector2( 1, 5 )
+spread = 113.98
+gravity = Vector2( 0, -100 )
+initial_velocity = 20.0
+tangential_accel = 7.38
+damping = 13.81
+scale_amount = 0.03
+color = Color( 0.443137, 0.576471, 0.592157, 0.282353 )
+
+[node name="ColorRect" type="ColorRect" parent="Areas/CPUParticles2D4"]
+margin_left = -512.0
+margin_top = -128.0
+margin_right = 512.0
+margin_bottom = 128.0
+color = Color( 0.486275, 0.858824, 0.898039, 0.0627451 )
+
+[node name="CPUParticles2D5" type="CPUParticles2D" parent="Areas"]
+position = Vector2( 577.949, -2429.3 )
+amount = 50
+lifetime = 3.0
+randomness = 0.3
+texture = ExtResource( 11 )
+emission_shape = 2
+emission_rect_extents = Vector2( 700, 900 )
+direction = Vector2( 1, 5 )
+spread = 113.98
+gravity = Vector2( 0, -100 )
+initial_velocity = 20.0
+tangential_accel = 7.38
+damping = 13.81
+scale_amount = 0.03
+color = Color( 0.443137, 0.576471, 0.592157, 0.282353 )
+
+[node name="ColorRect" type="ColorRect" parent="Areas/CPUParticles2D5"]
+margin_left = -706.0
+margin_top = 637.0
+margin_right = 702.0
+margin_bottom = 893.0
+color = Color( 0.486275, 0.858824, 0.898039, 0.0627451 )
 
 [node name="Wall" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1152, -384 )
