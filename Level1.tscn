@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Statue.tscn" type="PackedScene" id=1]
 [ext_resource path="res://StartLocation.tscn" type="PackedScene" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://DialogTrigger.tscn" type="PackedScene" id=8]
 [ext_resource path="res://CheckpointZone.tscn" type="PackedScene" id=9]
 [ext_resource path="res://DoorRight.tscn" type="PackedScene" id=10]
-[ext_resource path="res://ShadowSourceBlock.tscn" type="PackedScene" id=11]
 [ext_resource path="res://PushableStatue.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scripts/four_way_occluder.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/PlayerLightCircle.png" type="Texture" id=14]
@@ -979,7 +978,7 @@ position = Vector2( 1152, -1024 )
 position = Vector2( -256, -1024 )
 
 [node name="Switch" parent="Objects/SwitchAndDoors3" instance=ExtResource( 6 )]
-position = Vector2( 0, -3840 )
+position = Vector2( 384, -3968 )
 linked_doors = [ NodePath("../Door"), NodePath("../DoorRight") ]
 
 [node name="Door" parent="Objects/SwitchAndDoors3" instance=ExtResource( 4 )]
@@ -992,7 +991,7 @@ position = Vector2( 1152, -4480 )
 position = Vector2( -256, -1024 )
 
 [node name="Switch" parent="Objects/SwitchAndDoors4" instance=ExtResource( 6 )]
-position = Vector2( 2176, -3968 )
+position = Vector2( 1792, -3968 )
 linked_doors = [ NodePath("../Door"), NodePath("../DoorRight") ]
 
 [node name="Door" parent="Objects/SwitchAndDoors4" instance=ExtResource( 4 )]
@@ -1036,9 +1035,6 @@ position = Vector2( 768, -2688 )
 
 [node name="Stairs" parent="Objects" instance=ExtResource( 7 )]
 position = Vector2( 768, -6912 )
-
-[node name="ShadowSourceBlock" parent="Objects" instance=ExtResource( 11 )]
-position = Vector2( 256, -128 )
 
 [node name="StartLocation" parent="Objects" instance=ExtResource( 2 )]
 position = Vector2( 640, 1152 )
@@ -1088,10 +1084,13 @@ color = Color( 0.443137, 0.576471, 0.592157, 0.282353 )
 
 [node name="ColorRect" type="ColorRect" parent="Areas/CPUParticles2D"]
 margin_left = -558.0
-margin_top = 231.0
+margin_top = 102.0
 margin_right = 478.0
 margin_bottom = 400.0
 color = Color( 0.486275, 0.858824, 0.898039, 0.0627451 )
+
+[node name="Checkpoint2" parent="Areas" instance=ExtResource( 9 )]
+position = Vector2( 512, -1792 )
 
 [node name="PushableStatue" parent="." instance=ExtResource( 12 )]
 position = Vector2( 896, -640 )
