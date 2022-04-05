@@ -993,6 +993,7 @@ position = Vector2( 1152, 2304 )
 
 [node name="ShadowSourceBlock" parent="Objects" instance=ExtResource( 11 )]
 position = Vector2( 256, 768 )
+initial_delay = 2
 
 [node name="Areas" type="YSort" parent="."]
 
