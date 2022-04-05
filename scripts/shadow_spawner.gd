@@ -83,6 +83,8 @@ func _physics_process(delta):
           
           if raycast_results.collider == Globals.Player:
             Globals.Player.start_dying_co()
+            # spawn shadow anyways, it looks better
+            spawn_shadow(shadow.global_position + spawn_offset)
 
         else:
           raycast_results = space.intersect_ray(shadow_center, shadow_center + spawn_offset, [shadow], movable_raycast_mask)

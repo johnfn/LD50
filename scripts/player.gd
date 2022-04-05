@@ -286,11 +286,14 @@ func start_dialog_co(dialog_name: String):
 func start_dying_co():
   yield(get_tree(), 'idle_frame')
   
-  print("YOU HAVE DIED")
-  
   enclose_time = 0.001
   is_dead = true
   
+  for x in range(50):
+    yield(get_tree(), 'idle_frame')
+    modulate = Color(1, 1, 1, 1.0 - float(x) / float(50))
+  
+  modulate = Color(1, 1, 1, 1)
 
 func enter_stairs(var from_level):
   Globals.current_level = from_level + 1
