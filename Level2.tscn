@@ -11,6 +11,7 @@
 [ext_resource path="res://CheckpointZone.tscn" type="PackedScene" id=9]
 [ext_resource path="res://ShadowSourceBlock.tscn" type="PackedScene" id=10]
 [ext_resource path="res://RightDoor.tscn" type="PackedScene" id=11]
+[ext_resource path="res://DialogTrigger.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 768, 768 )
@@ -1177,6 +1178,9 @@ occluder = SubResource( 6 )
 position = Vector2( -1152, -896 )
 scale = Vector2( -0.44, 0.66 )
 occluder = SubResource( 6 )
+[node name="DialogTrigger" parent="." instance=ExtResource( 12 )]
+position = Vector2( 384, 128 )
+dialog_name = "L2Start"
 
 [editable path="Areas/EvilShadowTrigger3"]
 [editable path="Areas/EvilShadowTrigger6"]

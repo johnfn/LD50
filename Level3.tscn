@@ -443,8 +443,14 @@ position = Vector2( 1152, -3456 )
 [node name="Statue9" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1024, -1664 )
 
+[node name="Statue13" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 1024, -2304 )
+
 [node name="Statue10" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 0, -1664 )
+
+[node name="Statue12" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 0, -2304 )
 
 [node name="Statue6" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 896, -256 )
@@ -974,6 +980,7 @@ position = Vector2( 768, -640 )
 position = Vector2( 768, -768 )
 
 [node name="Areas" type="YSort" parent="."]
+visible = false
 
 [node name="EvilShadowTrigger2" parent="Areas" instance=ExtResource( 6 )]
 position = Vector2( -1280, -512 )
