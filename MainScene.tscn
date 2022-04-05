@@ -83,7 +83,7 @@ script = ExtResource( 13 )
 [node name="Background" type="Sprite" parent="."]
 light_mask = 3
 material = ExtResource( 16 )
-position = Vector2( 10560, -776 )
+position = Vector2( 2688, -256 )
 scale = Vector2( 100, 80 )
 z_index = -2
 texture = ExtResource( 12 )
