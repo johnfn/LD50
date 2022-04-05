@@ -7,8 +7,6 @@ var activated = false
 
 func reset():
   activated = false
-  
-  activate()
 
 func activate():  
   if activated:
