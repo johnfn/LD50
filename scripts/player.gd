@@ -261,8 +261,8 @@ func start_dialog_co(dialog_name: String):
     yield(dialog.show_dialog_co("But that's not gonna stop me! Second floor, here I come!"), "completed")
 
   if dialog_name == "FirstEvilShadowTrigger":
-    if is_first_lantern and not Globals.IS_DEBUG:
-      is_first_lantern = false
+    if is_first_shadow and not Globals.IS_DEBUG:
+      is_first_shadow = false
       yield(dialog.show_dialog_co("Hey, what's that ticking sound?"), "completed")
     else:
       yield(dialog.show_dialog_co("Oh no, the shadows are coming back!"), "completed")
