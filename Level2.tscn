@@ -19,7 +19,7 @@
 [ext_resource path="res://scripts/four_way_occluder.tscn" type="PackedScene" id=17]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 768, 768 )
+extents = Vector2( 448, 192 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 832, 160 )
@@ -981,7 +981,7 @@ position = Vector2( 1792, 2560 )
 
 [node name="ShadowSourceBlock" parent="Objects" instance=ExtResource( 10 )]
 position = Vector2( 512, -384 )
-initial_delay = 3
+initial_delay = 6
 
 [node name="Areas" type="Node2D" parent="."]
 visible = false
