@@ -229,12 +229,14 @@ func push_block(block, direction):
   block.get_pushed(direction)
 
 var is_first_lantern = true
-var is_first_shadow = true
+var shadows_seen = 0
 
 var is_showing_dialog = false
 
 func start_dialog_co(dialog_name: String):
   is_showing_dialog = true
+  
+  yield(get_tree(), "idle_frame")
   
   if dialog_name == "OpenChestLantern":
     if is_first_lantern and not Globals.IS_DEBUG:
@@ -265,10 +267,11 @@ func start_dialog_co(dialog_name: String):
     yield(dialog.show_dialog_co("But that's not gonna stop me! Second floor, here I come!"), "completed")
 
   if dialog_name == "FirstEvilShadowTrigger":
-    if is_first_shadow and not Globals.IS_DEBUG:
-      is_first_shadow = false
+    if shadows_seen == 0:
+      shadows_seen = 1
       yield(dialog.show_dialog_co("Hey, what's that ticking sound?"), "completed")
-    else:
+    elif shadows_seen == 1:
+      shadows_seen = 2
       yield(dialog.show_dialog_co("Oh no, the shadows are coming back!"), "completed")
   
   if dialog_name == "L2Start":

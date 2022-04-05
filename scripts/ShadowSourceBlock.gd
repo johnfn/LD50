@@ -22,7 +22,7 @@ func activate():
     if !Globals.Player.is_showing_dialog:
       non_dialog_frames += 1
       
-      yield(get_tree(), "idle_frame")
+    yield(get_tree(), "idle_frame")
   
   if !shadow_spawner:
     shadow_spawner = get_node("/root/Root/AllGameObjects/ShadowSpawner")
