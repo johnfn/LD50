@@ -35,6 +35,8 @@ func move_to_level_start():
     
   if Globals.current_level == 6 :
     Sfx.play_song("end")
+  
+  StateManager.reset_resettables()
 
   var level = Globals.get_level(Globals.current_level)
   var start_location = level.get_node("Objects/StartLocation")

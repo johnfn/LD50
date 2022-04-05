@@ -11,9 +11,12 @@ func checkpoint(new_spawn_point: Vector2):
   seen_torches = Globals.encountered_torches
   spawn_point = new_spawn_point
 
-func return_to_checkpoint():
+func reset_resettables():
   for resettable in get_tree().get_nodes_in_group("resettable"):
     resettable.reset()
+
+func return_to_checkpoint():
+  reset_resettables()
   Globals.num_torches = torch_count
   Globals.encountered_torches = seen_torches
   
