@@ -1043,15 +1043,7 @@ position = Vector2( 256, -128 )
 [node name="StartLocation" parent="Objects" instance=ExtResource( 2 )]
 position = Vector2( 640, 1152 )
 
-[node name="ColorRect" type="ColorRect" parent="Objects"]
-margin_left = 381.0
-margin_top = -2303.0
-margin_right = 1417.0
-margin_bottom = -2074.0
-color = Color( 0.486275, 0.858824, 0.898039, 0.0627451 )
-
 [node name="Areas" type="Node2D" parent="."]
-visible = false
 
 [node name="DialogTrigger" parent="Areas" instance=ExtResource( 8 )]
 position = Vector2( -256, -2048 )
@@ -1093,6 +1085,13 @@ tangential_accel = 7.38
 damping = 13.81
 scale_amount = 0.03
 color = Color( 0.443137, 0.576471, 0.592157, 0.282353 )
+
+[node name="ColorRect" type="ColorRect" parent="Areas/CPUParticles2D"]
+margin_left = -558.0
+margin_top = 231.0
+margin_right = 478.0
+margin_bottom = 460.0
+color = Color( 0.486275, 0.858824, 0.898039, 0.0627451 )
 
 [node name="PushableStatue" parent="." instance=ExtResource( 12 )]
 position = Vector2( 896, -640 )
