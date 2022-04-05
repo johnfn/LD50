@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://StartLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=2]
@@ -13,6 +13,10 @@
 [ext_resource path="res://PushableStatue.tscn" type="PackedScene" id=11]
 [ext_resource path="res://CheckpointZone.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Chest.tscn" type="PackedScene" id=13]
+[ext_resource path="res://DoorLowerW.tscn" type="PackedScene" id=14]
+[ext_resource path="res://DoorUpperW.tscn" type="PackedScene" id=15]
+[ext_resource path="res://DoorLowerE.tscn" type="PackedScene" id=16]
+[ext_resource path="res://DoorUpperE.tscn" type="PackedScene" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 704, 512 )
@@ -642,49 +646,49 @@ is_door_open = true
 
 [node name="DarkSwitch" parent="Objects/SwitchAndDoors4" instance=ExtResource( 9 )]
 position = Vector2( 1920, -896 )
-linked_doors = [ NodePath("../Door6"), NodePath("../Door7") ]
+linked_doors = [ NodePath("../DoorLE1"), NodePath("../DoorUE1") ]
 
-[node name="Door6" parent="Objects/SwitchAndDoors4" instance=ExtResource( 2 )]
-position = Vector2( 2688, -512 )
-
-[node name="Door7" parent="Objects/SwitchAndDoors4" instance=ExtResource( 2 )]
+[node name="DoorLE1" parent="Objects/SwitchAndDoors4" instance=ExtResource( 16 )]
 position = Vector2( 2688, -384 )
+
+[node name="DoorUE1" parent="Objects/SwitchAndDoors4" instance=ExtResource( 17 )]
+position = Vector2( 2688, -512 )
 
 [node name="SwitchAndDoors3" type="Node2D" parent="Objects"]
 
 [node name="LightSwitch" parent="Objects/SwitchAndDoors3" instance=ExtResource( 10 )]
 position = Vector2( 1408, -896 )
-linked_doors = [ NodePath("../Door4"), NodePath("../Door5") ]
+linked_doors = [ NodePath("../DoorLE2"), NodePath("../DoorUE2") ]
 
-[node name="Door4" parent="Objects/SwitchAndDoors3" instance=ExtResource( 2 )]
-position = Vector2( 2432, -512 )
-
-[node name="Door5" parent="Objects/SwitchAndDoors3" instance=ExtResource( 2 )]
+[node name="DoorLE2" parent="Objects/SwitchAndDoors3" instance=ExtResource( 16 )]
 position = Vector2( 2432, -384 )
+
+[node name="DoorUE2" parent="Objects/SwitchAndDoors3" instance=ExtResource( 17 )]
+position = Vector2( 2432, -512 )
 
 [node name="SwitchAndDoors5" type="Node2D" parent="Objects"]
 
 [node name="LightSwitch" parent="Objects/SwitchAndDoors5" instance=ExtResource( 10 )]
 position = Vector2( 2304, 384 )
-linked_doors = [ NodePath("../Door5"), NodePath("../Door4") ]
+linked_doors = [ NodePath("../DoorUW1"), NodePath("../DoorLW1") ]
 
-[node name="Door4" parent="Objects/SwitchAndDoors5" instance=ExtResource( 2 )]
+[node name="DoorUW1" parent="Objects/SwitchAndDoors5" instance=ExtResource( 15 )]
 position = Vector2( 1792, 384 )
 
-[node name="Door5" parent="Objects/SwitchAndDoors5" instance=ExtResource( 2 )]
+[node name="DoorLW1" parent="Objects/SwitchAndDoors5" instance=ExtResource( 14 )]
 position = Vector2( 1792, 512 )
 
 [node name="SwitchAndDoors6" type="Node2D" parent="Objects"]
 
 [node name="LightSwitch" parent="Objects/SwitchAndDoors6" instance=ExtResource( 10 )]
 position = Vector2( 2048, 640 )
-linked_doors = [ NodePath("../Door4"), NodePath("../Door5") ]
+linked_doors = [ NodePath("../DoorUW2"), NodePath("../DoorLW2") ]
 
-[node name="Door4" parent="Objects/SwitchAndDoors6" instance=ExtResource( 2 )]
+[node name="DoorUW2" parent="Objects/SwitchAndDoors6" instance=ExtResource( 15 )]
 position = Vector2( 1920, 384 )
 is_door_open = true
 
-[node name="Door5" parent="Objects/SwitchAndDoors6" instance=ExtResource( 2 )]
+[node name="DoorLW2" parent="Objects/SwitchAndDoors6" instance=ExtResource( 14 )]
 position = Vector2( 1920, 512 )
 is_door_open = true
 

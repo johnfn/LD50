@@ -28,6 +28,7 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="TileDoorOpen" type="Sprite" parent="."]
+visible = false
 material = ExtResource( 3 )
 position = Vector2( 0, -215 )
 scale = Vector2( 0.5, 0.5 )
