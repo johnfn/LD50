@@ -358,7 +358,6 @@ position = Vector2( 0, -896 )
 
 [node name="Wall71" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 0, -896 )
-facing = 5
 
 [node name="Wall72" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( -128, -512 )
