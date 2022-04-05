@@ -26,6 +26,11 @@ func initially_hide_interactor():
 
 func _unhandled_input(event):
   if Input.is_action_just_pressed("interact"):
+    # Never pick up if we're showing dialog. That is a bug
+    
+    if Globals.Player.is_showing_dialog:
+      return
+    
     # == null accomodates for the period when the interactor does not exist
 
     if $Interactor == null or $Interactor.can_interact():
