@@ -984,7 +984,6 @@ position = Vector2( 512, -384 )
 initial_delay = 6
 
 [node name="Areas" type="Node2D" parent="."]
-visible = false
 
 [node name="EvilShadowTrigger3" parent="Areas" instance=ExtResource( 6 )]
 position = Vector2( 256, 896 )
@@ -1114,6 +1113,12 @@ margin_left = -640.0
 margin_top = -384.0
 margin_right = 768.0
 color = Color( 0.486275, 0.858824, 0.898039, 0.0627451 )
+
+[node name="Checkpoint2" parent="Areas" instance=ExtResource( 9 )]
+position = Vector2( -512, 768 )
+
+[node name="Checkpoint3" parent="Areas" instance=ExtResource( 9 )]
+position = Vector2( 512, 1536 )
 
 [node name="Wall" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2432, 1792 )
