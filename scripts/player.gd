@@ -231,7 +231,11 @@ func push_block(block, direction):
 var is_first_lantern = true
 var is_first_shadow = true
 
+var is_showing_dialog = false
+
 func start_dialog_co(dialog_name: String):
+  is_showing_dialog = true
+  
   if dialog_name == "OpenChestLantern":
     if is_first_lantern and not Globals.IS_DEBUG:
       is_first_lantern = false
@@ -284,6 +288,8 @@ func start_dialog_co(dialog_name: String):
     yield(dialog.show_dialog_co("The Unholy Grail! I'm so glad it's actually here. The Curator is going to be so happy with me!"), "completed")
     yield(dialog.show_dialog_co("But wait..."), "completed")
     yield(dialog.show_dialog_co("...how do I get back up?"), "completed")
+  
+  is_showing_dialog = false
       
       
 func start_dying_co():

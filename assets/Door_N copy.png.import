@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Door_N copy.png-3394207a08706f9cf8f5121b624d2e17.stex"
+path="res://.import/Door_N copy.png-4d77cc97e5aa8b6eab498771ef0dd590.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Door_N copy.png"
-dest_files=[ "res://.import/Door_N copy.png-3394207a08706f9cf8f5121b624d2e17.stex" ]
+source_file="res://Assets/Door_N copy.png"
+dest_files=[ "res://.import/Door_N copy.png-4d77cc97e5aa8b6eab498771ef0dd590.stex" ]
 
 [params]
 
