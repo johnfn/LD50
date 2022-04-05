@@ -157,6 +157,9 @@ position = Vector2( 256, -4864 )
 [node name="Checkpoint" parent="Walls/Wall215" instance=ExtResource( 10 )]
 position = Vector2( 384, 384 )
 
+[node name="SpawnPoint" parent="Walls/Wall215/Checkpoint" index="1"]
+position = Vector2( 0, 256 )
+
 [node name="Wall216" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 128, -4864 )
 
@@ -1355,5 +1358,6 @@ height = 15.0
 e_occlude = false
 w_occlude = false
 
+[editable path="Walls/Wall215/Checkpoint"]
 [editable path="Areas/EvilShadowTrigger2"]
 [editable path="Areas/EvilShadowTrigger3"]

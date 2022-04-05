@@ -453,7 +453,7 @@ facing = 2
 [node name="Objects" type="YSort" parent="."]
 
 [node name="StartLocation" parent="Objects" instance=ExtResource( 1 )]
-position = Vector2( 768, 128 )
+position = Vector2( 768, 256 )
 
 [node name="SwitchAndDoors" type="Node2D" parent="Objects"]
 
@@ -464,7 +464,7 @@ position = Vector2( 768, 128 )
 [node name="SwitchAndDoors3" type="Node2D" parent="Objects"]
 
 [node name="DialogTrigger" parent="Objects/SwitchAndDoors3" instance=ExtResource( 2 )]
-position = Vector2( 512, 256 )
+position = Vector2( 512, 128 )
 dialog_name = "LevelFinal"
 
 [node name="ShadowSourceBlock" parent="Objects" instance=ExtResource( 13 )]
