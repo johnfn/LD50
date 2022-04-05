@@ -981,7 +981,7 @@ position = Vector2( 1792, 2560 )
 
 [node name="ShadowSourceBlock" parent="Objects" instance=ExtResource( 10 )]
 position = Vector2( 512, -384 )
-initial_delay = 3
+initial_delay = 6
 
 [node name="Areas" type="Node2D" parent="."]
 visible = false

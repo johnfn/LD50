@@ -229,9 +229,15 @@ func push_block(block, direction):
   block.get_pushed(direction)
 
 var is_first_lantern = true
-var is_first_shadow = true
+var shadows_seen = 0
+
+var is_showing_dialog = false
 
 func start_dialog_co(dialog_name: String):
+  is_showing_dialog = true
+  
+  yield(get_tree(), "idle_frame")
+  
   if dialog_name == "OpenChestLantern":
     if is_first_lantern and not Globals.IS_DEBUG:
       is_first_lantern = false
@@ -246,7 +252,7 @@ func start_dialog_co(dialog_name: String):
     yield(dialog.show_dialog_co("Whoa, so THIS is what the Underground Archives look like."), "completed")
     yield(dialog.show_dialog_co("What was it the Curator wanted me to go grab again..."), "completed")
     yield(dialog.show_dialog_co("Oh right! The Unholy Grail!"), "completed")
-    yield(dialog.show_dialog_co("He said it was in the eighth floor of the basement, so I'd better get going."), "completed")
+    yield(dialog.show_dialog_co("He said it was in the sixth floor of the basement, so I'd better get going."), "completed")
     yield(dialog.show_dialog_co("And he also said to beware the dark...?"), "completed")
     yield(dialog.show_dialog_co("But that's so silly. I'm an adult!"), "completed")
     yield(dialog.show_dialog_co("Now, where might those steps to the second floor be?"), "completed")
@@ -261,10 +267,11 @@ func start_dialog_co(dialog_name: String):
     yield(dialog.show_dialog_co("But that's not gonna stop me! Second floor, here I come!"), "completed")
 
   if dialog_name == "FirstEvilShadowTrigger":
-    if is_first_shadow and not Globals.IS_DEBUG:
-      is_first_shadow = false
+    if shadows_seen == 0:
+      shadows_seen = 1
       yield(dialog.show_dialog_co("Hey, what's that ticking sound?"), "completed")
-    else:
+    elif shadows_seen == 1:
+      shadows_seen = 2
       yield(dialog.show_dialog_co("Oh no, the shadows are coming back!"), "completed")
   
   if dialog_name == "L2Start":
@@ -275,11 +282,20 @@ func start_dialog_co(dialog_name: String):
     yield(dialog.show_dialog_co("Well, whatever. I just need to keep searching for that Unholy Grail."), "completed")
     yield(dialog.show_dialog_co("Maybe if I could find something to help keep the shadows at bay... like a light source or something..."), "completed")
 
+  if dialog_name == "LevelFinal":
+    yield(dialog.show_dialog_co("Finally!! The bottom floor!"), "completed")
+    yield(dialog.show_dialog_co("Unholy Grail, here I come! And the shadows can't stop me now!"), "completed")
+
+  if dialog_name == "L5Start":
+    yield(dialog.show_dialog_co("I'm so close! Just one more floor and I'll be at the bottom!"), "completed")
+
   if dialog_name == "YouWinKinda":
-    yield(dialog.show_dialog_co("YES! Finally!!"), "completed")
+    yield(dialog.show_dialog_co("YES!"), "completed")
     yield(dialog.show_dialog_co("The Unholy Grail! I'm so glad it's actually here. The Curator is going to be so happy with me!"), "completed")
     yield(dialog.show_dialog_co("But wait..."), "completed")
     yield(dialog.show_dialog_co("...how do I get back up?"), "completed")
+  
+  is_showing_dialog = false
       
       
 func start_dying_co():
