@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://StartLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=2]
@@ -13,10 +13,11 @@
 [ext_resource path="res://PushableStatue.tscn" type="PackedScene" id=11]
 [ext_resource path="res://CheckpointZone.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Chest.tscn" type="PackedScene" id=13]
-[ext_resource path="res://DoorLowerW.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/PlayerLightCircle.png" type="Texture" id=14]
 [ext_resource path="res://DoorUpperW.tscn" type="PackedScene" id=15]
 [ext_resource path="res://DoorLowerE.tscn" type="PackedScene" id=16]
 [ext_resource path="res://DoorUpperE.tscn" type="PackedScene" id=17]
+[ext_resource path="res://DoorLowerW.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 704, 512 )
@@ -675,7 +676,7 @@ linked_doors = [ NodePath("../DoorUW1"), NodePath("../DoorLW1") ]
 [node name="DoorUW1" parent="Objects/SwitchAndDoors5" instance=ExtResource( 15 )]
 position = Vector2( 1792, 384 )
 
-[node name="DoorLW1" parent="Objects/SwitchAndDoors5" instance=ExtResource( 14 )]
+[node name="DoorLW1" parent="Objects/SwitchAndDoors5" instance=ExtResource( 18 )]
 position = Vector2( 1792, 512 )
 
 [node name="SwitchAndDoors6" type="Node2D" parent="Objects"]
@@ -688,7 +689,7 @@ linked_doors = [ NodePath("../DoorUW2"), NodePath("../DoorLW2") ]
 position = Vector2( 1920, 384 )
 is_door_open = true
 
-[node name="DoorLW2" parent="Objects/SwitchAndDoors6" instance=ExtResource( 14 )]
+[node name="DoorLW2" parent="Objects/SwitchAndDoors6" instance=ExtResource( 18 )]
 position = Vector2( 1920, 512 )
 is_door_open = true
 
@@ -706,7 +707,6 @@ initial_delay = 3
 position = Vector2( 1152, -640 )
 
 [node name="Areas" type="YSort" parent="."]
-visible = false
 
 [node name="EvilShadowTrigger2" parent="Areas" instance=ExtResource( 6 )]
 position = Vector2( 2560, 128 )
@@ -724,6 +724,54 @@ shape = SubResource( 2 )
 
 [node name="Checkpoint" parent="Areas" instance=ExtResource( 12 )]
 position = Vector2( 1024, 1152 )
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="Areas"]
+position = Vector2( 2048, -256 )
+amount = 50
+lifetime = 3.0
+randomness = 0.3
+texture = ExtResource( 14 )
+emission_shape = 2
+emission_rect_extents = Vector2( 500, 300 )
+direction = Vector2( 1, 5 )
+spread = 113.98
+gravity = Vector2( 0, -100 )
+initial_velocity = 20.0
+tangential_accel = 7.38
+damping = 13.81
+scale_amount = 0.03
+color = Color( 0.443137, 0.576471, 0.592157, 0.282353 )
+
+[node name="ColorRect" type="ColorRect" parent="Areas/CPUParticles2D4"]
+margin_left = -384.0
+margin_top = -384.0
+margin_right = -128.0
+margin_bottom = 256.0
+color = Color( 0.486275, 0.858824, 0.898039, 0.0627451 )
+
+[node name="CPUParticles2D5" type="CPUParticles2D" parent="Areas"]
+position = Vector2( 2244.17, 822.775 )
+amount = 50
+lifetime = 3.0
+randomness = 0.3
+texture = ExtResource( 14 )
+emission_shape = 2
+emission_rect_extents = Vector2( 200, 250 )
+direction = Vector2( 1, 5 )
+spread = 113.98
+gravity = Vector2( 0, -100 )
+initial_velocity = 20.0
+tangential_accel = 7.38
+damping = 13.81
+scale_amount = 0.03
+color = Color( 0.443137, 0.576471, 0.592157, 0.282353 )
+
+[node name="ColorRect" type="ColorRect" parent="Areas/CPUParticles2D5"]
+margin_left = -196.0
+margin_top = -439.0
+margin_right = 188.0
+margin_bottom = 329.0
+color = Color( 0.486275, 0.858824, 0.898039, 0.0627451 )
 
 [node name="Wall" parent="." instance=ExtResource( 5 )]
 position = Vector2( 640, 1024 )
