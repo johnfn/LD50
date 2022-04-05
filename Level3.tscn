@@ -155,7 +155,7 @@ facing = 9
 position = Vector2( 256, -4864 )
 
 [node name="Checkpoint" parent="Walls/Wall215" instance=ExtResource( 10 )]
-position = Vector2( 384, 384 )
+position = Vector2( 256, 640 )
 
 [node name="SpawnPoint" parent="Walls/Wall215/Checkpoint" index="1"]
 position = Vector2( 0, 256 )
@@ -1006,8 +1006,8 @@ position = Vector2( 768, -640 )
 position = Vector2( 768, -768 )
 
 [node name="ShadowSourceBlock" parent="Objects" instance=ExtResource( 13 )]
-position = Vector2( 256, 3328 )
-initial_delay = 4
+position = Vector2( 256, 3200 )
+initial_delay = 3
 
 [node name="Areas" type="YSort" parent="."]
 
