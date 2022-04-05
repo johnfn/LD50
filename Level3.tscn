@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://StartLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Hole.tscn" type="PackedScene" id=9]
 [ext_resource path="res://CheckpointZone.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/PlayerLightCircle.png" type="Texture" id=11]
+[ext_resource path="res://scripts/four_way_occluder.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Shader" id=3]
 
@@ -1263,6 +1264,90 @@ occluder = SubResource( 8 )
 position = Vector2( 1280, 0 )
 scale = Vector2( -4.44, 0.66 )
 occluder = SubResource( 8 )
+
+[node name="FourWayOccluder" parent="Occluders" instance=ExtResource( 12 )]
+position = Vector2( -145.588, 551.381 )
+scale = Vector2( 3.143, 1 )
+height = 15.0
+e_occlude = false
+w_occlude = false
+
+[node name="FourWayOccluder4" parent="Occluders" instance=ExtResource( 12 )]
+position = Vector2( -145.588, -472.619 )
+scale = Vector2( 4.186, 1 )
+height = 15.0
+e_occlude = false
+w_occlude = false
+
+[node name="FourWayOccluder6" parent="Occluders" instance=ExtResource( 12 )]
+position = Vector2( 384, -1112.62 )
+scale = Vector2( 1.016, 1 )
+height = 15.0
+e_occlude = false
+w_occlude = false
+
+[node name="FourWayOccluder7" parent="Occluders" instance=ExtResource( 12 )]
+position = Vector2( 640, -1368.62 )
+scale = Vector2( 5.453, 1 )
+height = 15.0
+e_occlude = false
+w_occlude = false
+
+[node name="FourWayOccluder8" parent="Occluders" instance=ExtResource( 12 )]
+position = Vector2( -256, -1368.62 )
+scale = Vector2( 6.07, 1 )
+height = 15.0
+e_occlude = false
+w_occlude = false
+
+[node name="FourWayOccluder9" parent="Occluders" instance=ExtResource( 12 )]
+position = Vector2( 384, -3800.62 )
+scale = Vector2( 1.021, 1 )
+height = 15.0
+e_occlude = false
+w_occlude = false
+
+[node name="FourWayOccluder10" parent="Occluders" instance=ExtResource( 12 )]
+position = Vector2( 640, -3800.62 )
+scale = Vector2( 1.021, 1 )
+height = 15.0
+e_occlude = false
+w_occlude = false
+
+[node name="FourWayOccluder11" parent="Occluders" instance=ExtResource( 12 )]
+position = Vector2( 640, -4056.62 )
+scale = Vector2( 2.23, 1 )
+height = 15.0
+e_occlude = false
+w_occlude = false
+
+[node name="FourWayOccluder12" parent="Occluders" instance=ExtResource( 12 )]
+position = Vector2( 128, -4056.62 )
+scale = Vector2( 3.03, 1 )
+height = 15.0
+e_occlude = false
+w_occlude = false
+
+[node name="FourWayOccluder5" parent="Occluders" instance=ExtResource( 12 )]
+position = Vector2( 768, -472.619 )
+scale = Vector2( 4.186, 1 )
+height = 15.0
+e_occlude = false
+w_occlude = false
+
+[node name="FourWayOccluder2" parent="Occluders" instance=ExtResource( 12 )]
+position = Vector2( 384, 551.381 )
+scale = Vector2( 2.043, 1 )
+height = 15.0
+e_occlude = false
+w_occlude = false
+
+[node name="FourWayOccluder3" parent="Occluders" instance=ExtResource( 12 )]
+position = Vector2( 768, 551.381 )
+scale = Vector2( 3.16, 1 )
+height = 15.0
+e_occlude = false
+w_occlude = false
 
 [editable path="Areas/EvilShadowTrigger2"]
 [editable path="Areas/EvilShadowTrigger3"]
