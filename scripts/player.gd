@@ -275,8 +275,12 @@ func start_dialog_co(dialog_name: String):
     yield(dialog.show_dialog_co("Well, whatever. I just need to keep searching for that Unholy Grail."), "completed")
     yield(dialog.show_dialog_co("Maybe if I could find something to help keep the shadows at bay... like a light source or something..."), "completed")
 
+  if dialog_name == "LevelFinal":
+    yield(dialog.show_dialog_co("Finally!! The bottom floor!"), "completed")
+    yield(dialog.show_dialog_co("Unholy Grail, here I come! And the shadows can't stop me now!"), "completed")
+
   if dialog_name == "YouWinKinda":
-    yield(dialog.show_dialog_co("YES! Finally!!"), "completed")
+    yield(dialog.show_dialog_co("YES!"), "completed")
     yield(dialog.show_dialog_co("The Unholy Grail! I'm so glad it's actually here. The Curator is going to be so happy with me!"), "completed")
     yield(dialog.show_dialog_co("But wait..."), "completed")
     yield(dialog.show_dialog_co("...how do I get back up?"), "completed")

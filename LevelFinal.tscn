@@ -463,8 +463,12 @@ position = Vector2( 768, 128 )
 
 [node name="SwitchAndDoors3" type="Node2D" parent="Objects"]
 
+[node name="DialogTrigger" parent="Objects/SwitchAndDoors3" instance=ExtResource( 7 )]
+position = Vector2( 512, 256 )
+dialog_name = "LevelFinal"
+
 [node name="ShadowSourceBlock" parent="Objects" instance=ExtResource( 4 )]
-position = Vector2( 768, 384 )
+position = Vector2( 896, -256 )
 initial_delay = 0
 
 [node name="Areas" type="YSort" parent="."]
@@ -473,7 +477,7 @@ initial_delay = 0
 position = Vector2( 1664, 1536 )
 
 [node name="Bounds" parent="Areas/EvilShadowTrigger2" index="0"]
-position = Vector2( -896, -1408 )
+position = Vector2( -896, -2176 )
 shape = SubResource( 1 )
 
 [node name="Goblet" type="Sprite" parent="."]
@@ -617,6 +621,6 @@ occluder = SubResource( 2 )
 
 [node name="DialogTrigger" parent="." instance=ExtResource( 7 )]
 position = Vector2( 593.188, -3938.04 )
-dialog_name = "You WinKinda"
+dialog_name = "YouWinKinda"
 
 [editable path="Areas/EvilShadowTrigger2"]
