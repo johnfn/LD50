@@ -155,7 +155,10 @@ facing = 9
 position = Vector2( 256, -4864 )
 
 [node name="Checkpoint" parent="Walls/Wall215" instance=ExtResource( 10 )]
-position = Vector2( 256, 640 )
+position = Vector2( 384, 640 )
+
+[node name="CheckpointZone" parent="Walls/Wall215/Checkpoint" index="0"]
+position = Vector2( 0, -256 )
 
 [node name="SpawnPoint" parent="Walls/Wall215/Checkpoint" index="1"]
 position = Vector2( 0, 256 )

@@ -1017,7 +1017,10 @@ position = Vector2( 1088, 1728 )
 shape = SubResource( 3 )
 
 [node name="Checkpoint" parent="Areas" instance=ExtResource( 9 )]
-position = Vector2( 2432, 1664 )
+position = Vector2( 2688, 1664 )
+
+[node name="SpawnPoint" parent="Areas/Checkpoint" index="1"]
+position = Vector2( -128, 0 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Areas"]
 position = Vector2( 640, 640 )
