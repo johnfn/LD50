@@ -468,8 +468,8 @@ position = Vector2( 512, 256 )
 dialog_name = "LevelFinal"
 
 [node name="ShadowSourceBlock" parent="Objects" instance=ExtResource( 13 )]
-position = Vector2( 896, -256 )
-initial_delay = 0
+position = Vector2( 768, 512 )
+initial_delay = 3
 
 [node name="Areas" type="YSort" parent="."]
 
