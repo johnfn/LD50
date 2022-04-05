@@ -310,7 +310,35 @@ func end_of_game():
   for x in range(50):
     yield(get_tree(), 'idle_frame')
     $"/root/Root/Camera/DarkBoi".modulate = Color(1, 1, 1, float(x) / float(50.0))
+  
+  $"/root/Root/Camera/DarkBoi/DarkBoiLabel".text = "Game Over"
+  
+  while true:
+    yield(get_tree(), "idle_frame")
+    if Input.is_action_just_pressed("advance_dialog"): break
+  
+  $"/root/Root/Camera/DarkBoi/DarkBoiLabel".text = "Game Over?"
+  
+  while true:
+    yield(get_tree(), "idle_frame")
+    if Input.is_action_just_pressed("advance_dialog"): break
+  
+  $"/root/Root/Camera/DarkBoi/SmallerLabel".text = "The End"
+  
+  for x in range(4):
+    while true:
+      yield(get_tree(), "idle_frame")
+      if Input.is_action_just_pressed("advance_dialog"): break
       
+  $"/root/Root/Camera/DarkBoi/SmallerLabel".text = "That's the real end. You can stop pressing X now."
+  
+  for x in range(10):
+    while true:
+      yield(get_tree(), "idle_frame")
+      if Input.is_action_just_pressed("advance_dialog"): break
+  
+  $"/root/Root/Camera/DarkBoi/SmallerLabel".text = "P.S. EVERYONE DIED!!!!!!!!"
+    
 func start_dying_co():  
   if is_dead:
     #WTF
