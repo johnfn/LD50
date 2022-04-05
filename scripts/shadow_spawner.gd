@@ -82,9 +82,17 @@ func _physics_process(delta):
           blocked += 1
           
           if raycast_results.collider == Globals.Player:
-            Globals.Player.start_dying_co()
-            # spawn shadow anyways, it looks better
-            spawn_shadow(shadow.global_position + spawn_offset)
+            var torch_blocked = false
+            # TODO perform raycast here instead of just a distance check
+            for torch in get_tree().get_nodes_in_group("torches"):
+              var xdiff = abs(torch.global_position.x - shadow.global_position.x)
+              var ydiff = abs(torch.global_position.y - shadow.global_position.y)
+              if (xdiff + ydiff) <= torch_buffer * Globals.grid_size:
+                torch_blocked = true 
+            if not torch_blocked:
+              Globals.Player.start_dying_co()
+              # spawn shadow anyways, it looks better
+              spawn_shadow(shadow.global_position + spawn_offset)
 
         else:
           raycast_results = space.intersect_ray(shadow_center, shadow_center + spawn_offset, [shadow], movable_raycast_mask)
