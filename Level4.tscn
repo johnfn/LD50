@@ -1040,11 +1040,6 @@ facing = 6
 
 [node name="Occluders" type="Node2D" parent="."]
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -1632, -801 )
-scale = Vector2( 1, -0.279 )
-occluder = SubResource( 5 )
-
 [node name="LightOccluder2D14" type="LightOccluder2D" parent="Occluders"]
 position = Vector2( -768, 2560 )
 scale = Vector2( 8.541, -0.279 )
@@ -1060,11 +1055,6 @@ position = Vector2( 3840, 3072 )
 scale = Vector2( 2.66, -0.279 )
 occluder = SubResource( 5 )
 
-[node name="LightOccluder2D7" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -1888, -801 )
-scale = Vector2( 0.44, -0.279 )
-occluder = SubResource( 5 )
-
 [node name="LightOccluder2D25" type="LightOccluder2D" parent="Occluders"]
 position = Vector2( -256, 1152 )
 scale = Vector2( 1.94, -3.279 )
@@ -1078,11 +1068,6 @@ occluder = SubResource( 5 )
 [node name="LightOccluder2D13" type="LightOccluder2D" parent="Occluders"]
 position = Vector2( -1536, 2816 )
 scale = Vector2( 3.44, -5.279 )
-occluder = SubResource( 5 )
-
-[node name="LightOccluder2D8" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -1120, -801 )
-scale = Vector2( -0.44, -0.279 )
 occluder = SubResource( 5 )
 
 [node name="LightOccluder2D22" type="LightOccluder2D" parent="Occluders"]
@@ -1125,19 +1110,9 @@ position = Vector2( -384, 1024 )
 scale = Vector2( -1.94, -0.779 )
 occluder = SubResource( 5 )
 
-[node name="LightOccluder2D2" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -1888, -1313 )
-scale = Vector2( 0.44, 1 )
-occluder = SubResource( 5 )
-
 [node name="LightOccluder2D11" type="LightOccluder2D" parent="Occluders"]
 position = Vector2( -1664, -384 )
 scale = Vector2( 0.44, 5.666 )
-occluder = SubResource( 5 )
-
-[node name="LightOccluder2D3" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -1120, -1313 )
-scale = Vector2( -0.44, 1 )
 occluder = SubResource( 5 )
 
 [node name="LightOccluder2D21" type="LightOccluder2D" parent="Occluders"]
@@ -1155,11 +1130,6 @@ position = Vector2( 4480, 1280 )
 scale = Vector2( -0.44, 8.32 )
 occluder = SubResource( 5 )
 
-[node name="LightOccluder2D4" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -1632, -1569 )
-scale = Vector2( 1, 0.66 )
-occluder = SubResource( 5 )
-
 [node name="LightOccluder2D18" type="LightOccluder2D" parent="Occluders"]
 position = Vector2( 3840, 1280 )
 scale = Vector2( 2.451, 0.66 )
@@ -1173,16 +1143,6 @@ occluder = SubResource( 5 )
 [node name="LightOccluder2D20" type="LightOccluder2D" parent="Occluders"]
 position = Vector2( -256, 1792 )
 scale = Vector2( 4.713, 0.66 )
-occluder = SubResource( 5 )
-
-[node name="LightOccluder2D5" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -1888, -1569 )
-scale = Vector2( 0.44, 0.66 )
-occluder = SubResource( 5 )
-
-[node name="LightOccluder2D6" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -1120, -1569 )
-scale = Vector2( -0.44, 0.66 )
 occluder = SubResource( 5 )
 
 [node name="LightOccluder2D33" type="LightOccluder2D" parent="Occluders"]
