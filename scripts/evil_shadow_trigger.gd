@@ -3,6 +3,7 @@ onready var shadow_checker = get_node("/root/Root/ShadowChecker")
 
 var triggered = false
 export var once_only = false
+export var shadow_timer =3
 
 func _on_EvilShadowTrigger_body_entered(body):
   # Probably bad but it prevents things from getting confusing AF
@@ -20,8 +21,8 @@ func player_trigger_evil_shadow():
   yield(Globals.Player.start_dialog_co("FirstEvilShadowTrigger"), "completed")
   
   if not Globals.DEBUG_NO_SHADOWS:  
-    for x in range(3):
-      Globals.UI.EssTimeLeft.text = str(3 - x)
+    for x in range(shadow_timer):
+      Globals.UI.EssTimeLeft.text = str(shadow_timer - x)
       Globals.UI.EssTimeLeft.visible = true
       
       Sfx.play_sound(Sfx.Tick1, true)
