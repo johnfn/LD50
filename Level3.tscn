@@ -976,7 +976,7 @@ position = Vector2( 128, 768 )
 position = Vector2( 0, -256 )
 
 [node name="Chest3" parent="Objects" instance=ExtResource( 8 )]
-position = Vector2( 128, -3456 )
+position = Vector2( 0, -3456 )
 
 [node name="Stairs" parent="Objects" instance=ExtResource( 7 )]
 position = Vector2( 512, -4608 )

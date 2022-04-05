@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Door Switch Pressed copy.png-be4074b92a16be8d6556cf070fa80230.stex"
+path="res://.import/Door Switch Pressed copy.png-5e20db625f7925787e5f0bfe4eb3edc9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Door Switch Pressed copy.png"
-dest_files=[ "res://.import/Door Switch Pressed copy.png-be4074b92a16be8d6556cf070fa80230.stex" ]
+source_file="res://assets/Door Switch Pressed copy.png"
+dest_files=[ "res://.import/Door Switch Pressed copy.png-5e20db625f7925787e5f0bfe4eb3edc9.stex" ]
 
 [params]
 
