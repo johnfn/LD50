@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://StartLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=2]
@@ -1019,11 +1019,6 @@ facing = 6
 
 [node name="Occluders" type="Node2D" parent="."]
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -1664, -128 )
-scale = Vector2( 1, -0.279 )
-occluder = SubResource( 6 )
-
 [node name="LightOccluder2D20" type="LightOccluder2D" parent="Occluders"]
 position = Vector2( -1152, 3072 )
 scale = Vector2( 6.989, -0.279 )
@@ -1037,11 +1032,6 @@ occluder = SubResource( 6 )
 [node name="LightOccluder2D22" type="LightOccluder2D" parent="Occluders"]
 position = Vector2( 2432, 2304 )
 scale = Vector2( 3.006, -0.279 )
-occluder = SubResource( 6 )
-
-[node name="LightOccluder2D7" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -1920, -128 )
-scale = Vector2( 0.44, -0.279 )
 occluder = SubResource( 6 )
 
 [node name="LightOccluder2D17" type="LightOccluder2D" parent="Occluders"]
@@ -1092,31 +1082,6 @@ occluder = SubResource( 6 )
 [node name="LightOccluder2D24" type="LightOccluder2D" parent="Occluders"]
 position = Vector2( 384, 3072 )
 scale = Vector2( 0.94, -5.279 )
-occluder = SubResource( 6 )
-
-[node name="LightOccluder2D8" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -1152, -128 )
-scale = Vector2( -0.44, -0.279 )
-occluder = SubResource( 6 )
-
-[node name="LightOccluder2D2" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -1920, -640 )
-scale = Vector2( 0.44, 1 )
-occluder = SubResource( 6 )
-
-[node name="LightOccluder2D3" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -1152, -640 )
-scale = Vector2( -0.44, 1 )
-occluder = SubResource( 6 )
-
-[node name="LightOccluder2D4" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -1664, -896 )
-scale = Vector2( 1, 0.66 )
-occluder = SubResource( 6 )
-
-[node name="LightOccluder2D5" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -1920, -896 )
-scale = Vector2( 0.44, 0.66 )
 occluder = SubResource( 6 )
 
 [node name="LightOccluder2D9" type="LightOccluder2D" parent="Occluders"]
@@ -1174,10 +1139,6 @@ position = Vector2( -2048, 1280 )
 scale = Vector2( 2.94, 3.16 )
 occluder = SubResource( 6 )
 
-[node name="LightOccluder2D6" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -1152, -896 )
-scale = Vector2( -0.44, 0.66 )
-occluder = SubResource( 6 )
 [node name="DialogTrigger" parent="." instance=ExtResource( 12 )]
 position = Vector2( 384, 128 )
 dialog_name = "L2Start"
