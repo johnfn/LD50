@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://StartLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://CheckpointZone.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/PlayerLightCircle.png" type="Texture" id=11]
 [ext_resource path="res://scripts/four_way_occluder.tscn" type="PackedScene" id=12]
+[ext_resource path="res://ShadowSourceBlock.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Shader" id=3]
 
@@ -969,7 +970,7 @@ position = Vector2( 512, -3968 )
 is_door_open = true
 
 [node name="Chest" parent="Objects" instance=ExtResource( 8 )]
-position = Vector2( 512, 1024 )
+position = Vector2( 128, 768 )
 
 [node name="Chest2" parent="Objects" instance=ExtResource( 8 )]
 position = Vector2( 0, -256 )
@@ -1001,10 +1002,15 @@ position = Vector2( 768, -640 )
 [node name="Hole5" parent="Objects" instance=ExtResource( 9 )]
 position = Vector2( 768, -768 )
 
+[node name="ShadowSourceBlock" parent="Objects" instance=ExtResource( 13 )]
+position = Vector2( 256, 3328 )
+initial_delay = 4
+
 [node name="Areas" type="YSort" parent="."]
 
 [node name="EvilShadowTrigger2" parent="Areas" instance=ExtResource( 6 )]
 position = Vector2( -1280, -512 )
+shadow_timer = 2
 
 [node name="Bounds" parent="Areas/EvilShadowTrigger2" index="0"]
 position = Vector2( 1792, 3328 )
