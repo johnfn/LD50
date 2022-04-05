@@ -22,6 +22,7 @@ func resize_img():
 
 func show_dialog_co(text_to_show: String):
   if Globals.is_showing_dialog:
+    yield(get_tree(), "idle_frame")
     return
     
   visible = true
