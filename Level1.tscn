@@ -1065,6 +1065,9 @@ shape = SubResource( 1 )
 [node name="Checkpoint" parent="Areas" instance=ExtResource( 9 )]
 position = Vector2( 896, -6784 )
 
+[node name="SpawnPoint" parent="Areas/Checkpoint" index="1"]
+position = Vector2( 0, 256 )
+
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Areas"]
 position = Vector2( 939, -2534 )
 amount = 50
@@ -1270,3 +1273,4 @@ e_occlude = false
 w_occlude = false
 
 [editable path="Areas/EvilShadowTrigger2F"]
+[editable path="Areas/Checkpoint"]

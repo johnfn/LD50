@@ -1263,7 +1263,7 @@ n_occlude = false
 s_occlude = false
 
 [node name="DialogTrigger" parent="." instance=ExtResource( 12 )]
-position = Vector2( 384, 128 )
+position = Vector2( 384, 256 )
 dialog_name = "L2Start"
 
 [node name="Wall2" parent="." instance=ExtResource( 5 )]
@@ -1274,3 +1274,4 @@ facing = 1
 [editable path="Areas/EvilShadowTrigger6"]
 [editable path="Areas/EvilShadowTrigger5"]
 [editable path="Areas/EvilShadowTrigger4"]
+[editable path="Areas/Checkpoint"]

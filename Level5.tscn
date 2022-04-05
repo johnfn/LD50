@@ -629,7 +629,7 @@ facing = 4
 [node name="Objects" type="YSort" parent="."]
 
 [node name="StartLocation" parent="Objects" instance=ExtResource( 1 )]
-position = Vector2( 512, -512 )
+position = Vector2( 384, -512 )
 
 [node name="SwitchAndDoors" type="Node2D" parent="Objects"]
 
@@ -928,7 +928,8 @@ scale = Vector2( -2.44, 0.66 )
 occluder = SubResource( 3 )
 
 [node name="DialogTrigger" parent="." instance=ExtResource( 19 )]
-position = Vector2( 384, -256 )
+position = Vector2( 666.069, -256 )
+scale = Vector2( 0.427, 1 )
 dialog_name = "L5Start"
 
 [editable path="Areas/EvilShadowTrigger2"]
