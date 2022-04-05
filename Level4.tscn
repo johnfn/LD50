@@ -993,7 +993,6 @@ position = Vector2( 1152, 2304 )
 position = Vector2( 256, 768 )
 
 [node name="Areas" type="YSort" parent="."]
-visible = false
 
 [node name="EvilShadowTrigger2" parent="Areas" instance=ExtResource( 6 )]
 position = Vector2( 512, 384 )
@@ -1018,6 +1017,7 @@ shape = SubResource( 3 )
 
 [node name="EvilShadowTrigger5" parent="Areas" instance=ExtResource( 6 )]
 position = Vector2( 512, 384 )
+shadow_timer = 2
 
 [node name="Bounds" parent="Areas/EvilShadowTrigger5" index="0"]
 position = Vector2( 320, 2000 )
@@ -1025,6 +1025,9 @@ shape = SubResource( 4 )
 
 [node name="Checkpoint" parent="Areas" instance=ExtResource( 10 )]
 position = Vector2( 3968, 2304 )
+
+[node name="Checkpoint2" parent="Areas" instance=ExtResource( 10 )]
+position = Vector2( -512, 1920 )
 
 [node name="Wall" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1536, 2816 )
