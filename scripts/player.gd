@@ -252,7 +252,7 @@ func start_dialog_co(dialog_name: String):
     yield(dialog.show_dialog_co("Whoa, so THIS is what the Underground Archives look like."), "completed")
     yield(dialog.show_dialog_co("What was it the Curator wanted me to go grab again..."), "completed")
     yield(dialog.show_dialog_co("Oh right! The Unholy Grail!"), "completed")
-    yield(dialog.show_dialog_co("He said it was in the bottom floor of the basement, so I'd better get going."), "completed")
+    yield(dialog.show_dialog_co("He said it was in the sixth floor of the basement, so I'd better get going."), "completed")
     yield(dialog.show_dialog_co("And he also said to beware the dark...?"), "completed")
     yield(dialog.show_dialog_co("But that's so silly. I'm an adult!"), "completed")
     yield(dialog.show_dialog_co("Now, where might those steps to the second floor be?"), "completed")
@@ -285,6 +285,9 @@ func start_dialog_co(dialog_name: String):
   if dialog_name == "LevelFinal":
     yield(dialog.show_dialog_co("Finally!! The bottom floor!"), "completed")
     yield(dialog.show_dialog_co("Unholy Grail, here I come! And the shadows can't stop me now!"), "completed")
+
+  if dialog_name == "L5Start":
+    yield(dialog.show_dialog_co("I'm so close! Just one more floor and I'll be at the bottom!"), "completed")
 
   if dialog_name == "YouWinKinda":
     yield(dialog.show_dialog_co("YES!"), "completed")

@@ -13,8 +13,8 @@
 [ext_resource path="res://Level5.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/tile_floor.png" type="Texture" id=12]
 [ext_resource path="res://scripts/fov.gd" type="Script" id=13]
-[ext_resource path="res://Level6.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Level7.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Level6old.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Level7old.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/screened.material" type="Material" id=16]
 [ext_resource path="res://Menu.tscn" type="PackedScene" id=17]
 
