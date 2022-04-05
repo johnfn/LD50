@@ -14,7 +14,7 @@ extents = Vector2( 704, 576 )
 [sub_resource type="OccluderPolygon2D" id=2]
 polygon = PoolVector2Array( 0, 0, 0, 256, 256, 256, 256, 0 )
 
-[node name="Level7" type="YSort"]
+[node name="Level6" type="YSort"]
 
 [node name="Walls" type="YSort" parent="."]
 
