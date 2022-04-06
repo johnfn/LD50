@@ -10,15 +10,13 @@
 [ext_resource path="res://DialogTrigger.tscn" type="PackedScene" id=8]
 [ext_resource path="res://CheckpointZone.tscn" type="PackedScene" id=9]
 [ext_resource path="res://DoorRight.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/ess.png" type="Texture" id=11]
 [ext_resource path="res://PushableStatue.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scripts/four_way_occluder.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/screened.material" type="Material" id=13]
 [ext_resource path="res://assets/PlayerLightCircle.png" type="Texture" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 512, 576 )
-
-[sub_resource type="OccluderPolygon2D" id=2]
-polygon = PoolVector2Array( 0, 0, 0, -71, 128, -71, 128, 0 )
 
 [node name="Level1" type="YSort"]
 
@@ -85,10 +83,10 @@ position = Vector2( 0, -2048 )
 position = Vector2( 128, -2048 )
 
 [node name="Wall51" parent="Walls" instance=ExtResource( 3 )]
-position = Vector2( 1024, -2048 )
+position = Vector2( 1152, -2048 )
 
 [node name="Wall52" parent="Walls" instance=ExtResource( 3 )]
-position = Vector2( 1152, -2048 )
+position = Vector2( 1024, -2048 )
 facing = 7
 
 [node name="Wall11" parent="Walls" instance=ExtResource( 3 )]
@@ -224,31 +222,31 @@ facing = 3
 
 [node name="Wall19" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1152, -1152 )
-facing = 1
+facing = 4
 
 [node name="Wall35" parent="Walls" instance=ExtResource( 3 )]
-position = Vector2( 1152, -1280 )
+position = Vector2( 1024, -1280 )
 facing = 1
 
 [node name="Wall36" parent="Walls" instance=ExtResource( 3 )]
-position = Vector2( 1152, -1408 )
+position = Vector2( 1024, -1408 )
 facing = 1
 
 [node name="Wall37" parent="Walls" instance=ExtResource( 3 )]
-position = Vector2( 1152, -1536 )
-facing = 1
-
-[node name="Wall38" parent="Walls" instance=ExtResource( 3 )]
-position = Vector2( 1152, -1664 )
+position = Vector2( 1024, -1536 )
 facing = 1
 
 [node name="Wall39" parent="Walls" instance=ExtResource( 3 )]
-position = Vector2( 1152, -1792 )
+position = Vector2( 1024, -1792 )
+facing = 1
+
+[node name="Wall144" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 1024, -1664 )
 facing = 1
 
 [node name="Wall40" parent="Walls" instance=ExtResource( 3 )]
-position = Vector2( 1152, -1920 )
-facing = 4
+position = Vector2( 1024, -1920 )
+facing = 1
 
 [node name="Wall68" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1280, -2048 )
@@ -304,7 +302,7 @@ facing = 1
 
 [node name="Wall142" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1408, -4608 )
-facing = 4
+facing = 1
 
 [node name="Wall145" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1408, -4736 )
@@ -332,7 +330,7 @@ facing = 3
 
 [node name="Wall152" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 256, -4608 )
-facing = 5
+facing = 3
 
 [node name="Wall155" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 256, -4736 )
@@ -344,7 +342,7 @@ facing = 7
 
 [node name="Wall161" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 128, -4608 )
-facing = 4
+facing = 1
 
 [node name="Wall162" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 128, -4480 )
@@ -373,7 +371,7 @@ facing = 2
 
 [node name="Wall124" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1024, -4352 )
-facing = 2
+facing = 7
 
 [node name="Wall125" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1024, -4096 )
@@ -498,7 +496,7 @@ facing = 8
 
 [node name="Wall193" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1536, -4608 )
-facing = 5
+facing = 3
 
 [node name="Wall194" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1536, -4736 )
@@ -593,11 +591,11 @@ facing = 1
 
 [node name="Wall166" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1024, -4224 )
-facing = 4
+facing = 1
 
 [node name="Wall168" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 640, -4224 )
-facing = 5
+facing = 3
 
 [node name="Wall136" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 640, -3968 )
@@ -652,7 +650,7 @@ facing = 3
 
 [node name="Wall246" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1024, -6400 )
-facing = 4
+facing = 1
 
 [node name="Wall247" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1024, -6528 )
@@ -766,7 +764,7 @@ facing = 1
 
 [node name="Wall249" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 640, -6400 )
-facing = 5
+facing = 3
 
 [node name="Wall132" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1024, -5760 )
@@ -864,7 +862,7 @@ facing = 3
 
 [node name="Wall42" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 640, -1408 )
-facing = 5
+facing = 3
 
 [node name="Wall43" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 640, -1536 )
@@ -960,6 +958,7 @@ linked_doors = [ NodePath("../Door"), NodePath("../Door2") ]
 position = Vector2( 768, -1152 )
 
 [node name="Door2" parent="Objects/SwitchAndDoors" instance=ExtResource( 10 )]
+position = Vector2( 896, -1152 )
 
 [node name="SwitchAndDoors2" type="YSort" parent="Objects"]
 position = Vector2( -256, -1024 )
@@ -1069,13 +1068,13 @@ position = Vector2( 896, -6784 )
 position = Vector2( 0, 256 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Areas"]
-position = Vector2( 939, -2534 )
+position = Vector2( 896, -2688 )
 amount = 50
 lifetime = 3.0
 randomness = 0.3
 texture = ExtResource( 14 )
 emission_shape = 2
-emission_rect_extents = Vector2( 400, 400 )
+emission_rect_extents = Vector2( 512, 512 )
 direction = Vector2( 1, 5 )
 spread = 113.98
 gravity = Vector2( 0, -100 )
@@ -1085,192 +1084,19 @@ damping = 13.81
 scale_amount = 0.03
 color = Color( 0.443137, 0.576471, 0.592157, 0.282353 )
 
-[node name="ColorRect" type="ColorRect" parent="Areas/CPUParticles2D"]
-margin_left = -558.0
-margin_top = 102.0
-margin_right = 478.0
-margin_bottom = 400.0
-color = Color( 0.486275, 0.858824, 0.898039, 0.0627451 )
+[node name="Sprite" type="Sprite" parent="Areas/CPUParticles2D"]
+material = ExtResource( 13 )
+position = Vector2( -512, -512 )
+scale = Vector2( 8, 9 )
+z_index = -1
+texture = ExtResource( 11 )
+centered = false
 
 [node name="Checkpoint2" parent="Areas" instance=ExtResource( 9 )]
 position = Vector2( 512, -1792 )
 
 [node name="PushableStatue" parent="." instance=ExtResource( 12 )]
 position = Vector2( 896, -640 )
-
-[node name="Occluders" type="Node2D" parent="."]
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 0, 1536 )
-scale = Vector2( 9.308, 1 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D2" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -256, -1241.45 )
-scale = Vector2( 7.872, 5.12 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D17" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 1167.95, 1536 )
-scale = Vector2( 2.745, 51.48 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D18" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 1425.08, -1792 )
-scale = Vector2( 2.745, 24.591 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D19" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 1039.55, -3414.93 )
-scale = Vector2( 3.69, 14.191 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D20" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 1536, -4352 )
-scale = Vector2( 5.57, 2.815 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D21" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 2063.14, -4480 )
-scale = Vector2( 1.199, 15.495 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D22" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 1168.65, -6528 )
-scale = Vector2( 5.05, 2.807 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D23" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 128, -6528 )
-scale = Vector2( 3.88, 2.807 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D24" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -256, -6656 )
-scale = Vector2( 3.88, 10.54 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D25" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 1550.86, -6656 )
-scale = Vector2( 1.408, 9.688 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D26" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 128, -7255.54 )
-scale = Vector2( 11.99, 2.106 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D3" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -640, -2136.65 )
-scale = Vector2( 7.872, 20.403 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D6" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -256, -3418.04 )
-scale = Vector2( 7.872, 14.081 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D9" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -1280, -4480 )
-scale = Vector2( 7.872, 14.081 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D7" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 143.417, -4352 )
-scale = Vector2( 1.743, 6.406 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D14" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 1423.29, -4352 )
-scale = Vector2( 1.743, 6.406 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D15" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 1423.29, -5207.75 )
-scale = Vector2( 1.743, 6.406 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D10" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 143.417, -5208.64 )
-scale = Vector2( 1.743, 6.406 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D11" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -288.851, -5464.49 )
-scale = Vector2( 3.701, 6.406 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D16" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 1536, -5464.49 )
-scale = Vector2( 5.692, 6.406 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D12" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 256, -5592.2 )
-scale = Vector2( 3.871, 14.184 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D13" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 1040.43, -5592.2 )
-scale = Vector2( 3.871, 14.177 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D8" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -512, -4096 )
-scale = Vector2( 5.331, 6.406 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D4" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -256, -1536 )
-scale = Vector2( 0.872, 8.652 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D5" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 0, 1536 )
-scale = Vector2( 0.872, 39.59 )
-occluder = SubResource( 2 )
-
-[node name="FourWayOccluder" parent="Occluders" instance=ExtResource( 13 )]
-position = Vector2( 1024, -1240.31 )
-scale = Vector2( 1.34, 1 )
-height = 15.0
-e_occlude = false
-w_occlude = false
-
-[node name="FourWayOccluder4" parent="Occluders" instance=ExtResource( 13 )]
-position = Vector2( 1024, -2134 )
-scale = Vector2( 1.34, 1 )
-height = 15.0
-e_occlude = false
-w_occlude = false
-
-[node name="FourWayOccluder5" parent="Occluders" instance=ExtResource( 13 )]
-position = Vector2( 256, -5592.59 )
-scale = Vector2( 4, 1 )
-height = 15.0
-e_occlude = false
-w_occlude = false
-
-[node name="FourWayOccluder6" parent="Occluders" instance=ExtResource( 13 )]
-position = Vector2( 1024, -5592.59 )
-scale = Vector2( 4, 1 )
-height = 15.0
-e_occlude = false
-w_occlude = false
-
-[node name="FourWayOccluder2" parent="Occluders" instance=ExtResource( 13 )]
-position = Vector2( 0, -1240.31 )
-scale = Vector2( 6, 1 )
-height = 15.0
-e_occlude = false
-w_occlude = false
-
-[node name="FourWayOccluder3" parent="Occluders" instance=ExtResource( 13 )]
-position = Vector2( -256, -2134 )
-scale = Vector2( 8, 1 )
-height = 15.0
-e_occlude = false
-w_occlude = false
 
 [editable path="Areas/EvilShadowTrigger2F"]
 [editable path="Areas/Checkpoint"]

@@ -10,9 +10,9 @@
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 1 ) ],
 "loop": true,
-"name": "up",
+"name": "right",
 "speed": 2.0
 }, {
 "frames": [ ExtResource( 6 ) ],
@@ -20,9 +20,9 @@ animations = [ {
 "name": "left",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "right",
+"name": "up",
 "speed": 2.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -112,6 +112,7 @@ scale = Vector2( 0.13, 0.106 )
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="AnimatedSprite" parent="Graphics"]
+light_mask = 0
 position = Vector2( 2, -89 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 2 )

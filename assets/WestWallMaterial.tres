@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://assets/stretch_light.shader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/north = false
+shader_param/south = false
+shader_param/east = true
+shader_param/west = false
+shader_param/southwest = false
+shader_param/southeast = false
+shader_param/northwest = false
+shader_param/northeast = false
+shader_param/shrink_y_check = false
+shader_param/top_len = 31.0

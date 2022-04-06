@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://StartLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://DialogTrigger.tscn" type="PackedScene" id=2]
@@ -10,9 +10,6 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 704, 576 )
-
-[sub_resource type="OccluderPolygon2D" id=2]
-polygon = PoolVector2Array( 0, 0, 0, 256, 256, 256, 256, 0 )
 
 [node name="Level6" type="YSort"]
 
@@ -98,17 +95,17 @@ facing = 3
 position = Vector2( 256, -896 )
 facing = 3
 
+[node name="Wall93" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 1280, -1024 )
+facing = 4
+
+[node name="Wall" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 256, -1024 )
+facing = 5
+
 [node name="Wall35" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 384, -1024 )
 facing = 2
-
-[node name="Wall" parent="Walls/Wall35" instance=ExtResource( 5 )]
-position = Vector2( -128, 0 )
-facing = 5
-
-[node name="Wall" parent="Walls/Wall35/Wall" instance=ExtResource( 5 )]
-position = Vector2( 1024, 0 )
-facing = 4
 
 [node name="Wall36" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 384, -1152 )
@@ -138,17 +135,17 @@ facing = 3
 position = Vector2( 384, -1792 )
 facing = 3
 
+[node name="Wall99" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 1152, -2176 )
+facing = 4
+
+[node name="Wall97" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 384, -2176 )
+facing = 5
+
 [node name="Wall53" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 512, -2176 )
 facing = 2
-
-[node name="Wall" parent="Walls/Wall53" instance=ExtResource( 5 )]
-position = Vector2( -128, 0 )
-facing = 5
-
-[node name="Wall" parent="Walls/Wall53/Wall" instance=ExtResource( 5 )]
-position = Vector2( 768, 0 )
-facing = 4
 
 [node name="Wall54" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 512, -2304 )
@@ -289,15 +286,15 @@ position = Vector2( 640, -4352 )
 [node name="Wall111" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 896, -4352 )
 
+[node name="Wall103" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 1408, -4224 )
+facing = 1
+
+[node name="Wall101" parent="Walls" instance=ExtResource( 5 )]
+position = Vector2( 1280, -4352 )
+
 [node name="Wall112" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1152, -4352 )
-
-[node name="Wall" parent="Walls/Wall112" instance=ExtResource( 5 )]
-position = Vector2( 128, 0 )
-
-[node name="Wall" parent="Walls/Wall112/Wall" instance=ExtResource( 5 )]
-position = Vector2( 128, 128 )
-facing = 4
 
 [node name="Wall113" parent="Walls" instance=ExtResource( 5 )]
 position = Vector2( 1024, -4352 )
@@ -494,131 +491,66 @@ facing = 4
 position = Vector2( 1408, -3712 )
 facing = 8
 
+[node name="Wall6" parent="." instance=ExtResource( 5 )]
+position = Vector2( 256, -4352 )
+
+[node name="Wall8" parent="." instance=ExtResource( 5 )]
+position = Vector2( 256, -3712 )
+
+[node name="Wall9" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1280, -3712 )
+
+[node name="Wall7" parent="." instance=ExtResource( 5 )]
+position = Vector2( 128, -4352 )
+facing = 5
+
 [node name="Wall2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 128, -4224 )
 facing = 3
-
-[node name="Wall" parent="Wall2" instance=ExtResource( 5 )]
-position = Vector2( 128, -128 )
-
-[node name="Wall2" parent="Wall2" instance=ExtResource( 5 )]
-position = Vector2( 0, -128 )
-facing = 5
-
-[node name="Wall" parent="Wall2/Wall2" instance=ExtResource( 5 )]
-position = Vector2( 128, 640 )
-
-[node name="Wall2" parent="Wall2/Wall2" instance=ExtResource( 5 )]
-position = Vector2( 1152, 640 )
 
 [node name="Wall4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 128, -3712 )
 facing = 9
 
+[node name="Wall10" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1024, -3072 )
+facing = 4
+
 [node name="Wall5" parent="." instance=ExtResource( 5 )]
 position = Vector2( 512, -3072 )
 facing = 5
 
-[node name="Wall" parent="Wall5" instance=ExtResource( 5 )]
-position = Vector2( 512, 0 )
-facing = 4
+[node name="Statue2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1024, -128 )
+
+[node name="Statue3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 512, -640 )
+
+[node name="Statue4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1024, -640 )
+
+[node name="Statue5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 512, -1280 )
+
+[node name="Statue6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1024, -1280 )
+
+[node name="Statue7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 512, -1792 )
+
+[node name="Statue8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1024, -1792 )
+
+[node name="Statue9" parent="." instance=ExtResource( 3 )]
+position = Vector2( 640, -2688 )
+
+[node name="Statue10" parent="." instance=ExtResource( 3 )]
+position = Vector2( 896, -2688 )
 
 [node name="Statue" parent="." instance=ExtResource( 3 )]
 position = Vector2( 512, -128 )
 
-[node name="Statue" parent="Statue" instance=ExtResource( 3 )]
-position = Vector2( 512, 0 )
-
-[node name="Statue2" parent="Statue" instance=ExtResource( 3 )]
-position = Vector2( 0, -512 )
-
-[node name="Statue3" parent="Statue" instance=ExtResource( 3 )]
-position = Vector2( 512, -512 )
-
-[node name="Statue4" parent="Statue" instance=ExtResource( 3 )]
-position = Vector2( 0, -1152 )
-
-[node name="Statue5" parent="Statue" instance=ExtResource( 3 )]
-position = Vector2( 512, -1152 )
-
-[node name="Statue6" parent="Statue" instance=ExtResource( 3 )]
-position = Vector2( 0, -1664 )
-
-[node name="Statue7" parent="Statue" instance=ExtResource( 3 )]
-position = Vector2( 512, -1664 )
-
-[node name="Statue8" parent="Statue" instance=ExtResource( 3 )]
-position = Vector2( 128, -2560 )
-
-[node name="Statue9" parent="Statue" instance=ExtResource( 3 )]
-position = Vector2( 384, -2560 )
-
 [node name="Occluders" type="Node2D" parent="."]
-
-[node name="LightOccluder2D5" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 256, 640 )
-scale = Vector2( 4.51, -0.279 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D6" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 256, -1152 )
-scale = Vector2( 0.439, 7.256 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D7" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 1408, -1152 )
-rotation = 3.14159
-scale = Vector2( 0.44, -7.385 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D16" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 128, -4608 )
-scale = Vector2( 7.259, 0.66 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D8" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 128, -2304 )
-scale = Vector2( 1.44, 4.66 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D11" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 256, -3456 )
-scale = Vector2( 1.44, 4.66 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D15" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( -128, -4608 )
-scale = Vector2( 1.44, 4.66 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D12" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 128, -3783 )
-scale = Vector2( 2.44, 2.438 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D13" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 1536, -3783 )
-rotation = 3.14159
-scale = Vector2( 2.44, -2.438 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D9" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 1536, -2304 )
-rotation = 3.14159
-scale = Vector2( 1.44, -4.66 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D10" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 1408, -3456 )
-rotation = 3.14159
-scale = Vector2( 1.44, -4.66 )
-occluder = SubResource( 2 )
-
-[node name="LightOccluder2D14" type="LightOccluder2D" parent="Occluders"]
-position = Vector2( 1792, -4608 )
-rotation = 3.14159
-scale = Vector2( 1.44, -4.66 )
-occluder = SubResource( 2 )
 
 [node name="DialogTrigger" parent="." instance=ExtResource( 2 )]
 position = Vector2( 593.188, -3938.04 )

@@ -47,10 +47,12 @@ config/icon="res://icon.png"
 Globals="*res://Globals.tscn"
 StateManager="*res://scripts/state_manager.gd"
 Sfx="*res://scripts/sfx.gd"
+Fov="*res://scripts/fov.gd"
 
 [display]
 
 window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [editor_plugins]
 

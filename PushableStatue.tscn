@@ -34,16 +34,17 @@ script = ExtResource( 2 )
 [node name="Graphics" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Graphics"]
+light_mask = 4
 position = Vector2( 0, -59 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 centered = false
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Graphics"]
-visible = false
 occluder = SubResource( 2 )
 
 [node name="FourWayOccluder" parent="Graphics" instance=ExtResource( 3 )]
+visible = false
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 position = Vector2( 64.5, 64 )

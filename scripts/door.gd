@@ -7,7 +7,8 @@ onready var og_is_door_open = is_door_open
 onready var tile_door_open = $TileDoorOpen 
 onready var tile_door_closed = $TileDoor
 
-var initial_material = preload("res://assets/screened.material")
+onready var initial_material_c = tile_door_closed.material
+onready var initial_material_o = tile_door_open.material
 var glow_material = preload("res://assets/GlowMaterial.tres")
 
 var glowing = false
@@ -32,8 +33,10 @@ func update_door_sprites():
   tile_door_open.visible = is_door_open
   tile_door_closed.visible = not is_door_open
   
-  tile_door_open.material = null if glowing else initial_material
-  tile_door_closed.material = null if glowing else initial_material
+  tile_door_open.material = glow_material if glowing else initial_material_o
+  tile_door_closed.material = glow_material if glowing else initial_material_c
+  if tile_door_open.get_child_count() > 0:
+    tile_door_open.get_child(0).material = glow_material if glowing else null
   
   if glowing:
     tween1.interpolate_property(
@@ -61,13 +64,11 @@ func toggle_open():
   if is_door_open:
     is_door_open = false
     get_node("StaticBody/CollisionShape").set_deferred("disabled", false)
-    get_node("FourWayOccluder").visible = true
-#    get_node("TileDoor").modulate.a = 1.0
+    get_node("LightOccluder2D").visible = true
   else:
     is_door_open = true
     get_node("StaticBody/CollisionShape").set_deferred("disabled", true)
-    get_node("FourWayOccluder").visible = false
-#    get_node("TileDoor").modulate.a = 0.5  
+    get_node("LightOccluder2D").visible = false
   
   update_door_sprites()
 
