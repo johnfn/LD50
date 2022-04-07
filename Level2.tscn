@@ -911,10 +911,10 @@ position = Vector2( 512, 768 )
 linked_doors = [ NodePath("../Door4"), NodePath("../DoorUE3") ]
 
 [node name="Door4" parent="Objects/SwitchAndDoors" instance=ExtResource( 11 )]
-position = Vector2( -256, 896 )
+position = Vector2( -256, 768 )
 
 [node name="DoorUE3" parent="Objects/SwitchAndDoors" instance=ExtResource( 14 )]
-position = Vector2( 1280, 896 )
+position = Vector2( 1280, 768 )
 
 [node name="SwitchAndDoors2" type="YSort" parent="Objects"]
 
@@ -923,7 +923,7 @@ position = Vector2( -512, 2560 )
 linked_doors = [ NodePath("../DoorUE2") ]
 
 [node name="DoorUE2" parent="Objects/SwitchAndDoors2" instance=ExtResource( 14 )]
-position = Vector2( 384, 1664 )
+position = Vector2( 384, 1536 )
 
 [node name="SwitchAndDoors4" type="YSort" parent="Objects"]
 
@@ -932,7 +932,7 @@ position = Vector2( 640, 2560 )
 linked_doors = [ NodePath("../DoorUE1") ]
 
 [node name="DoorUE1" parent="Objects/SwitchAndDoors4" instance=ExtResource( 14 )]
-position = Vector2( 1536, 1664 )
+position = Vector2( 1536, 1536 )
 
 [node name="SwitchAndDoors3" type="YSort" parent="Objects"]
 

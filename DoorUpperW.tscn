@@ -43,6 +43,7 @@ shader_param/top_len = 31.0
 script = ExtResource( 2 )
 
 [node name="StaticBody" type="StaticBody2D" parent="."]
+position = Vector2( 0, 128 )
 collision_layer = 64
 collision_mask = 0
 
@@ -51,12 +52,13 @@ position = Vector2( 64, 0 )
 shape = SubResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2( 0, 128 )
 occluder = SubResource( 2 )
 
 [node name="TileDoor" type="Sprite" parent="."]
 light_mask = 0
 material = SubResource( 3 )
-position = Vector2( 0, -327.5 )
+position = Vector2( 0, -199.5 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 centered = false
@@ -64,12 +66,12 @@ centered = false
 [node name="TileDoorOpen" type="Sprite" parent="."]
 light_mask = 0
 material = SubResource( 4 )
-position = Vector2( 0, -328 )
+position = Vector2( 0, -200 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 centered = false
 flip_h = true
 
-[node name="Sprite" type="Sprite" parent="TileDoorOpen"]
+[node name="TileDoorOpen2" type="Sprite" parent="TileDoorOpen"]
 position = Vector2( 128, 918 )
 texture = ExtResource( 3 )
