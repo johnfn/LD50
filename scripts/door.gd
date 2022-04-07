@@ -59,11 +59,15 @@ func update_door_sprites():
     tween2.stop(tile_door_closed)
     tile_door_open.modulate = initial_modulate
     tile_door_closed.modulate = initial_modulate
-  
+
+var blocked_closing = false
 func toggle_open():
   if is_door_open:
     is_door_open = false
-    get_node("StaticBody/CollisionShape").set_deferred("disabled", false)
+    if Globals.Player.global_position != global_position:
+      get_node("StaticBody/CollisionShape").set_deferred("disabled", false)
+    else:
+      blocked_closing = true
     get_node("LightOccluder2D").visible = true
   else:
     is_door_open = true
@@ -71,6 +75,16 @@ func toggle_open():
     get_node("LightOccluder2D").visible = false
   
   update_door_sprites()
+
+func _process(delta):
+  if is_door_open == false && Globals.Player.global_position == global_position:
+    blocked_closing = true
+    get_node("StaticBody/CollisionShape").set_deferred("disabled", true)
+    print ("player stuck in door, disabling collider")
+  if blocked_closing && Globals.Player.global_position != global_position && Globals.Player.global_position.distance_to(global_position) <= 130:
+    blocked_closing = false
+    get_node("StaticBody/CollisionShape").set_deferred("disabled", false)
+    print ("re-enabling collider")
 
 func reset():
   if og_is_door_open != is_door_open:
