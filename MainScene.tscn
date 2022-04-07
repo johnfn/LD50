@@ -168,7 +168,7 @@ custom_fonts/normal_font = SubResource( 5 )
 anims/EssHit = SubResource( 2 )
 anims/RESET = SubResource( 3 )
 
-[node name="Torches" type="Node2D" parent="."]
+[node name="Torches" type="YSort" parent="."]
 
 [node name="UI" parent="." instance=ExtResource( 6 )]
 
