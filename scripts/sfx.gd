@@ -51,6 +51,7 @@ func play_song(song):
     BgmPlayer.play()
 
 func play_sound(sound, high_priority = false):
+  sound.loop = false
   if sound == Sfx.Blob1:
     ICantBelieveItsNotPlayer.stream = sound
     ICantBelieveItsNotPlayer.play()
