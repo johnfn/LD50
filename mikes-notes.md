@@ -12,6 +12,7 @@
 - Grid based movement makes it awkward to have doors and walls that are not a full grid square thick. Putting them in the middle of the tile instead of at the edge is a common solution. This would also have reduced the number of wall types we had to deal with, but it would've made it impossible to push a statue directly up against a wall. South facing walls also seemed odd, because the nonwalkable area doesn't line up between art and collider.
 - Timing is not enough to link cause and effect for players. An object that causes a change based on change in environment must also change itself, or many players will not notice it.
 - Not all players will play with audio on. Using SFX to convey information is excellent, but it should always be reinforcing communication that is already happening.
+- Repeated movement in a grid based movement needs a gap in between the moves that the player can release the key in. Obviously they can release it at any time during the last move, but that's not a very obvious feeling cue compared to an actual pause. The hop animation should've been scaled to 80% of the length or something like that.
 
 ## Shader Notes
 - Light2D is a 2D light. To use it properly in 2.5D, pick a plane, light that plane, and then project the light from that plane along the height of surfaces. It won't be quite accurate if objects are short and should only cast shadows partway up a wall, but it's good enough.
